@@ -25,8 +25,8 @@ Blave Fitness
                                     <h3>Bienvenido a <span class="b-ck">Brave Fitness </span></h3>
                                     <p>Es una aplicación web especializada en entrenamiento, nutrición, deportes, hábitos saludables, etc.
                                         Si quieres formar parte, empezar a aprender y quieres que te ayudemos a conseguir tus objetivos no dudes en crearte una cuenta.</p>
-                                    <a href="about.html" class="banner-btn btn bg-info">Iniciar sesión</a>
-                                    <a href="about.html" class="banner-btn btn bg-info">Registrarse </a>
+                                    <a href="/login" class="banner-btn btn bg-info">Iniciar sesión</a>
+                                    <a href="/register" class="banner-btn btn bg-info">Registrarse </a>
                                 </div>
                             </div>
                         </div>
