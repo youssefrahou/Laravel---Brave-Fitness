@@ -22,7 +22,7 @@
     <script src="https://kit.fontawesome.com/7b2c38623a.js" crossorigin="anonymous"></script>
 
     <!-- Caroussel CSS -->
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="{{asset('css/style.css')}}">
 
 </head>
 
@@ -87,8 +87,8 @@
     </section>
    
 
-   @section('body')
-   @show
+   @yield('body')
+ 
 
 
     <section class="w3l-footer-22-main">
