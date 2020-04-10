@@ -13,9 +13,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('inicio');
-});
+Route::get('/', 'PaginasController@inicio');
+Route::get('articulos', 'PaginasController@articulos');
+Route::get('articulos/{categoria}', 'PaginasController@articulosCategoria');
+Route::get('planes', 'PaginasController@planes');
+Route::get('sobreNosotros', 'PaginasController@sobreNosotros');
+Route::get('admin', 'AdminController@inicio');
+Route::get('/login2', 'PaginasController@login');
+
+
+
 
 Auth::routes();
 

@@ -88,7 +88,6 @@
    
 
    @section('body')
-   <p>Mi contenido es</p>
    @show
 
 
