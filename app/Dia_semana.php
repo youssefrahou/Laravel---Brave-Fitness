@@ -8,4 +8,15 @@ class Dia_semana extends Model
 {
     //
     protected $table = 'dia_semana';
+
+
+    public function alimentos()
+    {
+        return $this->hasMany('App\Alimento_dieta');
+    }
+
+    public function dieta()
+    {
+        return $this->belongsTo('App\Dieta');
+    }
 }
