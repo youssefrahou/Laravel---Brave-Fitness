@@ -7,4 +7,5 @@ use Illuminate\Database\Eloquent\Model;
 class Medicion extends Model
 {
     //
+    protected $table = 'medicion';
 }
