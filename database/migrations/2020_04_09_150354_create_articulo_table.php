@@ -17,8 +17,7 @@ class CreateArticuloTable extends Migration
             $table->id();
             $table->string('titulo');
             $table->string('subtitulo');
-
-            $table->longText('text1');
+            $table->longText('introduccion');
             $table->string('foto1');
             $table->string('pie_imagen1');
 
@@ -33,6 +32,16 @@ class CreateArticuloTable extends Migration
             $table->longText('text4')->nullable();
             $table->string('foto4')->nullable();
             $table->string('pie_imagen4')->nullable();
+
+            $table->longText('text5')->nullable();
+            $table->string('foto5')->nullable();
+            $table->string('pie_imagen5')->nullable();
+
+
+            $table->longText('text6')->nullable();
+            $table->string('foto6')->nullable();
+            $table->string('pie_imagen6')->nullable();
+
 
             $table->bigInteger('users_id')->unsigned();
             $table->foreign('users_id')

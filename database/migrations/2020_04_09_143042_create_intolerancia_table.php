@@ -16,14 +16,6 @@ class CreateIntoleranciaTable extends Migration
         Schema::create('intolerancia', function (Blueprint $table) {
             $table->id();
             $table->string('nombre_alimento');
-
-
-            $table->bigInteger('users_id')->unsigned();
-            $table->foreign('users_id')
-                ->references('id')->on('users')
-                ->onDelete("cascade")
-                ->onUpdate("cascade");
-
             $table->timestamps();
         });
     }
