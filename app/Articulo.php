@@ -31,7 +31,7 @@ class Articulo extends Model
 
     public function tags()
     {
-        return $this->belongsToMany('App\Tag');
+        return $this->belongsToMany('App\Tag', 'articulo_tags');
     }
 
 

@@ -10,6 +10,6 @@ class Tag extends Model
 
     public function articulos()
     {
-        return $this->belongsTo('App\Articulo');
+        return $this->belongsTo('App\Articulo', 'articulo_tags');
     }
 }

@@ -84,7 +84,7 @@ class User extends Authenticatable
 
     public function intolerancias()
     {
-        return $this->belongsToMany('App\Intolerancia');
+        return $this->belongsToMany('App\Intolerancia', 'intolerancia_usuario');
     }
 
 

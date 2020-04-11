@@ -22,7 +22,15 @@ Route::get('sobreNosotros', 'PaginasController@sobreNosotros');
 Route::get('admin', 'AdminController@inicio');
 Route::get('/login2', 'PaginasController@login');
 Route::get('/usuarios', function(){
-    return App\Mensaje::where('users_id', 2)->get();
+
+    $articulo= App\Articulo::find(1);
+
+    //return $articulo;
+
+    foreach($articulo->tags as $tag){
+        echo $tag->nombre . '<br/>';
+    }
+    
 });
 
 
