@@ -17,11 +17,11 @@ class CreateDietaTable extends Migration
             $table->id();
             $table->string('titulo');
             $table->date('fecha');
-            $table->string('ubicacion_pdf');
+            $table->string('ubicacion_pdf')->nullable();
 
 
-            $table->bigInteger('id_usuario')->unsigned();
-            $table->foreign('id_usuario')
+            $table->bigInteger('users_id')->unsigned();
+            $table->foreign('users_id')
                 ->references('id')->on('users')
                 ->onDelete("cascade")
                 ->onUpdate("cascade");

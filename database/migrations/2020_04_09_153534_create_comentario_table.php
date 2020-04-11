@@ -21,14 +21,14 @@ class CreateComentarioTable extends Migration
             $table->boolean('leido'); //para admin marcarlo como leído
 
 
-            $table->bigInteger('id_usuario')->unsigned();
-            $table->foreign('id_usuario')
+            $table->bigInteger('users_id')->unsigned();
+            $table->foreign('users_id')
                 ->references('id')->on('users')
                 ->onDelete("cascade")
                 ->onUpdate("cascade");
 
-            $table->bigInteger('id_articulo')->unsigned();
-            $table->foreign('id_articulo')
+            $table->bigInteger('articulo_id')->unsigned();
+            $table->foreign('articulo_id')
                 ->references('id')->on('articulo')
                 ->onDelete("cascade")
                 ->onUpdate("cascade");

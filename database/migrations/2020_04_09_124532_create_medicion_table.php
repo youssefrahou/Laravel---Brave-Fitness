@@ -17,14 +17,16 @@ class CreateMedicionTable extends Migration
             $table->id();
             $table->date('fecha');
             $table->integer('peso');
-            $table->decimal('altura');
-            $table->string('foto_delante');
-            $table->string('foto_lado');
-            $table->string('foto_atras');
-            $table->bigInteger('id_usuario')->unsigned();
-            $table->foreign('id_usuario')
+            $table->decimal('altura')->nullable();
+            $table->string('foto_delante')->nullable();
+            $table->string('foto_lado')->nullable();
+            $table->string('foto_atras')->nullable();
+
+            $table->bigInteger('users_id')->unsigned();
+            $table->foreign('users_id')
                 ->references('id')->on('users')
-                ->onDelete("cascade");
+                ->onDelete("cascade")
+                ->onUpdate("cascade");
 
 
 

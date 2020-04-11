@@ -17,10 +17,12 @@ class CreateMensajeTable extends Migration
             $table->id();
             $table->string('mensaje');
             $table->dateTime('fecha');
-            $table->bigInteger('id_usuario')->unsigned();
-            $table->foreign('id_usuario')
+            
+            $table->bigInteger('users_id')->unsigned();
+            $table->foreign('users_id')
                 ->references('id')->on('users')
-                ->onDelete("cascade");
+                ->onDelete("cascade")
+                ->onUpdate("cascade");
 
             $table->timestamps();
         });

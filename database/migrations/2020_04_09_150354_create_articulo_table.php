@@ -17,19 +17,32 @@ class CreateArticuloTable extends Migration
             $table->id();
             $table->string('titulo');
             $table->string('subtitulo');
-            $table->longText('contenido');
+
+            $table->longText('text1');
             $table->string('foto1');
             $table->string('pie_imagen1');
-            $table->string('foto2');
-            $table->string('pie_imagen2');
-            $table->string('foto3');
-            $table->string('pie_imagen3');
-            $table->string('foto4');
-            $table->string('pie_imagen4');
 
-            $table->bigInteger('id_usuario')->unsigned();
-            $table->foreign('id_usuario')
+            $table->longText('text2')->nullable();
+            $table->string('foto2')->nullable();
+            $table->string('pie_imagen2')->nullable();
+
+            $table->longText('text3')->nullable();
+            $table->string('foto3')->nullable();
+            $table->string('pie_imagen3')->nullable();
+
+            $table->longText('text4')->nullable();
+            $table->string('foto4')->nullable();
+            $table->string('pie_imagen4')->nullable();
+
+            $table->bigInteger('users_id')->unsigned();
+            $table->foreign('users_id')
                 ->references('id')->on('users')
+                ->onDelete("cascade")
+                ->onUpdate("cascade");
+
+            $table->bigInteger('categoria_id')->unsigned();
+            $table->foreign('categoria_id')
+                ->references('id')->on('categoria')
                 ->onDelete("cascade")
                 ->onUpdate("cascade");
 

@@ -19,8 +19,8 @@ class CreateDeportePracticadoTable extends Migration
             $table->integer('duracion');
             $table->boolean('individual');
             
-            $table->bigInteger('id_usuario')->unsigned();
-            $table->foreign('id_usuario')
+            $table->bigInteger('users_id')->unsigned();
+            $table->foreign('users_id')
                 ->references('id')->on('users')
                 ->onDelete("cascade")
                 ->onUpdate("cascade");

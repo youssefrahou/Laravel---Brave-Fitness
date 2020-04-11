@@ -17,13 +17,13 @@ class CreateAlimentoDietaTable extends Migration
             $table->id();
             $table->enum('tipo', ['desayuno', 'merienda_manana', 'comida', 'cena', 'merienda_tarde']);
             $table->string('nombre');
-            $table->string('descripcion');
+            $table->string('descripcion')->nullable();
             //$table->string(''); saber % de nutrientes, tipo un 20% de proteinas y esas cosas
 
 
 
-            $table->bigInteger('id_dia_semana')->unsigned();
-            $table->foreign('id_dia_semana')
+            $table->bigInteger('dia_semana_id')->unsigned();
+            $table->foreign('dia_semana_id')
                 ->references('id')->on('dia_semana')
                 ->onDelete("cascade")
                 ->onUpdate("cascade");

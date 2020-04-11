@@ -16,13 +16,13 @@ class CreateLesionTable extends Migration
         Schema::create('lesion', function (Blueprint $table) {
             $table->id();
             $table->date('fecha_inicio');
-            $table->integer('duracion');
+            $table->integer('duracion')->nullable();
             $table->boolean('recuperado');
             $table->boolean('molestias');
 
 
-            $table->bigInteger('id_usuario')->unsigned();
-            $table->foreign('id_usuario')
+            $table->bigInteger('users_id')->unsigned();
+            $table->foreign('users_id')
                 ->references('id')->on('users')
                 ->onDelete("cascade")
                 ->onUpdate("cascade");

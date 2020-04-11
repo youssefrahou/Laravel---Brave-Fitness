@@ -18,11 +18,11 @@ class CreateConsejoTable extends Migration
             $table->string('titulo');
             $table->string('texto');
             $table->date('fecha');
-            $table->string('foto');
+            $table->string('foto')->nullable();
 
 
-            $table->bigInteger('id_usuario')->unsigned();
-            $table->foreign('id_usuario')
+            $table->bigInteger('users_id')->unsigned();
+            $table->foreign('users_id')
                 ->references('id')->on('users')
                 ->onDelete("cascade")
                 ->onUpdate("cascade");
