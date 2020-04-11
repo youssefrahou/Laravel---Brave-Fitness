@@ -15,8 +15,19 @@ class CreateIntoleranciaUsuarioTable extends Migration
     {
         Schema::create('intolerancia_usuario', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('intolerancia_id');
-            $table->bigInteger('users_id');
+            $table->bigInteger('intolerancia_id')->unsigned();
+            $table->bigInteger('users_id')->unsigned();
+
+            $table->foreign('intolerancia_id')
+                ->references('id')->on('intolerancia')
+                ->onDelete("cascade")
+                ->onUpdate("cascade");
+
+            $table->foreign('users_id')
+                ->references('id')->on('users')
+                ->onDelete("cascade")
+                ->onUpdate("cascade");
+
             $table->timestamps();
         });
     }
