@@ -4,9 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Mensaje extends Model
+class Intolerancia extends Model
 {
-    
-    protected $table = 'mensaje';
     //
 }

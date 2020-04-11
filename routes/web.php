@@ -22,7 +22,7 @@ Route::get('sobreNosotros', 'PaginasController@sobreNosotros');
 Route::get('admin', 'AdminController@inicio');
 Route::get('/login2', 'PaginasController@login');
 Route::get('/usuarios', function(){
-    return User::where('email', 'youssefra3@gmail.com')->get();
+    return App\Mensaje::all();
 });
 
 
