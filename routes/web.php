@@ -25,11 +25,11 @@ Route::get('/usuarios', function(){
 
     $articulo= App\Articulo::find(1);
 
-    //return $articulo;
-
+    return $articulo;
+/*
     foreach($articulo->tags as $tag){
         echo $tag->nombre . '<br/>';
-    }
+    }*/
     
 });
 
