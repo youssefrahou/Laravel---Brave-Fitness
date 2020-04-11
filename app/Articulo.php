@@ -28,4 +28,13 @@ class Articulo extends Model
     {
         return $this->belongsTo('App\User');
     }
+
+    public function tags()
+    {
+        return $this->belongsToMany('App\Tag');
+    }
+
+
+
+
 }

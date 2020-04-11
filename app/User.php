@@ -82,5 +82,11 @@ class User extends Authenticatable
         return $this->hasMany('App\Dieta');
     }
 
+    public function intolerancias()
+    {
+        return $this->belongsToMany('App\Intolerancia');
+    }
+
+
 
 }
