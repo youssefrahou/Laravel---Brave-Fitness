@@ -33,6 +33,13 @@ Route::get('/usuarios', function(){
     
 });
 
+Route::get('articulo/{id}', function($id){
+
+    $articulo = App\Articulo::find($id);
+
+    return view('articulo', compact('articulo'));
+    
+});
 
 
 

@@ -35,7 +35,7 @@
             <!--/nav-->
             <nav class="navbar navbar-expand-md navbar-dark bg-info ">
                 <!-- fixed-top para FIJARLOOOOO-->
-                <a class="navbar-brand col-3 col-md-1" href="#"><img src="img/logo.png" class="img-fluid" /></a>
+                <a class="navbar-brand col-3 col-md-1" href="#"><img src="{{asset('img/logo.png')}}" class="img-fluid" /></a>
                 <button class="navbar-toggler bg-info" type="button" data-toggle="collapse" data-target="#menu">
                     <span class="navbar-toggler-icon text-white"></span>
                 </button>
