@@ -41,6 +41,29 @@ Route::get('articulo/{id}', function($id){
     
 });
 
+/**
+ * RUTAS CRUD
+ */
+
+Route::resource('user', 'UsersController');
+Route::resource('mensaje', 'MensajeController');
+Route::resource('medicion', 'MedicionController');
+Route::resource('deportePracticado', 'Deporte_practicadoController');
+Route::resource('categoria', 'CategoriaController');
+Route::resource('video', 'VideoController');
+Route::resource('lesion', 'LesionController');
+Route::resource('intolerancia', 'IntoleranciaController');
+Route::resource('consejo', 'ConsejoController');
+Route::resource('dieta', 'DietaController');
+Route::resource('diaSemana', 'Dia_semanaController');
+Route::resource('alimentoDieta', 'Alimento_dietaController');
+Route::resource('articulo', 'ArticuloController');
+Route::resource('comentario', 'ComentarioController');
+Route::resource('respuesta', 'Respuesta_comentarioController');
+/**
+ * fin RUTAS CRUD
+ */
+
 
 
 
