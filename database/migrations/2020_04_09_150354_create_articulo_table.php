@@ -16,7 +16,7 @@ class CreateArticuloTable extends Migration
         Schema::create('articulo', function (Blueprint $table) {
             $table->id();
             $table->string('titulo');
-            $table->string('subtitulo');
+            $table->text('subtitulo');
             $table->longText('introduccion');
             $table->string('foto1');
             $table->string('pie_imagen1');
