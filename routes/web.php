@@ -45,7 +45,10 @@ Route::get('articulo/{id}', function($id){
 
 Route::get('areapersonal', function(){
 
-    return view('plantillas.areapersonal');
+    $usuarios = App\User::all();
+    $totalUsuarios = DB::table('users')->count();
+
+    return view('plantillas.areapersonal', compact('usuarios', 'totalUsuarios'));
     
 });
 
