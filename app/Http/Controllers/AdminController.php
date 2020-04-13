@@ -2,10 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Articulo;
 use Illuminate\Http\Request;
-use App\User;
-use App\Categoria;
 
 class AdminController extends Controller
 {
@@ -16,10 +13,6 @@ class AdminController extends Controller
 
     public function inicio () 
     {
-
-        $usuarios = User::all();
-        $categorias = Categoria::all();
-
-        return view('admin', compact('usuarios', 'categorias'));
+        return view('admin');
     }
 }

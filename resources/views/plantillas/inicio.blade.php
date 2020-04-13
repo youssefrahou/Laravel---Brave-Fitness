@@ -156,7 +156,7 @@
         </div>
         <!-- //titels-5 -->
         <!-- move top -->
-        <button onclick="topFunction()" id="movetop" title="Subir">
+        <button onclick="topFunction()" id="movetop" title="Go to top">
             <span class="fa fa-long-arrow-up"></span>
         </button>
         <script>
