@@ -17,6 +17,14 @@ class CreateUsersTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('email', 50)->unique();
+            $table->string('apellido1');
+            $table->string('apellido2')->nullable();
+            $table->string('fotoPerfil')->nullable();
+            $table->string('fotoDieta')->nullable();
+            $table->integer('peso')->nullable();
+            $table->enum('sexo', ['hombre', 'mujer', 'otro'])->nullable();
+            $table->enum('objetivo', ['subir_peso', 'adelgazar', 'musculatura'])->nullable();
+
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();

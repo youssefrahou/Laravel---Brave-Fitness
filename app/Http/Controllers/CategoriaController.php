@@ -14,7 +14,7 @@ class CategoriaController extends Controller
      */
     public function index()
     {
-        //
+        return Categoria::all();
     }
 
     /**
@@ -24,7 +24,7 @@ class CategoriaController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin');
     }
 
     /**
@@ -37,6 +37,7 @@ class CategoriaController extends Controller
     {
         $categoria = new Categoria;
         $categoria -> nombre_categoria = $request -> nombre_categoria;
+        $categoria -> save();
 
     }
 

@@ -13,6 +13,6 @@ class AdminController extends Controller
 
     public function inicio () 
     {
-        return "PAGINA ADMINISTRADOR";
+        return view('admin');
     }
 }
