@@ -41,6 +41,14 @@ Route::get('articulo/{id}', function($id){
     
 });
 
+
+
+Route::get('areapersonal', function(){
+
+    return view('plantillas.areapersonal');
+    
+});
+
 /**
  * RUTAS CRUD
  */
