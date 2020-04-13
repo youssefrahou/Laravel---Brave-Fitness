@@ -40,8 +40,8 @@
 
             <!-- Right navbar links -->
             <ul class="navbar-nav ml-auto">
-                
-              
+
+
             </ul>
         </nav>
         <!-- /.navbar -->
@@ -51,7 +51,7 @@
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
             <a href="index3.html" class="brand-link">
-                <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+                <img src="dist/img/logo.png" alt="Logo Brave Fitness" class="brand-image img-circle elevation-3">
                 <span class="brand-text font-weight-light">BRAVE FITNESS</span>
             </a>
 
@@ -72,7 +72,7 @@
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                         <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-                        
+
                         <li class="nav-item has-treeview">
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-copy"></i>
@@ -95,162 +95,110 @@
                                         <p>Editar usuario</p>
                                     </a>
                                 </li>
-                                
+
                             </ul>
                         </li>
                         <li class="nav-item has-treeview">
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-chart-pie"></i>
                                 <p>
-                                    Charts
-                                    <i class="right fas fa-angle-left"></i>
+                                    Articulos
+                                    <i class="fas fa-angle-left right"></i>
+                                    <span class="badge badge-info right">{{ $totalArticulos }}</span>
                                 </p>
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
                                     <a href="pages/charts/chartjs.html" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>ChartJS</p>
+                                        <p>Ver artículos</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="pages/charts/flot.html" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>Flot</p>
+                                        <p>Escribir artículo</p>
                                     </a>
                                 </li>
-                                <li class="nav-item">
-                                    <a href="pages/charts/inline.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Inline</p>
-                                    </a>
-                                </li>
+
                             </ul>
                         </li>
                         <li class="nav-item has-treeview">
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-tree"></i>
                                 <p>
-                                    UI Elements
+                                    Consejos
                                     <i class="fas fa-angle-left right"></i>
+                                    <span class="badge badge-info right">{{ $totalConsejos }}</span>
                                 </p>
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
                                     <a href="pages/UI/general.html" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>General</p>
+                                        <p>Ver consejos</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="pages/UI/icons.html" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>Icons</p>
+                                        <p>Escribir consejo</p>
                                     </a>
                                 </li>
-                                <li class="nav-item">
-                                    <a href="pages/UI/buttons.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Buttons</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="pages/UI/sliders.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Sliders</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="pages/UI/modals.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Modals & Alerts</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="pages/UI/navbar.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Navbar & Tabs</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="pages/UI/timeline.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Timeline</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="pages/UI/ribbons.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Ribbons</p>
-                                    </a>
-                                </li>
+
                             </ul>
                         </li>
                         <li class="nav-item has-treeview">
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-edit"></i>
                                 <p>
-                                    Forms
+                                    Comentarios
                                     <i class="fas fa-angle-left right"></i>
+                                    <span class="badge badge-info right">{{ $totalComentarios }}</span>
                                 </p>
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
                                     <a href="pages/forms/general.html" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>General Elements</p>
+                                        <p>Ver todos los comentarios</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="pages/forms/advanced.html" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>Advanced Elements</p>
+                                        <p>Ver comentarios sin leer</p>
                                     </a>
                                 </li>
-                                <li class="nav-item">
-                                    <a href="pages/forms/editors.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Editors</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="pages/forms/validation.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Validation</p>
-                                    </a>
-                                </li>
+
                             </ul>
                         </li>
                         <li class="nav-item has-treeview">
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-table"></i>
                                 <p>
-                                    Tables
+                                    Mensajes
                                     <i class="fas fa-angle-left right"></i>
+                                    <span class="badge badge-info right">{{ $totalMensajes }}</span>
                                 </p>
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
                                     <a href="pages/tables/simple.html" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>Simple Tables</p>
+                                        <p>Ver todos los mensajes</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="pages/tables/data.html" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>DataTables</p>
+                                        <p>Ver mensajes sin leer</p>
                                     </a>
                                 </li>
-                                <li class="nav-item">
-                                    <a href="pages/tables/jsgrid.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>jsGrid</p>
-                                    </a>
-                                </li>
+
                             </ul>
                         </li>
-                        
+
                     </ul>
                 </nav>
                 <!-- /.sidebar-menu -->
@@ -267,7 +215,7 @@
                         <div class="col-sm-6">
                             <h1 class="m-0 text-dark">Zona administrador</h1>
                         </div><!-- /.col -->
-                                                
+
                     </div><!-- /.row -->
                 </div><!-- /.container-fluid -->
             </div>
@@ -276,46 +224,47 @@
             <!-- Main content -->
             <section class="content">
                 <div class="container-fluid">
-                    
-        <div class="row">
-        
-        <div class="table-responsive cosa" id="ensenarUsuarios">
-            <h3>Usuarios</h3>
-                <table class="table">
-                    <tr>
-                        <th>ID</th>
-                        <th>Nombre</th>
-                        <th>1r Apellido</th>
-                        <th>1º Apellido</th>
-                        <th>Peso</th>
-                        <th>Sexo</th>
-                        <th>Objetivo</th>
-                        <th>Foto perfil</th>
-                        <th>Foto dieta</th>
 
-                    </tr>
+                    <!--<div class="row">
+                        <div class="table-responsive justify-content-center" id="bienvenida">
+                            <p class="display-3">Bienvenido a Brave Fitness</p>
+                        </div>-->
 
-                    @isset ( $usuarios )
-                    @foreach ($usuarios as $usuario)
-                    
-                    <tr>
-                        <td>{{ $usuario->id }}</td>
-                        <td>{{ $usuario->name }}</td>
-                        <td>{{ $usuario->apellido1 }}</td>
-                        <td>{{ $usuario->apellido2 }}</td>
-                        <td>{{ $usuario->peso }}</td>
-                        <td>{{ $usuario->sexo }}</td>
-                        <td>{{ $usuario->objetivo }}</td>
-                        <td>{{ $usuario->fotoPerfil }}</td>
-                        <td>{{ $usuario->fotoDieta }}</td>
-                    </tr>
+                        <div class="table-responsive cosa" id="ensenarUsuarios">
+                            <h3>Usuarios</h3>
+                            <table class="table">
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Nombre</th>
+                                    <th>Apellidos</th>
+                                    <th>Peso</th>
+                                    <th>Sexo</th>
+                                    <th>Objetivo</th>
+                                    <th>Foto perfil</th>
+                                    <th>Foto dieta</th>
 
-                    @endforeach
-                    @endisset
+                                </tr>
 
-                </table>
-            </div>
-        </div>
+                                @isset ( $usuarios )
+                                @foreach ($usuarios as $usuario)
+
+                                <tr>
+                                    <td>{{ $usuario->id }}</td>
+                                    <td>{{ $usuario->name }}</td>
+                                    <td>{{ $usuario->apellido1 }} {{ $usuario->apellido2 }}</td>
+                                    <td>{{ $usuario->peso }}</td>
+                                    <td>{{ $usuario->sexo }}</td>
+                                    <td>{{ $usuario->objetivo }}</td>
+                                    <td>{{ $usuario->fotoPerfil }}</td>
+                                    <td>{{ $usuario->fotoDieta }}</td>
+                                </tr>
+
+                                @endforeach
+                                @endisset
+
+                            </table>
+                        </div>
+                    </div>
 
 
 
@@ -340,7 +289,7 @@
 
 
                 </div><!-- /.container-fluid -->
-                
+
             </section>
             <!-- /.content -->
         </div>

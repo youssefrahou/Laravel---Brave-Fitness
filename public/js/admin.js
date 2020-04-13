@@ -2,6 +2,7 @@ $(document).ready(function () {
     ocultarTodo();
 
     $("#verUsuarios").click(function () {
+        ocultarTodo();
         $("#ensenarUsuarios").toggle();
     });
 
