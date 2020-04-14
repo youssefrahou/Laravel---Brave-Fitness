@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\User;
+use App\Comentario;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,8 +37,9 @@ Route::get('/usuarios', function(){
 Route::get('articulo/{id}', function($id){
 
     $articulo = App\Articulo::find($id);
+    $comentarios = App\Comentario::where('articulo_id', $id)->get();
 
-    return view('articulo', compact('articulo'));
+    return view('articulo', compact('articulo', 'comentarios'));
     
 });
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Comentario;
 
 class ComentarioController extends Controller
 {
@@ -34,7 +35,14 @@ class ComentarioController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $comentario = new Comentario;
+        $comentario -> asunto = $request -> asunto;
+        $comentario -> texto = $request -> texto;
+        $comentario -> fecha_hora = now();
+        $comentario -> leido = 0;
+        $comentario -> users_id = $request -> users_id;
+        $comentario -> articulo_id = $request -> articulo_id;
+        $comentario -> save();
     }
 
     /**
