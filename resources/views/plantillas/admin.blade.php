@@ -20,6 +20,8 @@
     </script>
     <!-- JQuery para botones -->
     <script src="{{ asset('js/admin.js') }}"></script>
+    <script src="{{ asset('js/articulo.js') }}"></script>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
 </head>
 
@@ -213,6 +215,36 @@
             <div class="content-header">
                 <div class="container-fluid">
                     <div class="row mb-2">
+
+                        <div class="row col-12">
+
+                            @if ($errors->any())
+                            <div class="col-12">
+                                <div class="alert alert-danger">
+
+                                    @if(count($errors) > 1)
+                                    <h4>Errores:</h4>
+                                    @else
+                                    <h4>Error:</h4>
+                                    @endif
+
+                                    <ul>
+                                        @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            </div>
+                            @endif
+
+                            @if (session('mensaje'))
+                            <div class="alert alert-success text-center col-12">
+                                {{ session('mensaje') }}
+                            </div>
+                            @endif
+
+                        </div>
+
                         <div class="col-sm-6">
                             <h1 class="m-0 text-dark">Zona administrador</h1>
                         </div><!-- /.col -->
@@ -270,25 +302,25 @@
                         <h3>Escribir artículo</h3>
                         <div class="row col-12">
 
-                            <form action="/articulo" method="POST" class="col-md-12 was-validated">
-                                @csrf
+                            <form id="formArticulo" action="/articulo" method="POST" class="col-md-12 was-validated" accept-charset="UTF-8" enctype="multipart/form-data">
+                                <input type="hidden" name="_token" id="token" value="{{ csrf_token() }}">
                                 <div class="form-group">
                                     <label for="uname">Título:</label>
-                                    <input type="text" class="form-control" id="tit" placeholder="Escribe el título" name="titulo" required>
+                                    <input type="text" class="form-control" id="tit" value="{{ old('titulo') }}" placeholder="Escribe el título" name="titulo" required>
                                     <div class="valid-feedback">Válido.</div>
                                     <div class="invalid-feedback">Por favor, escribe el título.</div>
                                 </div>
 
                                 <div class="form-group">
                                     <label for="uname">Subtítulo:</label>
-                                    <input type="text" class="form-control" id="subti" placeholder="Escribe el subtítulo" name="subtitulo" required>
+                                    <input type="text" class="form-control" id="subti" value="{{ old('subtitulo') }}" placeholder="Escribe el subtítulo" name="subtitulo" required>
                                     <div class="valid-feedback">Válido.</div>
                                     <div class="invalid-feedback">Por favor, escribe el subtítulo.</div>
                                 </div>
 
                                 <div class="form-group">
                                     <label for="uname">Introducción:</label>
-                                    <textarea class="form-control" id="intro" rows="4" name="introduccion" required></textarea>
+                                    <textarea class="form-control" id="intro" rows="4" name="introduccion" required>{{ old('introduccion') }}</textarea>
                                     <div class="valid-feedback">Válido.</div>
                                     <div class="invalid-feedback">Por favor, escribe la introducción.</div>
                                 </div>
@@ -302,31 +334,33 @@
 
                                 <div class="form-group">
                                     <label for="uname">Pie de la primera imagen:</label>
-                                    <input type="text" class="form-control" id="subti" placeholder="Escribe el pie de la primera imagen" name="pie_imagen1" required>
+                                    <input type="text" class="form-control" value="{{ old('pie_imagen1') }}" id="subti" placeholder="Escribe el pie de la primera imagen" name="pie_imagen1" required>
                                     <div class="valid-feedback">Válido.</div>
                                     <div class="invalid-feedback">Por favor, escribe el pie de la primera imagen.</div>
                                 </div>
 
+                                <div class="form-group">
+                                    <input type="hidden" name="users_id" value="{{ Auth::user()->id }}">
+                                </div>
 
+                                <div class="form-group">
+                                    <label for="exampleFormControlSelect1">Selecciona la categoría del artículo: </label>
+                                    <select class="form-control" name="categoria_id" id="exampleFormControlSelect1">
 
+                                        @foreach ($categorias as $categoria)
 
+                                        <option value="{{ $categoria->id }}">{{ $categoria->nombre_categoria }}</option>
 
+                                        @endforeach
+                                    </select>
+                                </div>
 
-
-                                <button type="submit" class="btn btn-primary">Publicar artículo</button>
+                                <button type="submit" id="subirArticulo" class="btn btn-primary">Publicar artículo</button>
                             </form>
                         </div>
 
-                        @if ($errors->any())
-                            <div>
-                                <ul>
-                                    @foreach ($errors->all() as $error)
-                                    <li>{{ $error }}</li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                            @endif
-                            
+
+
                     </div>
 
 

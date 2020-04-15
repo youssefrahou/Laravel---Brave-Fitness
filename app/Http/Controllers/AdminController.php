@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Categoria;
 use DB;
 
 class AdminController extends Controller
@@ -21,8 +22,9 @@ class AdminController extends Controller
         $totalConsejos = DB::table('consejo')->count();
         $totalComentarios = DB::table('comentario')->count();
         $totalMensajes = DB::table('mensaje')->count();
+        $categorias = Categoria::all();
 
-        return view('plantillas.admin', compact('usuarios', 'totalUsuarios', 'totalArticulos', 'totalConsejos', 'totalComentarios', 'totalMensajes'));
+        return view('plantillas.admin', compact('usuarios', 'totalUsuarios', 'totalArticulos', 'totalConsejos', 'totalComentarios', 'totalMensajes', 'categorias'));
 
     }
 }

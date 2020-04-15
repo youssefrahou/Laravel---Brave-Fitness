@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Articulo;
+use App\Http\Requests\ValidarArticuloRequest;
 
 class ArticuloController extends Controller
 {
@@ -33,7 +34,7 @@ class ArticuloController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ValidarArticuloRequest $request)
     {
 
         $articulo = $request->all();
@@ -41,19 +42,18 @@ class ArticuloController extends Controller
         //obtenemos el campo file definido en el formulario
         $archivo = $request->file('foto1');
 
-
-        $path = public_path().'/images/';
+        $path = public_path() . '/images/articulos';
 
         //obtenemos el nombre del archivo
         $nombre = $archivo->getClientOriginalName();
 
         $archivo->move($path, $nombre);
-        $articulo['foto1'] = $nombre;
 
+        $articulo['foto1'] = $nombre;
 
         Articulo::create($articulo);
 
-        return redirect('admin');
+        return redirect('admin')->with('mensaje', '¡El artículo se ha publicado correctamente!');
     }
 
     /**

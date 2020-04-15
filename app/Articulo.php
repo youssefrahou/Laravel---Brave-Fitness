@@ -6,7 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Articulo extends Model
 {
-    //
+    protected $fillable = ['titulo', 'subtitulo', 'introduccion', 'foto1', 'pie_imagen1', 'users_id', 'categoria_id'];
+
+
     protected $table = 'articulo';
 
     public function comentarios()
