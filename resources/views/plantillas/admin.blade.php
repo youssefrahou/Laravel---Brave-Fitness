@@ -20,6 +20,7 @@
     </script>
     <!-- JQuery para botones -->
     <script src="{{ asset('js/admin.js') }}"></script>
+
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -230,40 +231,102 @@
                             <p class="display-3">Bienvenido a Brave Fitness</p>
                         </div>-->
 
-                        <div class="table-responsive cosa" id="ensenarUsuarios">
-                            <h3>Usuarios</h3>
-                            <table class="table">
-                                <tr>
-                                    <th>ID</th>
-                                    <th>Nombre</th>
-                                    <th>Apellidos</th>
-                                    <th>Peso</th>
-                                    <th>Sexo</th>
-                                    <th>Objetivo</th>
-                                    <th>Foto perfil</th>
-                                    <th>Foto dieta</th>
+                    <div class="table-responsive cosa" id="ensenarUsuarios">
+                        <h3>Usuarios</h3>
+                        <table class="table">
+                            <tr>
+                                <th>ID</th>
+                                <th>Nombre</th>
+                                <th>Apellidos</th>
+                                <th>Peso</th>
+                                <th>Sexo</th>
+                                <th>Objetivo</th>
+                                <th>Foto perfil</th>
+                                <th>Foto dieta</th>
 
-                                </tr>
+                            </tr>
 
-                                @isset ( $usuarios )
-                                @foreach ($usuarios as $usuario)
+                            @isset ( $usuarios )
+                            @foreach ($usuarios as $usuario)
 
-                                <tr>
-                                    <td>{{ $usuario->id }}</td>
-                                    <td>{{ $usuario->name }}</td>
-                                    <td>{{ $usuario->apellido1 }} {{ $usuario->apellido2 }}</td>
-                                    <td>{{ $usuario->peso }}</td>
-                                    <td>{{ $usuario->sexo }}</td>
-                                    <td>{{ $usuario->objetivo }}</td>
-                                    <td>{{ $usuario->fotoPerfil }}</td>
-                                    <td>{{ $usuario->fotoDieta }}</td>
-                                </tr>
+                            <tr>
+                                <td>{{ $usuario->id }}</td>
+                                <td>{{ $usuario->name }}</td>
+                                <td>{{ $usuario->apellido1 }} {{ $usuario->apellido2 }}</td>
+                                <td>{{ $usuario->peso }}</td>
+                                <td>{{ $usuario->sexo }}</td>
+                                <td>{{ $usuario->objetivo }}</td>
+                                <td>{{ $usuario->fotoPerfil }}</td>
+                                <td>{{ $usuario->fotoDieta }}</td>
+                            </tr>
 
-                                @endforeach
-                                @endisset
+                            @endforeach
+                            @endisset
 
-                            </table>
+                        </table>
+                    </div>
+
+                    <div class="row col-12" id="crearticulo">
+                        <h3>Escribir artículo</h3>
+                        <div class="row col-12">
+
+                            <form action="/articulo" method="POST" class="col-md-12 was-validated">
+                                @csrf
+                                <div class="form-group">
+                                    <label for="uname">Título:</label>
+                                    <input type="text" class="form-control" id="tit" placeholder="Escribe el título" name="titulo" required>
+                                    <div class="valid-feedback">Válido.</div>
+                                    <div class="invalid-feedback">Por favor, escribe el título.</div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="uname">Subtítulo:</label>
+                                    <input type="text" class="form-control" id="subti" placeholder="Escribe el subtítulo" name="subtitulo" required>
+                                    <div class="valid-feedback">Válido.</div>
+                                    <div class="invalid-feedback">Por favor, escribe el subtítulo.</div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="uname">Introducción:</label>
+                                    <textarea class="form-control" id="intro" rows="4" name="introduccion" required></textarea>
+                                    <div class="valid-feedback">Válido.</div>
+                                    <div class="invalid-feedback">Por favor, escribe la introducción.</div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="exampleFormControlFile1">Primera imagen</label>
+                                    <input type="file" class="form-control-file" id="foto1" name="foto1" required>
+                                    <div class="valid-feedback">Válido.</div>
+                                    <div class="invalid-feedback">Por favor, selecciona una imagen.</div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="uname">Pie de la primera imagen:</label>
+                                    <input type="text" class="form-control" id="subti" placeholder="Escribe el pie de la primera imagen" name="pie_imagen1" required>
+                                    <div class="valid-feedback">Válido.</div>
+                                    <div class="invalid-feedback">Por favor, escribe el pie de la primera imagen.</div>
+                                </div>
+
+
+
+
+
+
+
+                                <button type="submit" class="btn btn-primary">Publicar artículo</button>
+                            </form>
                         </div>
+
+                        @if ($errors->any())
+                            <div>
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                            @endif
+                            
                     </div>
 
 
@@ -288,25 +351,31 @@
 
 
 
-                </div><!-- /.container-fluid -->
 
-            </section>
-            <!-- /.content -->
+
+
+
+
+                </div>
+        </div><!-- /.container-fluid -->
+
+        </section>
+        <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+    <footer class="main-footer">
+        <strong>Copyright &copy; 2021 <a href="http://youssefrahou.com">Youssef Rahou</a>.</strong>
+        Todos los derechos reservados.
+        <div class="float-right d-none d-sm-inline-block">
+            <b>Version</b> 1.0
         </div>
-        <!-- /.content-wrapper -->
-        <footer class="main-footer">
-            <strong>Copyright &copy; 2021 <a href="http://youssefrahou.com">Youssef Rahou</a>.</strong>
-            Todos los derechos reservados.
-            <div class="float-right d-none d-sm-inline-block">
-                <b>Version</b> 1.0
-            </div>
-        </footer>
+    </footer>
 
-        <!-- Control Sidebar -->
-        <aside class="control-sidebar control-sidebar-dark">
-            <!-- Control sidebar content goes here -->
-        </aside>
-        <!-- /.control-sidebar -->
+    <!-- Control Sidebar -->
+    <aside class="control-sidebar control-sidebar-dark">
+        <!-- Control sidebar content goes here -->
+    </aside>
+    <!-- /.control-sidebar -->
     </div>
     <!-- ./wrapper -->
 

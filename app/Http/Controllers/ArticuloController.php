@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Articulo;
 
 class ArticuloController extends Controller
 {
@@ -34,7 +35,25 @@ class ArticuloController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $articulo = $request->all();
+
+        //obtenemos el campo file definido en el formulario
+        $archivo = $request->file('foto1');
+
+
+        $path = public_path().'/images/';
+
+        //obtenemos el nombre del archivo
+        $nombre = $archivo->getClientOriginalName();
+
+        $archivo->move($path, $nombre);
+        $articulo['foto1'] = $nombre;
+
+
+        Articulo::create($articulo);
+
+        return redirect('admin');
     }
 
     /**
