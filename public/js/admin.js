@@ -8,10 +8,19 @@ $(document).ready(function () {
 
 
 
+    $("#anadirCategoria").click(function () {
+        alert("pulsado");
+        $("#modalCategoria").modal("show");
+
+    });
+
+
+
+
 });
 
 
 
-function ocultarTodo(){
+function ocultarTodo() {
     $("#ensenarUsuarios").hide();
 }

@@ -304,6 +304,21 @@
 
                             <form id="formArticulo" action="/articulo" method="POST" class="col-md-12 was-validated" accept-charset="UTF-8" enctype="multipart/form-data">
                                 <input type="hidden" name="_token" id="token" value="{{ csrf_token() }}">
+
+                                <div class="form-group">
+                                    <label for="exampleFormControlSelect1">Selecciona la categoría del artículo: </label>
+                                    <select class="form-control" name="categoria_id" id="exampleFormControlSelect1">
+
+                                        @foreach ($categorias as $categoria)
+
+                                        <option value="{{ $categoria->id }}">{{ $categoria->nombre_categoria }}</option>
+
+                                        @endforeach
+                                        <option id="anadirCategoria">Añadir categoría</option>
+                                    </select>
+                                </div>
+
+
                                 <div class="form-group">
                                     <label for="uname">Título:</label>
                                     <input type="text" class="form-control" id="tit" value="{{ old('titulo') }}" placeholder="Escribe el título" name="titulo" required>
@@ -343,20 +358,32 @@
                                     <input type="hidden" name="users_id" value="{{ Auth::user()->id }}">
                                 </div>
 
-                                <div class="form-group">
-                                    <label for="exampleFormControlSelect1">Selecciona la categoría del artículo: </label>
-                                    <select class="form-control" name="categoria_id" id="exampleFormControlSelect1">
 
-                                        @foreach ($categorias as $categoria)
-
-                                        <option value="{{ $categoria->id }}">{{ $categoria->nombre_categoria }}</option>
-
-                                        @endforeach
-                                    </select>
-                                </div>
 
                                 <button type="submit" id="subirArticulo" class="btn btn-primary">Publicar artículo</button>
                             </form>
+                        </div>
+
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="modalCategoria" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        ...
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        <button type="button" class="btn btn-primary">Save changes</button>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
 
 

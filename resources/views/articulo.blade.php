@@ -20,9 +20,8 @@
         </div>-->
 
         <div class="row col-md-11">
-            <div class="row h2 m-3 text-info">
+            <div class="row col-12 h2 m-3 text-info">
                 <p class="text-center">{{ $articulo->titulo }}</p>
-
             </div>
 
             <div class="row m-3">
@@ -30,7 +29,8 @@
 
             </div>
             <div class="row col-12 m-3">
-                <img src="{{ $articulo->foto1 }}" width="100%" height="100%">
+                <!--{{ asset('js/articulo.js') }}-->
+                <img src="/images/articulos/{{ $articulo->foto1 }}" width="100%" height="100%">
 
             </div>
 
