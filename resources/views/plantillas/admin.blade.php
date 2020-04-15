@@ -302,7 +302,7 @@
                         <h3>Escribir artículo</h3>
                         <div class="row col-12">
 
-                            <form id="formArticulo" action="/articulo" method="POST" class="col-md-12 was-validated" accept-charset="UTF-8" enctype="multipart/form-data">
+                            <form id="formArticulo" action="articulo" method="POST" class="col-md-12 was-validated" accept-charset="UTF-8" enctype="multipart/form-data">
                                 <input type="hidden" name="_token" id="token" value="{{ csrf_token() }}">
 
                                 <div class="form-group">
