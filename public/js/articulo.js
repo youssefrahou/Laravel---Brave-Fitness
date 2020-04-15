@@ -6,4 +6,12 @@ $(document).ready(function () {
         $("#noComentario").hide();
     });
 
+//activar model de añadir categoria
+    $('#selectCate').change(function () {
+        if ($(this).val() === 'anadir') {
+            $("#modalCategoria").modal("show");
+        }
+    });
+
+
 });

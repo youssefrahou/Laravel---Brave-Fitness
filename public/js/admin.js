@@ -8,11 +8,7 @@ $(document).ready(function () {
 
 
 
-    $("#anadirCategoria").click(function () {
-        alert("pulsado");
-        $("#modalCategoria").modal("show");
-
-    });
+    
 
 
 

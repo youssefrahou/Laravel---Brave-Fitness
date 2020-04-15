@@ -307,14 +307,15 @@
 
                                 <div class="form-group">
                                     <label for="exampleFormControlSelect1">Selecciona la categoría del artículo: </label>
-                                    <select class="form-control" name="categoria_id" id="exampleFormControlSelect1">
+                                    <select class="form-control" name="categoria_id" id="selectCate">
 
+                                    <option></option>
                                         @foreach ($categorias as $categoria)
 
                                         <option value="{{ $categoria->id }}">{{ $categoria->nombre_categoria }}</option>
 
                                         @endforeach
-                                        <option id="anadirCategoria">Añadir categoría</option>
+                                        <option value="anadir">Añadir categoría</optionategoria">
                                     </select>
                                 </div>
 
@@ -365,23 +366,34 @@
                         </div>
 
 
-                        <!-- Modal -->
+                        <!-- Modal para añadir categoria -->
                         <div class="modal fade" id="modalCategoria" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                        <h5 class="modal-title" id="exampleModalLabel">Añadir nueva categoría</h5>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
                                     </div>
                                     <div class="modal-body">
-                                        ...
+
+                                        <form id="formCateegoria" action="categoria" method="POST" class="col-md-12 was-validated" accept-charset="UTF-8" enctype="multipart/form-data">
+@csrf
+                                            <div class="form-group">
+                                                <label for="uname">Nombre de la categoría:</label>
+                                                <input type="text" class="form-control" id="tit" value="{{ old('nombre_categoria') }}" placeholder="Escribe el nombre de la categoría" name="nombre_categoria" required>
+                                                <div class="valid-feedback">Válido.</div>
+                                                <div class="invalid-feedback">Por favor, escribe el nombre de la categoría.</div>
+                                            </div>
+
+
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                        <button type="button" class="btn btn-primary">Save changes</button>
+                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                                        <button type="submit" class="btn btn-success">Guardar categoría</button>
                                     </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>

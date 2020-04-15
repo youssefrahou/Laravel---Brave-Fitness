@@ -39,6 +39,8 @@ class CategoriaController extends Controller
         $categoria -> nombre_categoria = $request -> nombre_categoria;
         $categoria -> save();
 
+        return redirect('admin')->with('mensaje', '¡La categoría se ha añadido correctamente! ¡Ya la puedes usar!');
+
     }
 
     /**
