@@ -5,6 +5,12 @@ $(document).ready(function () {
         $("#comentar").hide();
         $("#noComentario").hide();
     });
+    
+
+
+
+
+
 
 //activar model de añadir categoria
     $('#selectCate').change(function () {
@@ -12,6 +18,14 @@ $(document).ready(function () {
             $("#modalCategoria").modal("show");
         }
     });
+
+    $('#iniciarSesion').click(function () {
+        
+        $("#modalIniciarSesion").modal("show");
+
+    });
+
+    
 
 
 });

@@ -118,10 +118,10 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="pages/charts/flot.html" class="nav-link">
+                                    <span id="escribirArticulo" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Escribir artículo</p>
-                                    </a>
+                                    </span>
                                 </li>
 
                             </ul>
@@ -258,197 +258,197 @@
             <section class="content">
                 <div class="container-fluid">
 
-                    <!--<div class="row">
+                    <div class="row" id="bienvenida">
                         <div class="table-responsive justify-content-center" id="bienvenida">
-                            <p class="display-3">Bienvenido a Brave Fitness</p>
-                        </div>-->
-
-                    <div class="table-responsive cosa" id="ensenarUsuarios">
-                        <h3>Usuarios</h3>
-                        <table class="table">
-                            <tr>
-                                <th>ID</th>
-                                <th>Nombre</th>
-                                <th>Apellidos</th>
-                                <th>Peso</th>
-                                <th>Sexo</th>
-                                <th>Objetivo</th>
-                                <th>Foto perfil</th>
-                                <th>Foto dieta</th>
-
-                            </tr>
-
-                            @isset ( $usuarios )
-                            @foreach ($usuarios as $usuario)
-
-                            <tr>
-                                <td>{{ $usuario->id }}</td>
-                                <td>{{ $usuario->name }}</td>
-                                <td>{{ $usuario->apellido1 }} {{ $usuario->apellido2 }}</td>
-                                <td>{{ $usuario->peso }}</td>
-                                <td>{{ $usuario->sexo }}</td>
-                                <td>{{ $usuario->objetivo }}</td>
-                                <td>{{ $usuario->fotoPerfil }}</td>
-                                <td>{{ $usuario->fotoDieta }}</td>
-                            </tr>
-
-                            @endforeach
-                            @endisset
-
-                        </table>
-                    </div>
-
-                    <div class="row col-12" id="crearticulo">
-                        <h3>Escribir artículo</h3>
-                        <div class="row col-12">
-
-                            <form id="formArticulo" action="articulo" method="POST" class="col-md-12 was-validated" accept-charset="UTF-8" enctype="multipart/form-data">
-                                <input type="hidden" name="_token" id="token" value="{{ csrf_token() }}">
-
-                                <div class="form-group">
-                                    <label for="exampleFormControlSelect1">Selecciona la categoría del artículo: </label>
-                                    <select class="form-control" name="categoria_id" id="selectCate">
-
-                                    <option></option>
-                                        @foreach ($categorias as $categoria)
-
-                                        <option value="{{ $categoria->id }}">{{ $categoria->nombre_categoria }}</option>
-
-                                        @endforeach
-                                        <option value="anadir">Añadir categoría</optionategoria">
-                                    </select>
-                                </div>
-
-
-                                <div class="form-group">
-                                    <label for="uname">Título:</label>
-                                    <input type="text" class="form-control" id="tit" value="{{ old('titulo') }}" placeholder="Escribe el título" name="titulo" required>
-                                    <div class="valid-feedback">Válido.</div>
-                                    <div class="invalid-feedback">Por favor, escribe el título.</div>
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="uname">Subtítulo:</label>
-                                    <input type="text" class="form-control" id="subti" value="{{ old('subtitulo') }}" placeholder="Escribe el subtítulo" name="subtitulo" required>
-                                    <div class="valid-feedback">Válido.</div>
-                                    <div class="invalid-feedback">Por favor, escribe el subtítulo.</div>
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="uname">Introducción:</label>
-                                    <textarea class="form-control" id="intro" rows="4" name="introduccion" required>{{ old('introduccion') }}</textarea>
-                                    <div class="valid-feedback">Válido.</div>
-                                    <div class="invalid-feedback">Por favor, escribe la introducción.</div>
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="exampleFormControlFile1">Primera imagen</label>
-                                    <input type="file" class="form-control-file" id="foto1" name="foto1" required>
-                                    <div class="valid-feedback">Válido.</div>
-                                    <div class="invalid-feedback">Por favor, selecciona una imagen.</div>
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="uname">Pie de la primera imagen:</label>
-                                    <input type="text" class="form-control" value="{{ old('pie_imagen1') }}" id="subti" placeholder="Escribe el pie de la primera imagen" name="pie_imagen1" required>
-                                    <div class="valid-feedback">Válido.</div>
-                                    <div class="invalid-feedback">Por favor, escribe el pie de la primera imagen.</div>
-                                </div>
-
-                                <div class="form-group">
-                                    <input type="hidden" name="users_id" value="{{ Auth::user()->id }}">
-                                </div>
-
-
-
-                                <button type="submit" id="subirArticulo" class="btn btn-primary">Publicar artículo</button>
-                            </form>
+                            <p class="h3">Bienvenido a Brave Fitness. Elige una opción en el menú lateral. </p>
                         </div>
 
+                        <div class="table-responsive" id="ensenarUsuarios">
+                            <h3>Usuarios</h3>
+                            <table class="table">
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Nombre</th>
+                                    <th>Apellidos</th>
+                                    <th>Peso</th>
+                                    <th>Sexo</th>
+                                    <th>Objetivo</th>
+                                    <th>Foto perfil</th>
+                                    <th>Foto dieta</th>
 
-                        <!-- Modal para añadir categoria -->
-                        <div class="modal fade" id="modalCategoria" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">Añadir nueva categoría</h5>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
+                                </tr>
+
+                                @isset ( $usuarios )
+                                @foreach ($usuarios as $usuario)
+
+                                <tr>
+                                    <td>{{ $usuario->id }}</td>
+                                    <td>{{ $usuario->name }}</td>
+                                    <td>{{ $usuario->apellido1 }} {{ $usuario->apellido2 }}</td>
+                                    <td>{{ $usuario->peso }}</td>
+                                    <td>{{ $usuario->sexo }}</td>
+                                    <td>{{ $usuario->objetivo }}</td>
+                                    <td>{{ $usuario->fotoPerfil }}</td>
+                                    <td>{{ $usuario->fotoDieta }}</td>
+                                </tr>
+
+                                @endforeach
+                                @endisset
+
+                            </table>
+                        </div>
+
+                        <div class="row col-12" id="crearticulo">
+                            <h3>Escribir artículo</h3>
+                            <div class="row col-12">
+
+                                <form id="formArticulo" action="articulo" method="POST" class="col-md-12 was-validated" accept-charset="UTF-8" enctype="multipart/form-data">
+                                    <input type="hidden" name="_token" id="token" value="{{ csrf_token() }}">
+
+                                    <div class="form-group">
+                                        <label for="exampleFormControlSelect1">Selecciona la categoría del artículo: </label>
+                                        <select class="form-control" name="categoria_id" id="selectCate">
+
+                                            <option></option>
+                                            @foreach ($categorias as $categoria)
+
+                                            <option value="{{ $categoria->id }}">{{ $categoria->nombre_categoria }}</option>
+
+                                            @endforeach
+                                            <option value="anadir">Añadir categoría</optionategoria">
+                                        </select>
                                     </div>
-                                    <div class="modal-body">
-
-                                        <form id="formCateegoria" action="categoria" method="POST" class="col-md-12 was-validated" accept-charset="UTF-8" enctype="multipart/form-data">
-@csrf
-                                            <div class="form-group">
-                                                <label for="uname">Nombre de la categoría:</label>
-                                                <input type="text" class="form-control" id="tit" value="{{ old('nombre_categoria') }}" placeholder="Escribe el nombre de la categoría" name="nombre_categoria" required>
-                                                <div class="valid-feedback">Válido.</div>
-                                                <div class="invalid-feedback">Por favor, escribe el nombre de la categoría.</div>
-                                            </div>
 
 
+                                    <div class="form-group">
+                                        <label for="uname">Título:</label>
+                                        <input type="text" class="form-control" id="tit" value="{{ old('titulo') }}" placeholder="Escribe el título" name="titulo" required>
+                                        <div class="valid-feedback">Válido.</div>
+                                        <div class="invalid-feedback">Por favor, escribe el título.</div>
                                     </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-                                        <button type="submit" class="btn btn-success">Guardar categoría</button>
+
+                                    <div class="form-group">
+                                        <label for="uname">Subtítulo:</label>
+                                        <input type="text" class="form-control" id="subti" value="{{ old('subtitulo') }}" placeholder="Escribe el subtítulo" name="subtitulo" required>
+                                        <div class="valid-feedback">Válido.</div>
+                                        <div class="invalid-feedback">Por favor, escribe el subtítulo.</div>
                                     </div>
-                                    </form>
+
+                                    <div class="form-group">
+                                        <label for="uname">Introducción:</label>
+                                        <textarea class="form-control" id="intro" rows="4" name="introduccion" required>{{ old('introduccion') }}</textarea>
+                                        <div class="valid-feedback">Válido.</div>
+                                        <div class="invalid-feedback">Por favor, escribe la introducción.</div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="exampleFormControlFile1">Primera imagen</label>
+                                        <input type="file" class="form-control-file" id="foto1" name="foto1" required>
+                                        <div class="valid-feedback">Válido.</div>
+                                        <div class="invalid-feedback">Por favor, selecciona una imagen.</div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="uname">Pie de la primera imagen:</label>
+                                        <input type="text" class="form-control" value="{{ old('pie_imagen1') }}" id="subti" placeholder="Escribe el pie de la primera imagen" name="pie_imagen1" required>
+                                        <div class="valid-feedback">Válido.</div>
+                                        <div class="invalid-feedback">Por favor, escribe el pie de la primera imagen.</div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <input type="hidden" name="users_id" value="{{ Auth::user()->id }}">
+                                    </div>
+
+
+
+                                    <button type="submit" id="subirArticulo" class="btn btn-primary">Publicar artículo</button>
+                                </form>
+                            </div>
+
+
+                            <!-- Modal para añadir categoria -->
+                            <div class="modal fade" id="modalCategoria" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Añadir nueva categoría</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+
+                                            <form id="formCateegoria" action="categoria" method="POST" class="col-md-12 was-validated" accept-charset="UTF-8" enctype="multipart/form-data">
+                                                @csrf
+                                                <div class="form-group">
+                                                    <label for="uname">Nombre de la categoría:</label>
+                                                    <input type="text" class="form-control" id="tit" value="{{ old('nombre_categoria') }}" placeholder="Escribe el nombre de la categoría" name="nombre_categoria" required>
+                                                    <div class="valid-feedback">Válido.</div>
+                                                    <div class="invalid-feedback">Por favor, escribe el nombre de la categoría.</div>
+                                                </div>
+
+
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                                            <button type="submit" class="btn btn-success">Guardar categoría</button>
+                                        </div>
+                                        </form>
+                                    </div>
                                 </div>
                             </div>
+
+
+
                         </div>
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                     </div>
+                </div><!-- /.container-fluid -->
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                </div>
-        </div><!-- /.container-fluid -->
-
-        </section>
-        <!-- /.content -->
-    </div>
-    <!-- /.content-wrapper -->
-    <footer class="main-footer">
-        <strong>Copyright &copy; 2021 <a href="http://youssefrahou.com">Youssef Rahou</a>.</strong>
-        Todos los derechos reservados.
-        <div class="float-right d-none d-sm-inline-block">
-            <b>Version</b> 1.0
+            </section>
+            <!-- /.content -->
         </div>
-    </footer>
+        <!-- /.content-wrapper -->
+        <footer class="main-footer">
+            <strong>Copyright &copy; 2021 <a href="http://youssefrahou.com">Youssef Rahou</a>.</strong>
+            Todos los derechos reservados.
+            <div class="float-right d-none d-sm-inline-block">
+                <b>Version</b> 1.0
+            </div>
+        </footer>
 
-    <!-- Control Sidebar -->
-    <aside class="control-sidebar control-sidebar-dark">
-        <!-- Control sidebar content goes here -->
-    </aside>
-    <!-- /.control-sidebar -->
+        <!-- Control Sidebar -->
+        <aside class="control-sidebar control-sidebar-dark">
+            <!-- Control sidebar content goes here -->
+        </aside>
+        <!-- /.control-sidebar -->
     </div>
     <!-- ./wrapper -->
 

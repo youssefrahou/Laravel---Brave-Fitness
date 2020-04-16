@@ -19,6 +19,7 @@
             Lateral derecho
         </div>-->
 
+
         <div class="row col-md-11">
             <div class="row col-12 h2 m-3 text-info">
                 <p class="text-center">{{ $articulo->titulo }}</p>
@@ -61,7 +62,10 @@
                 <h4> {{ $nombreUsuario[0] -> name }} <small><i style="font-size: 12px">{{ $comentario -> fecha_hora }}</i></small></h4>
                 <h5> {{ $comentario -> asunto }} </h5>
                 <p>{{ $comentario -> texto}} </p>
+                @guest
+                @else
                 <span>Responder</span><br />
+                @endguest
 
                 @php
                 $respuestas = \App\Respuesta_comentario::where('comentario_id', $comentario -> id)->get();
@@ -90,8 +94,102 @@
 
         @if(count($comentarios) < 1) <h5 id="noComentario">No hay comentarios</h5>
             @endif
-            <span id="comentar">Comentar</span>
+
+            <!-- Modal para añadir categoria -->
+            <div class="modal fade" id="modalIniciarSesion" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Añadir nueva categoría</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+
+                            <form method="POST" action="{{ route('login') }}">
+                                @csrf
+
+                                <div class="form-group row">
+                                    <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('Email') }}</label>
+
+                                    <div class="col-md-6">
+                                        <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+
+                                        @error('email')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Contraseña') }}</label>
+
+                                    <div class="col-md-6">
+                                        <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+
+                                        @error('password')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <div class="col-md-6 offset-md-4">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+
+                                            <label class="form-check-label" for="remember">
+                                                {{ __('Recuérdame') }}
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                
+                            
+
+
+                        </div>
+                        <div class="modal-footer">
+                        <div class="form-group row mb-0">
+                                    <div class="col-md-8 offset-md-4">
+                                        <button type="submit" class="btn btn-primary">
+                                            {{ __('Inicir sesión') }}
+                                        </button>
+
+                                        @if (Route::has('password.request'))
+                                        <a class="btn btn-link" href="{{ route('password.request') }}">
+                                            {{ __('¿Te has olvidado de la contraseña?') }}
+                                        </a>
+                                        @endif
+                                    </div>
+                                </div>
+                        </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+
+
+
+
             <div class="row">
+                @guest
+
+                <p>Inicia sesión para poder comentar</p>
+                <button type="button" id="iniciarSesion">Iniciar sesión</button>
+
+                @else
+                <span id="comentar">Comentar</span>
+
+
+
                 <form method="POST" action="/comentario" id="formComentario" style="display: none">
                     @csrf
                     <!-- {{ csrf_field() }} -->
@@ -99,10 +197,13 @@
                     <input type="text" name="asunto" placeholder="Asunto del comentario">
                     <label>Comentario</label><br />
                     <input type="text" name="texto" placeholder="Tu comentario">
+
                     <input type="hidden" name="users_id" value="{{ auth()->user()->id }}">
+
                     <input type="hidden" name="articulo_id" value="{{ $articulo->id }}">
                     <input type="submit" value="Publicar comentario">
                 </form>
+                @endguest
 
             </div>
 
