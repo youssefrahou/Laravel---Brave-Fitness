@@ -42,15 +42,20 @@
             <!--/nav-->
             <nav class="navbar navbar-expand-md navbar-dark bg-info ">
                 <!-- fixed-top para FIJARLOOOOO-->
-                <a class="navbar-brand col-3 col-md-1" href="#"><img src="{{asset('img/logo.png')}}" class="img-fluid" /></a>
+                <a class="navbar-brand col-3 col-md-1" href="{{ url('/') }}"><img src="{{asset('img/logo.png')}}" class="img-fluid" /></a>
                 <button class="navbar-toggler bg-info" type="button" data-toggle="collapse" data-target="#menu">
                     <span class="navbar-toggler-icon text-white"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="menu">
                     <ul class="navbar-nav">
                         <li class="nav-item active">
-                            <a href="#" class="nav-link">Inicio</a>
+                            <a href="{{ url('/') }}" class="nav-link">Inicio</a>
                         </li>
+
+                        <li class="nav-item">
+                            <a href="{{ url('/articulos') }}" class="nav-link">Articulos</a>
+                        </li>
+                        <!--
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle text-white" data-toggle="dropdown">Artículos</a>
                             <div class="dropdown-menu bg-info">
@@ -59,11 +64,13 @@
                                 <a class="dropdown-item text-white" href="adelgazar.html">Suplementación</a>
                             </div>
                         </li>
+-->
+
                         <li class="nav-item">
-                            <a href="#" class="nav-link">Planes</a>
+                            <a href="{{ url('/planes') }}" class="nav-link">Planes</a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">Sobre nosotros</a>
+                            <a href="{{ url('/sobreNosotros') }}" class="nav-link">Sobre nosotros</a>
                         </li>
                     </ul>
 
@@ -71,10 +78,10 @@
                     <ul class="nav ml-auto">
 
                         <li class="nav-item">
-                            <a class="nav-link active" href="#"><i class="fa fa-instagram text-white"></i></a>
+                            <a class="nav-link active" href="https://www.instagram.com/youssefrahou0/"><i class="fa fa-instagram text-white"></i></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#"><i class="fa fa-facebook text-white"></i></a>
+                            <a class="nav-link" href="https://www.facebook.com/youssefra333"><i class="fa fa-facebook text-white"></i></a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#"><i class="fa fa-twitter text-white"></i></a>
@@ -114,15 +121,15 @@
                         <h6>Menú</h6>
                         <div class="footer-hny-ul">
                             <ul>
-                                <li><a href="index.html">Inicio</a></li>
-                                <li><a href="about.html">Artículos</a></li>
-                                <li><a href="services.html">Planes</a></li>
-                                <li><a href="contact.html">Sobre nosotros</a></li>
+                                <li><a href="{{ url('/') }}">Inicio</a></li>
+                                <li><a href="{{ url('/articulos') }}">Artículos</a></li>
+                                <li><a href="{{ url('/planes') }}">Planes</a></li>
+                                <li><a href="{{ url('/sobreNosotros') }}">Sobre nosotros</a></li>
                             </ul>
                             <ul>
-                                <li><a href="#">Política de privacidad</a></li>
-                                <li><a href="#">Términos y condiciones</a></li>
-                                <li><a href="contact.html">Ayuda</a></li>
+                                <li><a href="{{ url('/politicaPrivacidad') }}">Política de privacidad</a></li>
+                                <li><a href="{{ url('/terminosCondiciones') }}">Términos y condiciones</a></li>
+                                <li><a href="{{ url('/ayuda') }}">Ayuda</a></li>
                             </ul>
                         </div>
                     </div>

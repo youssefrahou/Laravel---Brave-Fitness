@@ -34,12 +34,12 @@ class PaginasController extends Controller
 
     public function planes() 
     {
-        return  ('aqui la vista de planes');
+        return  view('planes');
     }
 
     public function sobreNosotros() 
     {
-        return  ('aqui la vista de SOBRE NOSOTROS');
+        return  view('sobreNosotros');
     }
 
     

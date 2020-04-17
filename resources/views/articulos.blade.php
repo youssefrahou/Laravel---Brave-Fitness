@@ -60,10 +60,10 @@ Artículos - Blave Fitness
 
                 <div class="col-lg-4 p-2">
                     <div class="card-content">
-                        <div class="card-img">
+                        <div class="card-img" style="height: 240px">
                             @if($articulo->foto1)
 
-                            <img src="/images/articulos/{{ $articulo->foto1 }}" alt="Imagen">
+                            <img src="{{ url('/') }}/images/articulos/{{ $articulo->foto1 }}" alt="Imagen" width="100%">
 
                             @else
 
