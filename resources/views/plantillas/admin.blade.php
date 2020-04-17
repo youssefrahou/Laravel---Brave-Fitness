@@ -36,7 +36,7 @@
                     <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
-                    <a href="index.html" class="nav-link">Inicio</a>
+                    <a href="{{ url('/') }}" class="nav-link">Inicio</a>
                 </li>
             </ul>
 
@@ -53,7 +53,7 @@
         <!-- Main Sidebar Container -->
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
-            <a href="index3.html" class="brand-link">
+            <a href="{{ url('/admin') }}" class="brand-link">
                 <img src="dist/img/logo.png" alt="Logo Brave Fitness" class="brand-image img-circle elevation-3">
                 <span class="brand-text font-weight-light">BRAVE FITNESS</span>
             </a>
@@ -66,7 +66,7 @@
                         <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
                     </div>
                     <div class="info">
-                        <a href="#" class="d-block">{{ Auth::user()->name }}</a>
+                        <a href="{{ url('/admin') }}" class="d-block">{{ Auth::user()->name }}</a>
                     </div>
                 </div>
 
@@ -93,10 +93,10 @@
                                     </span>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="pages/layout/top-nav-sidebar.html" class="nav-link">
+                                    <span class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Editar usuario</p>
-                                    </a>
+                                    </span>
                                 </li>
 
                             </ul>
@@ -112,10 +112,10 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="pages/charts/chartjs.html" class="nav-link">
+                                    <span class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Ver artículos</p>
-                                    </a>
+                                    </span>
                                 </li>
                                 <li class="nav-item">
                                     <span id="escribirArticulo" class="nav-link">
@@ -137,16 +137,16 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="pages/UI/general.html" class="nav-link">
+                                    <span class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Ver consejos</p>
-                                    </a>
+                                    </span>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="pages/UI/icons.html" class="nav-link">
+                                    <span class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Escribir consejo</p>
-                                    </a>
+                                    </span>
                                 </li>
 
                             </ul>
@@ -162,16 +162,16 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="pages/forms/general.html" class="nav-link">
+                                    <span class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Ver todos los comentarios</p>
-                                    </a>
+                                    </span>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="pages/forms/advanced.html" class="nav-link">
+                                    <span class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Ver comentarios sin leer</p>
-                                    </a>
+                                    </span>
                                 </li>
 
                             </ul>
@@ -187,16 +187,16 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="pages/tables/simple.html" class="nav-link">
+                                    <span class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Ver todos los mensajes</p>
-                                    </a>
+                                    </span>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="pages/tables/data.html" class="nav-link">
+                                    <span class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Ver mensajes sin leer</p>
-                                    </a>
+                                    </span>
                                 </li>
 
                             </ul>
@@ -305,19 +305,39 @@
                                 <form id="formArticulo" action="articulo" method="POST" class="col-md-12 was-validated" accept-charset="UTF-8" enctype="multipart/form-data">
                                     <input type="hidden" name="_token" id="token" value="{{ csrf_token() }}">
 
+
+
+
+
+
+
                                     <div class="form-group">
                                         <label for="exampleFormControlSelect1">Selecciona la categoría del artículo: </label>
-                                        <select class="form-control" name="categoria_id" id="selectCate">
+                                        <select class="form-control" name="categoria_id" id="selectCate" required>
 
-                                            <option></option>
+                                            <option value="">Selecciona categoría</option>
                                             @foreach ($categorias as $categoria)
 
                                             <option value="{{ $categoria->id }}">{{ $categoria->nombre_categoria }}</option>
 
                                             @endforeach
-                                            <option value="anadir">Añadir categoría</optionategoria">
+                                            <option value="anadir">Añadir categoría</option>
+
                                         </select>
+                                        <div class="invalid-feedback">Selecciona una categoría. Si no aparece, añádela con la última opción.</div>
                                     </div>
+
+
+
+
+
+
+
+
+
+
+
+
 
 
                                     <div class="form-group">

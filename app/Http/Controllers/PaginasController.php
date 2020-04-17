@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Articulo;
 
 class PaginasController extends Controller
 {
@@ -18,11 +19,13 @@ class PaginasController extends Controller
         return view ('login');
     }
 
+    public function articulos(){
 
-    public function articulos() 
-    {
-        return ('Esta es la pagina de todos los articulos');
+        $articulos = Articulo::all();
+
+        return view('articulos', compact('articulos'));
     }
+
 
     public function articulosCategoria($categoria) 
     {

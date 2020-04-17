@@ -24,6 +24,11 @@
     <!-- Caroussel CSS -->
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
 
+    <!--JS-->
+    <script src="{{asset('js/js.js')}}"></script>
+
+    @yield('head')
+
     
 
 </head>

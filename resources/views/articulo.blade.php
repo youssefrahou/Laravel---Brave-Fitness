@@ -14,6 +14,16 @@
 
 @isset ( $articulo->titulo )
 <div class="container-fluid bg-light p-3">
+
+    <div class="row col-md-3">
+        <p>
+            <a href="{{ url('/') }}"> Inicio </a> <span>> </span>
+            <a href="{{ url('/articulos') }}">Articulos </a> <span>> </span> <span>{{ $articulo->titulo }} </span>
+        </p>
+
+
+    </div>
+
     <div class="row justify-content-center">
         <!--<div class="row col-md-2">
             Lateral derecho
@@ -150,25 +160,25 @@
                                     </div>
                                 </div>
 
-                                
-                            
+
+
 
 
                         </div>
                         <div class="modal-footer">
-                        <div class="form-group row mb-0">
-                                    <div class="col-md-8 offset-md-4">
-                                        <button type="submit" class="btn btn-primary">
-                                            {{ __('Inicir sesión') }}
-                                        </button>
+                            <div class="form-group row mb-0">
+                                <div class="col-md-8 offset-md-4">
+                                    <button type="submit" class="btn btn-primary">
+                                        {{ __('Inicir sesión') }}
+                                    </button>
 
-                                        @if (Route::has('password.request'))
-                                        <a class="btn btn-link" href="{{ route('password.request') }}">
-                                            {{ __('¿Te has olvidado de la contraseña?') }}
-                                        </a>
-                                        @endif
-                                    </div>
+                                    @if (Route::has('password.request'))
+                                    <a class="btn btn-link" href="{{ route('password.request') }}">
+                                        {{ __('¿Te has olvidado de la contraseña?') }}
+                                    </a>
+                                    @endif
                                 </div>
+                            </div>
                         </div>
                         </form>
 

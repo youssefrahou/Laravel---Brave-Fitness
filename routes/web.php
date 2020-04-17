@@ -22,6 +22,7 @@ Route::get('planes', 'PaginasController@planes');
 Route::get('sobreNosotros', 'PaginasController@sobreNosotros');
 Route::get('admin', 'AdminController@inicio');
 Route::get('/login2', 'PaginasController@login');
+Route::get('/articulos', 'PaginasController@articulos');
 Route::get('/usuarios', function(){
 
     $articulo= App\Articulo::find(1);
