@@ -15,7 +15,7 @@
 @isset ( $articulo->titulo )
 <div class="container-fluid bg-light p-3">
 
-    <div class="row col-md-3">
+    <div class="row col-md-6">
         <p>
             <a href="{{ url('/') }}"> Inicio </a> <span>> </span>
             <a href="{{ url('/articulos') }}">Articulos </a> <span>> </span> <span>{{ $articulo->titulo }} </span>
@@ -198,42 +198,100 @@
                 <span id="comentar">Comentar</span>
 
 
+                <div class="row">
 
-                <form method="POST" action="/comentario" id="formComentario" style="display: none">
-                    @csrf
-                    <!-- {{ csrf_field() }} -->
-                    <label>Asunto</label><br />
-                    <input type="text" name="asunto" placeholder="Asunto del comentario">
-                    <label>Comentario</label><br />
-                    <input type="text" name="texto" placeholder="Tu comentario">
+                    <!-- Modal para publicar comentario -->
+                    <div class="row">
+                        <div class="modal fade" id="modalComentar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Iniciar sesión</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
 
-                    <input type="hidden" name="users_id" value="{{ auth()->user()->id }}">
 
-                    <input type="hidden" name="articulo_id" value="{{ $articulo->id }}">
-                    <input type="submit" value="Publicar comentario">
-                </form>
-                @endguest
+                                        <form method="POST" action="{{ url('/comentario') }}" id="formComentario" style="display: none">
+                                            @csrf
+                                            <!-- {{ csrf_field() }} -->
+                                            <label>Asunto</label><br />
+                                            <input type="text" name="asunto" placeholder="Asunto del comentario">
+                                            <br>
+                                            <label>Comentario</label><br />
+                                            <input type="text" name="texto" placeholder="Tu comentario">
+
+                                            <input type="hidden" name="users_id" value="{{ auth()->user()->id }}">
+
+                                            <input type="hidden" name="articulo_id" value="{{ $articulo->id }}">
+
+
+
+
+                                            <div class="modal-footer">
+                                                <input type="submit" class="btn btn-info" value="Publicar comentario">
+                                            </div>
+                                        </form>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    @endguest
+
+                </div>
+
 
             </div>
 
-
     </div>
 
-</div>
-
-@endisset
+    @endisset
 
 
-@empty ( $articulo->titulo )
-<div class="container-fluid bg-light">
-    <div class="row h1 p-5">
-        <p class="text-center">El artículo que estás buscando no se encuentra disponible en este momento</p>
-        <br /><br /><br /><br />
+    @empty ( $articulo->titulo )
+    <div class="container-fluid bg-light">
+        <div class="row h1 p-5">
+            <p class="text-center">El artículo que estás buscando no se encuentra disponible en este momento</p>
+            <br /><br /><br /><br />
+        </div>
+
+
     </div>
+    @endempty
 
 
-</div>
-@endempty
-
-
-@stop
+    @stop

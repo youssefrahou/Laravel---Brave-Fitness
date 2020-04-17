@@ -43,6 +43,10 @@ class ComentarioController extends Controller
         $comentario -> users_id = $request -> users_id;
         $comentario -> articulo_id = $request -> articulo_id;
         $comentario -> save();
+
+        //Redirigir a la url anterior
+        return redirect()->back();
+
     }
 
     /**

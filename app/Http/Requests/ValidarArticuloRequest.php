@@ -25,7 +25,7 @@ class ValidarArticuloRequest extends FormRequest
     {
         return [
 
-            'titulo'        => 'required|min:1|max:30',
+            'titulo'        => 'required|min:1|max:100',
             'subtitulo'        => 'required|min:1|max:10000',
         ];
     }

@@ -21,7 +21,7 @@ class PaginasController extends Controller
 
     public function articulos(){
 
-        $articulos = Articulo::all();
+        $articulos = Articulo::all()->sortByDesc("created_at");
 
         return view('articulos', compact('articulos'));
     }
