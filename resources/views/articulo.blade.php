@@ -104,8 +104,8 @@
 
         @if(count($comentarios) < 1) <h5 id="noComentario">No hay comentarios</h5>
             @endif
-
-            <!-- Modal para iniciar sessión -->
+<!--
+    Modal para iniciar sesion
             <div class="row">
                 <div class="modal fade" id="modalIniciarSesion" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog" role="document">
@@ -183,7 +183,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
 
 
 
@@ -192,7 +192,7 @@
                 @guest
 
                 <p>Inicia sesión para poder comentar</p>
-                <button type="button" id="iniciarSesion">Iniciar sesión</button>
+                <button type="button" id="iniciarSesion"><a href="{{ url('login') }}">Iniciar sesión</a></button>
 
                 @else
                 <span id="comentar">Comentar</span>

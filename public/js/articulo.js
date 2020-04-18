@@ -22,13 +22,13 @@ $(document).ready(function () {
         }
     });
 
-
+/*
     //activar model para inciar sesion
     $('#iniciarSesion').click(function () {
 
         $("#modalIniciarSesion").modal("show");
 
-    });
+    });/*
 
 
 
