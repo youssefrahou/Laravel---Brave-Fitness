@@ -32,11 +32,11 @@
 
         <div class="row col-md-11">
             <div class="row col-12 h2 m-3 text-info">
-                <p class="text-center">{{ $articulo->titulo }}</p>
+                <p class="text-center">{!! $articulo->titulo !!}</p>
             </div>
 
             <div class="row m-3">
-                <h5>{{ $articulo->subtitulo }}</h5>
+                <h5>{!! $articulo->subtitulo !!}</h5>
 
             </div>
             <div class="row col-12 m-3">
@@ -46,7 +46,7 @@
             </div>
 
             <div class="row m-3">
-                <p>{{ $articulo->introduccion }}</p>
+                <p>{!! $articulo->introduccion !!}</p>
             </div>
         </div>
         <!--<div class="row col-md-2">
