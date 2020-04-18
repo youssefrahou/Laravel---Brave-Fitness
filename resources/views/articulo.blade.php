@@ -104,7 +104,7 @@
 
         @if(count($comentarios) < 1) <h5 id="noComentario">No hay comentarios</h5>
             @endif
-<!--
+            <!--
     Modal para iniciar sesion
             <div class="row">
                 <div class="modal fade" id="modalIniciarSesion" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
