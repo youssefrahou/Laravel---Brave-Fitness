@@ -35,7 +35,7 @@
             </p>
         </a>
         <ul class="nav nav-treeview">
-            <li class="nav-item">
+            <li class="nav-item" id="verArticulos">
                 <span class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Ver artículos</p>
@@ -131,7 +131,7 @@
 @stop
 
 
-@section('content')
+@section('contenido')
 
 <div class="row">
 
@@ -140,6 +140,7 @@
         <p class="h3">Bienvenido a Brave Fitness. Elige una opción en el menú lateral. </p>
     </div>
     <!-- Mensaje de bienvenida -->
+
 
     <!-- Tabla usuarios -->
     <div class="table-responsive" style="display: none" id="ensenarUsuarios">
@@ -178,6 +179,7 @@
     </div>
     <!-- Tabla usuarios -->
 
+
     <!-- Escribir articulo -->
     <div class="row col-12" style="display: none" id="crearticulo">
         <h3>Escribir artículo</h3>
@@ -185,12 +187,6 @@
 
             <form id="formArticulo" action="articulo" method="POST" class="col-md-12 was-validated" accept-charset="UTF-8" enctype="multipart/form-data">
                 <input type="hidden" name="_token" id="token" value="{{ csrf_token() }}">
-
-
-
-
-
-
 
                 <div class="form-group">
                     <label for="exampleFormControlSelect1">Selecciona la categoría del artículo: </label>
@@ -207,10 +203,6 @@
                     </select>
                     <div class="invalid-feedback">Selecciona una categoría. Si no aparece, añádela con la última opción.</div>
                 </div>
-
-
-
-
 
                 <div class="form-group">
                     <label for="uname">Título:</label>
@@ -252,10 +244,10 @@
                 </div>
 
 
-
                 <button type="submit" id="subirArticulo" class="btn btn-primary">Publicar artículo</button>
             </form>
         </div>
+        <!-- Escribir articulo -->
 
 
         <!-- Modal para añadir categoria -->
@@ -279,7 +271,6 @@
                                 <div class="invalid-feedback">Por favor, escribe el nombre de la categoría.</div>
                             </div>
 
-
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
@@ -291,22 +282,19 @@
         </div>
         <!-- Modal para añadir categoria -->
 
-
-
     </div>
     <!-- Escribir articulo -->
 
 
+
     <!-- Ver articulos -->
-    <div class="row col-12" style="display: none" id="verArticulos">
+    <div class="row col-12" style="display: none" id="ensenarArticulos">
         <div class="container-fluid">
 
             <section class="details-card">
                 <div class="container">
 
-
                     <div class="row">
-
 
                         @isset($articulos)
 
@@ -325,9 +313,8 @@
                         if (strlen($texto) == 180){
                         $texto = $texto . "...";
                         };
-
-
                         @endphp
+
 
                         <div class="col-lg-4 p-2">
                             <div class="card-content">
@@ -342,7 +329,6 @@
 
                                     @endif
 
-
                                     <span>
                                         <h4>PREMIUM</h4>
                                     </span>
@@ -355,17 +341,11 @@
                             </div>
                         </div>
 
-
-
                         @endforeach
 
                         @endisset
 
-
                     </div>
-
-
-
 
                 </div>
             </section>

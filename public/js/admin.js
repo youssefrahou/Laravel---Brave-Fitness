@@ -4,7 +4,7 @@ $(document).ready(function () {
 
     $("#verUsuarios").click(function () {
         ocultarTodo();
-        $("#ensenarUsuarios").css("display", "block");
+        $("#ensenarUsuarios").show();
         
     });
 
@@ -13,8 +13,14 @@ $(document).ready(function () {
         $("#crearticulo").show();
     });
 
-    
+    $("#verArticulos").click(function () {
+        ocultarTodo();
+        $("#ensenarArticulos").show();
+    });
 
+    $('li').css('cursor','pointer');
+
+    
 
 
 
@@ -23,7 +29,8 @@ $(document).ready(function () {
 
 
 function ocultarTodo() {
-    $("#bienvenida").css("display", "none");
-    $("#ensenarUsuarios").css("display", "none");
-    $("#crearticulo").css("display", "none");
+    $("#bienvenida").hide();
+    $("#ensenarUsuarios").hide();
+    $("#crearticulo").hide();
+    $("#ensenarArticulos").hide();
 }
