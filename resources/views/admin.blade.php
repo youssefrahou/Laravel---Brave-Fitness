@@ -23,13 +23,6 @@
                     <p>Ver usuarios</p>
                 </span>
             </li>
-            <li class="nav-item">
-                <span class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Editar usuario</p>
-                </span>
-            </li>
-
         </ul>
     </li>
     <li class="nav-item has-treeview">
@@ -142,13 +135,13 @@
 
 <div class="row">
 
-
-
-
+    <!-- Mensaje de bienvenida -->
     <div class="table-responsive justify-content-center" id="bienvenida">
         <p class="h3">Bienvenido a Brave Fitness. Elige una opción en el menú lateral. </p>
     </div>
+    <!-- Mensaje de bienvenida -->
 
+    <!-- Tabla usuarios -->
     <div class="table-responsive" style="display: none" id="ensenarUsuarios">
         <h3>Usuarios</h3>
         <table class="table">
@@ -183,7 +176,9 @@
 
         </table>
     </div>
+    <!-- Tabla usuarios -->
 
+    <!-- Escribir articulo -->
     <div class="row col-12" style="display: none" id="crearticulo">
         <h3>Escribir artículo</h3>
         <div class="row col-12">
@@ -294,17 +289,16 @@
                 </div>
             </div>
         </div>
+        <!-- Modal para añadir categoria -->
 
 
 
     </div>
+    <!-- Escribir articulo -->
 
 
+    <!-- Ver articulos -->
     <div class="row col-12" style="display: none" id="verArticulos">
-
-
-
-        <!-- details card section starts from here -->
         <div class="container-fluid">
 
             <section class="details-card">
@@ -377,6 +371,7 @@
 
 
                 </div>
+            </section>
 
 
 
@@ -403,6 +398,8 @@
 
         </div>
     </div>
+    <!-- Ver articulos -->
+
 </div>
 
 @stop
