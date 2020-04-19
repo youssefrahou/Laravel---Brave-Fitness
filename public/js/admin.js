@@ -20,6 +20,10 @@ $(document).ready(function () {
 
     $('li').css('cursor','pointer');
 
+    $("#verConsejos").click(function () {
+        ocultarTodo();
+        $("#ensenarConsejos").show();
+    });
     
 
 
@@ -33,4 +37,5 @@ function ocultarTodo() {
     $("#ensenarUsuarios").hide();
     $("#crearticulo").hide();
     $("#ensenarArticulos").hide();
+    $("#ensenarConsejos").hide();
 }

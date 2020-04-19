@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Categoria;
 use App\Articulo;
+use App\Consejo;
 use DB;
 
 class AdminController extends Controller
@@ -25,8 +26,9 @@ class AdminController extends Controller
         $totalMensajes = DB::table('mensaje')->count();
         $categorias = Categoria::all();
         $articulos = Articulo::all();
+        $consejos = Consejo::all();
 
-        return view('admin', compact('usuarios', 'totalUsuarios', 'totalArticulos', 'totalConsejos', 'totalComentarios', 'totalMensajes', 'categorias', 'articulos'));
+        return view('admin', compact('usuarios', 'totalUsuarios', 'totalArticulos', 'totalConsejos', 'totalComentarios', 'totalMensajes', 'categorias', 'articulos', 'consejos'));
 
     }
 }

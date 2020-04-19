@@ -41,8 +41,8 @@
                     <p>Ver artículos</p>
                 </span>
             </li>
-            <li class="nav-item">
-                <span id="escribirArticulo" class="nav-link">
+            <li class="nav-item" id="escribirArticulo">
+                <span class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Escribir artículo</p>
                 </span>
@@ -60,7 +60,7 @@
             </p>
         </a>
         <ul class="nav nav-treeview">
-            <li class="nav-item">
+            <li class="nav-item" id="verConsejos">
                 <span class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Ver consejos</p>
@@ -349,33 +349,88 @@
 
                 </div>
             </section>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         </div>
     </div>
     <!-- Ver articulos -->
+
+    <!-- Ver consejos -->
+    <div class="row col-12" style="display: none" id="ensenarConsejos">
+        <div class="container-fluid">
+
+            <section class="details-card">
+                <div class="container">
+
+                    <div class="row">
+
+                        @isset($consejos)
+
+                        @foreach($consejos as $consejo)
+
+                        @php
+
+                        $titulo = substr($consejo->titulo, 0, 60);
+
+                        if (strlen($titulo) == 60){
+                        $titulo = $titulo . "...";
+                        };
+
+                        $texto = substr($consejo->texto, 0, 180);
+
+                        if (strlen($texto) == 180){
+                        $texto = $texto . "...";
+                        };
+                        @endphp
+
+
+                        <div class="col-lg-4 p-2">
+                            <div class="card-content">
+                                <div class="card-img" style="height: 240px">
+                                    @if($consejo->foto1)
+
+                                    <img src="{{ url('/') }}/images/articulos/{{ $consejo->foto }}" alt="Imagen" width="100%">
+
+                                    @else
+
+                                    <img src="https://www.solac.com/images/blank_product.png" alt="Imagen no disponible">
+
+                                    @endif
+
+                                </div>
+                                <div class="card-desc">
+                                    <h4 style="height: 90px">{!! $titulo !!} </h4>
+                                    <p style="height: 120px">{!! $texto !!}</p>
+                                    <span>{{$consejo->fecha}}</span><br/>
+                                    <a href="" class="btn btn-danger">Borrar</a> 
+                                </div>
+                            </div>
+                        </div>
+
+                        @endforeach
+
+                        @endisset
+
+                    </div>
+
+                </div>
+            </section>
+        </div>
+    </div>
+    <!-- Ver consejos -->
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 </div>
 
