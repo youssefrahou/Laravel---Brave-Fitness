@@ -26,7 +26,7 @@ class AdminController extends Controller
         $totalMensajes = DB::table('mensaje')->count();
         $categorias = Categoria::all();
         $articulos = Articulo::all();
-        $consejos = Consejo::all();
+        $consejos = Consejo::all()->sortByDesc("created_at");
 
         return view('admin', compact('usuarios', 'totalUsuarios', 'totalArticulos', 'totalConsejos', 'totalComentarios', 'totalMensajes', 'categorias', 'articulos', 'consejos'));
 

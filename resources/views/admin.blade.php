@@ -384,10 +384,10 @@
 
                         <div class="col-lg-4 p-2">
                             <div class="card-content">
-                                <div class="card-img" style="height: 240px">
-                                    @if($consejo->foto1)
+                                <div class="card-img" style="height: 240px; border-bottom: 0.5px solid gray">
+                                    @if($consejo->foto)
 
-                                    <img src="{{ url('/') }}/images/articulos/{{ $consejo->foto }}" alt="Imagen" width="100%">
+                                    <img src="{{ url('/') }}/images/consejos/{{ $consejo->foto }}"  alt="Imagen" width="100%">
 
                                     @else
 

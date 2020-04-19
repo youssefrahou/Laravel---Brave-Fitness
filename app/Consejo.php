@@ -8,6 +8,9 @@ class Consejo extends Model
 {
     protected $table = 'consejo';
 
+    protected $fillable = ['titulo', 'texto', 'fecha', 'foto', 'users_id'];
+
+
     
 
     public function user()

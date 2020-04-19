@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Consejo;
 use Illuminate\Http\Request;
 
 class ConsejoController extends Controller
@@ -34,7 +35,31 @@ class ConsejoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'titulo' => 'required:max:255',
+            'texto' => 'required'
+        ]);
+
+        $consejo = $request->all();
+
+        if ($request->file('foto')) {
+            //obtenemos el campo file definido en el formulario
+            $archivo = $request->file('foto');
+
+            $path = public_path() . '/images/consejos';
+
+            //obtenemos el nombre del archivo
+            $nombre = $archivo->getClientOriginalName();
+
+            $archivo->move($path, $nombre);
+
+            $consejo['foto'] = $nombre;
+        }
+        $consejo['fecha'] = date("Y/m/d");
+
+        Consejo::create($consejo);
+
+        return redirect('admin')->with('mensaje', '¡El consejo se ha publicado correctamente!');
     }
 
     /**
