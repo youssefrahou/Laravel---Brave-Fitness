@@ -1,11 +1,10 @@
 $(document).ready(function () {
     
-    ocultarTodo();
-    $("#bienvenida").show();
+    
 
     $("#verUsuarios").click(function () {
         ocultarTodo();
-        $("#ensenarUsuarios").toggle();
+        $("#ensenarUsuarios").css("display", "block");
         
     });
 
@@ -24,6 +23,7 @@ $(document).ready(function () {
 
 
 function ocultarTodo() {
-    $("#ensenarUsuarios").hide();
-    $("#crearticulo").hide();
+    $("#bienvenida").css("display", "none");
+    $("#ensenarUsuarios").css("display", "none");
+    $("#crearticulo").css("display", "none");
 }
