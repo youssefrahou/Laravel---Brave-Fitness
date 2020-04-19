@@ -66,7 +66,7 @@
                     <p>Ver consejos</p>
                 </span>
             </li>
-            <li class="nav-item">
+            <li class="nav-item" id="anadirConsejo">
                 <span class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Escribir consejo</p>
@@ -185,7 +185,7 @@
         <h3>Escribir artículo</h3>
         <div class="row col-12">
 
-            <form id="formArticulo" action="articulo" method="POST" class="col-md-12 was-validated" accept-charset="UTF-8" enctype="multipart/form-data">
+        <form id="formArticulo" action="{{ url('articulo') }}" method="POST" class="col-md-12 was-validated" accept-charset="UTF-8" enctype="multipart/form-data">
                 <input type="hidden" name="_token" id="token" value="{{ csrf_token() }}">
 
                 <div class="form-group">
@@ -262,7 +262,7 @@
                     </div>
                     <div class="modal-body">
 
-                        <form id="formCateegoria" action="categoria" method="POST" class="col-md-12 was-validated" accept-charset="UTF-8" enctype="multipart/form-data">
+                    <form id="formCateegoria" action="{{ url('categoria') }}" method="POST" class="col-md-12 was-validated" accept-charset="UTF-8" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group">
                                 <label for="uname">Nombre de la categoría:</label>
@@ -416,6 +416,62 @@
         </div>
     </div>
     <!-- Ver consejos -->
+
+    <!-- Modal para añadir CONSEJO -->
+    <div class="modal fade" id="modalConsejo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Añadir nuevo consejo</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+                    <form id="formConsejo" action="{{ url('consejo') }}" method="POST" class="col-md-12 was-validated" accept-charset="UTF-8" enctype="multipart/form-data">
+                        @csrf
+
+                        <div class="form-group">
+                            <label for="uname">Título del consejo:</label>
+                            <input type="text" class="form-control" value="{{ old('titulo') }}" placeholder="Escribe el titulo del consejo" name="titulo" required>
+                            <div class="valid-feedback">Válido.</div>
+                            <div class="invalid-feedback">Por favor, escribe el título del consejo.</div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="uname">Consejo:</label>
+                            <textarea class="form-control" rows="3" name="texto" required>{{ old('texto') }}</textarea>
+                            <div class="valid-feedback">Válido.</div>
+                            <div class="invalid-feedback">Por favor, escribe el consejo.</div>
+                        </div>
+
+                        <div class="form-group">
+                            <input type="hidden" name="users_id" value="{{ Auth::user()->id }}">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="exampleFormControlFile1">Imagen <i>(opcional)</i></label>
+                            <input type="file" class="form-control-file" name="foto">
+                            <div class="valid-feedback">Válido.</div>
+                            <div class="invalid-feedback">Por favor, selecciona una imagen.</div>
+                        </div>
+
+
+
+
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-success">Guardar categoría</button>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- Modal para añadir CONSEJO -->
 
     
 

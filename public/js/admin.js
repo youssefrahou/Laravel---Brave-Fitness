@@ -24,6 +24,13 @@ $(document).ready(function () {
         ocultarTodo();
         $("#ensenarConsejos").show();
     });
+
+    
+    $('#anadirConsejo').click(function () {
+
+        $("#modalConsejo").modal("show");
+
+    });
     
 
 
