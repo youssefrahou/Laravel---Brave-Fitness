@@ -26,7 +26,7 @@ class AdminController extends Controller
         $categorias = Categoria::all();
         $articulos = Articulo::all();
 
-        return view('plantillas.admin', compact('usuarios', 'totalUsuarios', 'totalArticulos', 'totalConsejos', 'totalComentarios', 'totalMensajes', 'categorias', 'articulos'));
+        return view('admin', compact('usuarios', 'totalUsuarios', 'totalArticulos', 'totalConsejos', 'totalComentarios', 'totalMensajes', 'categorias', 'articulos'));
 
     }
 }
