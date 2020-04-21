@@ -7,6 +7,7 @@ use App\User;
 use App\Categoria;
 use App\Articulo;
 use App\Consejo;
+use App\Comentario;
 use DB;
 
 class AdminController extends Controller
@@ -27,8 +28,10 @@ class AdminController extends Controller
         $categorias = Categoria::all();
         $articulos = Articulo::all();
         $consejos = Consejo::all()->sortByDesc("created_at");
+        $comentarios = Comentario::all()->sortByDesc("created_at");
 
-        return view('admin', compact('usuarios', 'totalUsuarios', 'totalArticulos', 'totalConsejos', 'totalComentarios', 'totalMensajes', 'categorias', 'articulos', 'consejos'));
+        return view('admin', compact('usuarios', 'totalUsuarios', 'totalArticulos', 'totalConsejos', 'totalComentarios', 
+        'totalMensajes', 'categorias', 'articulos', 'consejos', 'comentarios'));
 
     }
 }

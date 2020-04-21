@@ -85,13 +85,13 @@
             </p>
         </a>
         <ul class="nav nav-treeview">
-            <li class="nav-item">
+            <li class="nav-item" id="verComentarios">
                 <span class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Ver todos los comentarios</p>
                 </span>
             </li>
-            <li class="nav-item">
+            <li class="nav-item" id="verComentariosSinLeer">
                 <span class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Ver comentarios sin leer</p>
@@ -185,7 +185,8 @@
         <h3>Escribir artículo</h3>
         <div class="row col-12">
 
-        <form id="formArticulo" action="{{ url('articulo') }}" method="POST" class="col-md-12 was-validated" accept-charset="UTF-8" enctype="multipart/form-data">
+            <form id="formArticulo" action="{{ url('articulo') }}" method="POST" class="col-md-12 was-validated"
+                accept-charset="UTF-8" enctype="multipart/form-data">
                 <input type="hidden" name="_token" id="token" value="{{ csrf_token() }}">
 
                 <div class="form-group">
@@ -201,26 +202,30 @@
                         <option value="anadir">Añadir categoría</option>
 
                     </select>
-                    <div class="invalid-feedback">Selecciona una categoría. Si no aparece, añádela con la última opción.</div>
+                    <div class="invalid-feedback">Selecciona una categoría. Si no aparece, añádela con la última opción.
+                    </div>
                 </div>
 
                 <div class="form-group">
                     <label for="uname">Título:</label>
-                    <input type="text" class="form-control" id="tit" value="{{ old('titulo') }}" placeholder="Escribe el título" name="titulo" required>
+                    <input type="text" class="form-control" id="tit" value="{{ old('titulo') }}"
+                        placeholder="Escribe el título" name="titulo" required>
                     <div class="valid-feedback">Válido.</div>
                     <div class="invalid-feedback">Por favor, escribe el título.</div>
                 </div>
 
                 <div class="form-group">
                     <label for="uname">Subtítulo:</label>
-                    <input type="text" class="form-control" id="subti" value="{{ old('subtitulo') }}" placeholder="Escribe el subtítulo" name="subtitulo" required>
+                    <input type="text" class="form-control" id="subti" value="{{ old('subtitulo') }}"
+                        placeholder="Escribe el subtítulo" name="subtitulo" required>
                     <div class="valid-feedback">Válido.</div>
                     <div class="invalid-feedback">Por favor, escribe el subtítulo.</div>
                 </div>
 
                 <div class="form-group">
                     <label for="uname">Introducción:</label>
-                    <textarea class="form-control" id="intro" rows="4" name="introduccion" required>{{ old('introduccion') }}</textarea>
+                    <textarea class="form-control" id="intro" rows="4" name="introduccion"
+                        required>{{ old('introduccion') }}</textarea>
                     <div class="valid-feedback">Válido.</div>
                     <div class="invalid-feedback">Por favor, escribe la introducción.</div>
                 </div>
@@ -234,7 +239,8 @@
 
                 <div class="form-group">
                     <label for="uname">Pie de la primera imagen:</label>
-                    <input type="text" class="form-control" value="{{ old('pie_imagen1') }}" id="subti" placeholder="Escribe el pie de la primera imagen" name="pie_imagen1" required>
+                    <input type="text" class="form-control" value="{{ old('pie_imagen1') }}" id="subti"
+                        placeholder="Escribe el pie de la primera imagen" name="pie_imagen1" required>
                     <div class="valid-feedback">Válido.</div>
                     <div class="invalid-feedback">Por favor, escribe el pie de la primera imagen.</div>
                 </div>
@@ -251,7 +257,8 @@
 
 
         <!-- Modal para añadir categoria -->
-        <div class="modal fade" id="modalCategoria" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="modalCategoria" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -262,11 +269,13 @@
                     </div>
                     <div class="modal-body">
 
-                    <form id="formCateegoria" action="{{ url('categoria') }}" method="POST" class="col-md-12 was-validated" accept-charset="UTF-8" enctype="multipart/form-data">
+                        <form id="formCateegoria" action="{{ url('categoria') }}" method="POST"
+                            class="col-md-12 was-validated" accept-charset="UTF-8" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group">
                                 <label for="uname">Nombre de la categoría:</label>
-                                <input type="text" class="form-control" id="tit" value="{{ old('nombre_categoria') }}" placeholder="Escribe el nombre de la categoría" name="nombre_categoria" required>
+                                <input type="text" class="form-control" id="tit" value="{{ old('nombre_categoria') }}"
+                                    placeholder="Escribe el nombre de la categoría" name="nombre_categoria" required>
                                 <div class="valid-feedback">Válido.</div>
                                 <div class="invalid-feedback">Por favor, escribe el nombre de la categoría.</div>
                             </div>
@@ -321,11 +330,13 @@
                                 <div class="card-img" style="height: 240px">
                                     @if($articulo->foto1)
 
-                                    <img src="{{ url('/') }}/images/articulos/{{ $articulo->foto1 }}" alt="Imagen" width="100%">
+                                    <img src="{{ url('/') }}/images/articulos/{{ $articulo->foto1 }}" alt="Imagen"
+                                        width="100%">
 
                                     @else
 
-                                    <img src="https://www.solac.com/images/blank_product.png" alt="Imagen no disponible">
+                                    <img src="https://www.solac.com/images/blank_product.png"
+                                        alt="Imagen no disponible">
 
                                     @endif
 
@@ -387,11 +398,13 @@
                                 <div class="card-img" style="height: 240px; border-bottom: 0.5px solid gray">
                                     @if($consejo->foto)
 
-                                    <img src="{{ url('/') }}/images/consejos/{{ $consejo->foto }}"  alt="Imagen" width="100%">
+                                    <img src="{{ url('/') }}/images/consejos/{{ $consejo->foto }}" alt="Imagen"
+                                        width="100%">
 
                                     @else
 
-                                    <img src="https://www.solac.com/images/blank_product.png" alt="Imagen no disponible">
+                                    <img src="https://www.solac.com/images/blank_product.png"
+                                        alt="Imagen no disponible">
 
                                     @endif
 
@@ -399,8 +412,8 @@
                                 <div class="card-desc">
                                     <h4 style="height: 90px">{!! $titulo !!} </h4>
                                     <p style="height: 120px">{!! $texto !!}</p>
-                                    <span>{{$consejo->fecha}}</span><br/>
-                                    <a href="" class="btn btn-danger">Borrar</a> 
+                                    <span>{{$consejo->fecha}}</span><br />
+                                    <a href="" class="btn btn-danger">Borrar</a>
                                 </div>
                             </div>
                         </div>
@@ -418,7 +431,8 @@
     <!-- Ver consejos -->
 
     <!-- Modal para añadir CONSEJO -->
-    <div class="modal fade" id="modalConsejo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="modalConsejo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -429,12 +443,14 @@
                 </div>
                 <div class="modal-body">
 
-                    <form id="formConsejo" action="{{ url('consejo') }}" method="POST" class="col-md-12 was-validated" accept-charset="UTF-8" enctype="multipart/form-data">
+                    <form id="formConsejo" action="{{ url('consejo') }}" method="POST" class="col-md-12 was-validated"
+                        accept-charset="UTF-8" enctype="multipart/form-data">
                         @csrf
 
                         <div class="form-group">
                             <label for="uname">Título del consejo:</label>
-                            <input type="text" class="form-control" value="{{ old('titulo') }}" placeholder="Escribe el titulo del consejo" name="titulo" required>
+                            <input type="text" class="form-control" value="{{ old('titulo') }}"
+                                placeholder="Escribe el titulo del consejo" name="titulo" required>
                             <div class="valid-feedback">Válido.</div>
                             <div class="invalid-feedback">Por favor, escribe el título del consejo.</div>
                         </div>
@@ -457,11 +473,6 @@
                             <div class="invalid-feedback">Por favor, selecciona una imagen.</div>
                         </div>
 
-
-
-
-
-
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
@@ -473,7 +484,224 @@
     </div>
     <!-- Modal para añadir CONSEJO -->
 
-    
+    <!-- Ver todos comentarios -->
+    <div class="row col-12" style="display: none" id="ensenarComentarios">
+        <div class="container-fluid">
+
+            <section class="details-card">
+                <div class="container">
+
+                    <div class="row">
+
+                        @isset($comentarios)
+
+                        @foreach($comentarios as $comentario)
+
+                        @php
+
+                        $titulo = substr($comentario->titulo, 0, 60);
+
+                        if (strlen($titulo) == 60){
+                        $titulo = $titulo . "...";
+                        };
+
+                        $texto = substr($comentario->texto, 0, 180);
+
+                        if (strlen($texto) == 180){
+                        $texto = $texto . "...";
+                        };
+                        @endphp
+
+
+                        <div class="col-lg-4 p-2">
+
+                            @if($comentario->leido == 0)
+                            <div class="card-content p-5" style="background-color: #D7D7D7">
+
+                                @php
+                                $articulo = \App\Articulo::where('id', $comentario -> articulo_id)->get();
+                                @endphp
+
+                                <div class="row col-12">
+                                    <h5 class="col-12">Artículo:</h5>
+                                    <p>{{$articulo[0]->titulo}}</p>
+
+                                </div>
+
+
+                                <div class="row col-12">
+                                    <h5 class="col-12">Asunto:</h5>
+                                    <p>{{$comentario->asunto}}</p>
+                                    <h5 class="col-12">Comentario:</h5>
+                                    <p>{{$comentario->texto}}</p><br />
+
+                                </div>
+
+                                @php
+                                $nombreUsuario = \App\User::where('id', $comentario -> users_id)->get();
+                                @endphp
+
+                                <div class="row col-12">
+                                    <h5 class="col-12">Usuario: </h5>
+                                    <p>{{$nombreUsuario[0]->name}}</p><br />
+                                </div>
+
+
+                                <div class="row col-12">
+                                    <span class="col-12">{{$comentario->fecha_hora}}</span>
+                                    <button class="btn btn-info col-md-6">Contestar</button>
+                                    <button class="btn btn-success col-md-6">Marcar leído</button>
+                                    <a href="" class="btn btn-warning col-md-6">Ver artículo</a>
+                                    <button class="btn btn-danger col-md-6">Borrar</button>
+                                </div>
+
+                            </div>
+
+                            @else
+
+                            <div class="card-content p-5">
+
+                                @php
+                                $articulo = \App\Articulo::where('id', $comentario -> articulo_id)->get();
+                                @endphp
+
+                                <div class="row col-12">
+                                    <h5 class="col-12">Artículo:</h5>
+                                    <p>{{$articulo[0]->titulo}}</p>
+
+                                </div>
+
+
+                                <div class="row col-12">
+                                    <h5 class="col-12">Asunto:</h5>
+                                    <p>{{$comentario->asunto}}</p>
+                                    <h5 class="col-12">Comentario:</h5>
+                                    <p>{{$comentario->texto}}</p><br />
+
+                                </div>
+
+                                @php
+                                $nombreUsuario = \App\User::where('id', $comentario -> users_id)->get();
+                                @endphp
+
+                                <div class="row col-12">
+                                    <h5 class="col-12">Usuario: </h5>
+                                    <p>{{$nombreUsuario[0]->name}}</p><br />
+                                </div>
+
+
+                                <div class="row col-12">
+                                    <span class="col-12">{{$comentario->fecha_hora}}</span>
+                                    <a href="" class="btn btn-info">Contestar</a>
+                                </div>
+
+                            </div>
+
+                            @endif
+
+
+                        </div>
+
+                        @endforeach
+
+                        @endisset
+
+                    </div>
+
+                </div>
+            </section>
+        </div>
+    </div>
+    <!-- Ver todos comentarios -->
+
+    <!-- Ver comentarios SIN LEER -->
+    <div class="row col-12" style="display: none" id="ensenarComentariosSinLeer">
+        <div class="container-fluid">
+
+            <section class="details-card">
+                <div class="container">
+
+                    <div class="row">
+
+                        @isset($comentarios)
+
+                        @foreach($comentarios as $comentario)
+
+                        @php
+
+                        $titulo = substr($comentario->titulo, 0, 60);
+
+                        if (strlen($titulo) == 60){
+                        $titulo = $titulo . "...";
+                        };
+
+                        $texto = substr($comentario->texto, 0, 180);
+
+                        if (strlen($texto) == 180){
+                        $texto = $texto . "...";
+                        };
+                        @endphp
+
+
+                        <div class="col-lg-4 p-2">
+
+                            @if($comentario->leido == 0)
+                            <div class="card-content p-5" style="background-color: #D7D7D7">
+
+                                @php
+                                $articulo = \App\Articulo::where('id', $comentario -> articulo_id)->get();
+                                @endphp
+
+                                <div class="row col-12">
+                                    <h5 class="col-12">Artículo:</h5>
+                                    <p>{{$articulo[0]->titulo}}</p>
+
+                                </div>
+
+
+                                <div class="row col-12">
+                                    <h5 class="col-12">Asunto:</h5>
+                                    <p>{{$comentario->asunto}}</p>
+                                    <h5 class="col-12">Comentario:</h5>
+                                    <p>{{$comentario->texto}}</p><br />
+
+                                </div>
+
+                                @php
+                                $nombreUsuario = \App\User::where('id', $comentario -> users_id)->get();
+                                @endphp
+
+                                <div class="row col-12">
+                                    <h5 class="col-12">Usuario: </h5>
+                                    <p>{{$nombreUsuario[0]->name}}</p><br />
+                                </div>
+
+
+                                <div class="row col-12">
+                                    <span class="col-12">{{$comentario->fecha_hora}}</span>
+                                    <button class="btn btn-info col-md-6">Contestar</button>
+                                    <button class="btn btn-success col-md-6">Marcar leído</button>
+                                    <a href="" class="btn btn-warning col-md-6">Ver artículo</a>
+                                    <button class="btn btn-danger col-md-6">Borrar</button>
+                                </div>
+
+                            </div>
+
+
+                        </div>
+                        @endif
+
+                        @endforeach
+
+                        @endisset
+
+                    </div>
+
+                </div>
+            </section>
+        </div>
+    </div>
+    <!-- Ver comentarios SIN LEER-->
 
 
 

@@ -1,37 +1,48 @@
-$(document).ready(function () {
-    
-    
+$(document).ready(function() {
 
-    $("#verUsuarios").click(function () {
+
+
+    $("#verUsuarios").click(function() {
         ocultarTodo();
         $("#ensenarUsuarios").show();
-        
+
     });
 
-    $("#escribirArticulo").click(function () {
+    $("#escribirArticulo").click(function() {
         ocultarTodo();
         $("#crearticulo").show();
     });
 
-    $("#verArticulos").click(function () {
+    $("#verArticulos").click(function() {
         ocultarTodo();
         $("#ensenarArticulos").show();
     });
 
-    $('li').css('cursor','pointer');
+    $('li').css('cursor', 'pointer');
 
-    $("#verConsejos").click(function () {
+    $("#verConsejos").click(function() {
         ocultarTodo();
         $("#ensenarConsejos").show();
     });
 
-    
-    $('#anadirConsejo').click(function () {
+
+    $('#anadirConsejo').click(function() {
 
         $("#modalConsejo").modal("show");
 
     });
-    
+
+    $("#verComentarios").click(function() {
+        ocultarTodo();
+        $("#ensenarComentarios").show();
+    });
+
+    $("#verComentariosSinLeer").click(function() {
+        ocultarTodo();
+        $("#ensenarComentariosSinLeer").show();
+    });
+
+
 
 
 
