@@ -680,16 +680,43 @@
                                 <div class="row col-12">
                                     <span class="col-12">{{$comentario->fecha_hora}}</span>
                                     <button class="btn btn-info col-md-6">Contestar</button>
-                                    <button class="btn btn-success col-md-6">Marcar leído</button>
-                                    <a href="" class="btn btn-warning col-md-6">Ver artículo</a>
-                                    <button class="btn btn-danger col-md-6">Borrar</button>
+                                    <!-- Marcar como leído -->
+                                    <form id="formLeido" action="{{ url('comentario')}}/{{$comentario->id}}" method="POST" class="col-md-12"
+                                        accept-charset="UTF-8" enctype="multipart/form-data">
+                                        
+                                        <input type="hidden" name="_token" id="token" value="{{ csrf_token() }}">
+
+                                        {{ method_field('PUT') }}
+
+                                        <input type="hidden" value="1" name="leido">
+                                        <input type="submit" class="btn btn-success col-md-6" value="Marcar leído">
+
+                                    </form>
+                                    <!-- Marcar como leído -->
+
+                                    <a href="{{ url('articulo')}}/{{$comentario->articulo_id}}"
+                                        class="btn btn-warning col-md-6">Ver artículo</a>
+
+                                    <!-- Borrar comentario -->
+                                    <form id="formLeido" action="{{ url('comentario')}}/{{$comentario->id}}" method="POST" class="col-md-12"
+                                        accept-charset="UTF-8" enctype="multipart/form-data">
+                                        <input type="hidden" name="_token" id="token" value="{{ csrf_token() }}">
+
+                                        {{ method_field('DELETE') }}
+
+                                        <button type="submit" class="btn btn-danger col-md-6">Borrar</button>
+
+                                    </form>
+                                    <!-- Borrar comentario -->
+
+
                                 </div>
 
                             </div>
 
                             @endif
                         </div>
-                        
+
 
                         @endforeach
 
