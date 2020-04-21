@@ -56,4 +56,6 @@ function ocultarTodo() {
     $("#crearticulo").hide();
     $("#ensenarArticulos").hide();
     $("#ensenarConsejos").hide();
+    $("#ensenarComentarios").hide();
+    $("#ensenarComentariosSinLeer").hide();
 }
