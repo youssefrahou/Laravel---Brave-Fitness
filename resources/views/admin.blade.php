@@ -513,7 +513,7 @@
                         @endphp
 
 
-                        <div class="col-lg-4 p-2">
+                        <div class="col-lg-3 p-2">
 
                             @if($comentario->leido == 0)
                             <div class="card-content p-5" style="background-color: #D7D7D7">
@@ -643,7 +643,7 @@
                         @endphp
 
 
-                        <div class="col-lg-4 p-2">
+                        <div class="col-lg-3 p-2">
 
                             @if($comentario->leido == 0)
                             <div class="card-content p-5" style="background-color: #D7D7D7">
