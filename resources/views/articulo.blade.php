@@ -12,6 +12,13 @@
 
 @section('body')
 
+@if (session('mensaje'))
+<div class="alert alert-success text-center col-12">
+    {{ session('mensaje') }}
+</div>
+@endif
+
+
 @isset ( $articulo->titulo )
 <div class="container-fluid bg-light p-3">
 
@@ -62,14 +69,16 @@
         @foreach ($comentarios as $comentario)
         <div class="row media  p-3">
 
-            <img src="https://sistemas.com/termino/wp-content/uploads/Usuario-Icono.jpg" alt="John Doe" class="mr-3 mt-3 rounded-circle" style="width:60px;">
+            <img src="https://sistemas.com/termino/wp-content/uploads/Usuario-Icono.jpg" alt="John Doe"
+                class="mr-3 mt-3 rounded-circle" style="width:60px;">
             <div class="media-body">
 
                 @php
                 $nombreUsuario = \App\User::where('id', $comentario -> users_id)->get();
                 @endphp
 
-                <h4> {{ $nombreUsuario[0] -> name }} <small><i style="font-size: 12px">{{ $comentario -> fecha_hora }}</i></small></h4>
+                <h4> {{ $nombreUsuario[0] -> name }} <small><i
+                            style="font-size: 12px">{{ $comentario -> fecha_hora }}</i></small></h4>
                 <h5> {{ $comentario -> asunto }} </h5>
                 <p>{{ $comentario -> texto}} </p>
                 @guest
@@ -83,14 +92,16 @@
 
                 @foreach ($respuestas as $respuesta)
                 <div class="media p-3">
-                    <img src="https://sistemas.com/termino/wp-content/uploads/Usuario-Icono.jpg" alt="John Doe" class="mr-3 mt-3 rounded-circle" style="width:60px;">
+                    <img src="https://sistemas.com/termino/wp-content/uploads/Usuario-Icono.jpg" alt="John Doe"
+                        class="mr-3 mt-3 rounded-circle" style="width:60px;">
                     <div class="media-body">
 
                         @php
                         $nombreUsuario = \App\User::where('id', $respuesta -> users_id)->get();
                         @endphp
 
-                        <h4> {{ $nombreUsuario[0] -> name }} <small><i style="font-size: 12px">{{ $respuesta -> fecha_hora }}</i></small></h4>
+                        <h4> {{ $nombreUsuario[0] -> name }} <small><i
+                                    style="font-size: 12px">{{ $respuesta -> fecha_hora }}</i></small></h4>
                         <p>{{ $respuesta -> texto}} </p>
                     </div>
                 </div>
@@ -202,7 +213,8 @@
 
                     <!-- Modal para publicar comentario -->
                     <div class="row">
-                        <div class="modal fade" id="modalComentar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal fade" id="modalComentar" tabindex="-1" role="dialog"
+                            aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
@@ -214,7 +226,8 @@
                                     <div class="modal-body">
 
 
-                                        <form method="POST" action="{{ url('/comentario') }}" id="formComentario" style="display: none">
+                                        <form method="POST" action="{{ url('/comentario') }}" id="formComentario"
+                                            style="display: none">
                                             @csrf
                                             <!-- {{ csrf_field() }} -->
                                             <label>Asunto</label><br />

@@ -32,6 +32,14 @@ $(document).ready(function() {
 
     });
 
+    $('#contestarComentario').click(function() {
+
+        $("#modalContestarComentario").modal("show");
+
+    });
+
+
+
     $("#verComentarios").click(function() {
         ocultarTodo();
         $("#ensenarComentarios").show();
@@ -42,6 +50,11 @@ $(document).ready(function() {
         $("#ensenarComentariosSinLeer").show();
     });
 
+
+    $("#enviarYmarcar").click(function() {
+        $("#formLeidoMarc").submit();
+        $("#formRespuestaLeid").submit();
+    });
 
 
 

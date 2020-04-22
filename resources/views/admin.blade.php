@@ -549,10 +549,114 @@
 
                                 <div class="row col-12">
                                     <span class="col-12">{{$comentario->fecha_hora}}</span>
-                                    <button class="btn btn-info col-md-6">Contestar</button>
-                                    <button class="btn btn-success col-md-6">Marcar leído</button>
-                                    <a href="" class="btn btn-warning col-md-6">Ver artículo</a>
-                                    <button class="btn btn-danger col-md-6">Borrar</button>
+
+                                    <!-- CONTESTAR comentario -->
+
+                                    <button class="btn btn-info col-md-6" id="contestarComentario">Contestar</button>
+                                    <!-- CONTESTAR comentario -->
+
+                                    <!-- Modal para CONTESTAR comentario -->
+                                    <div class="modal fade" id="modalContestarComentario" tabindex="-1" role="dialog"
+                                        aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLabel">Responder comentario
+                                                    </h5>
+                                                    <button type="button" class="close" data-dismiss="modal"
+                                                        aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+
+                                                    <form id="formRespuestaLeid" action="{{ url('respuesta') }}"
+                                                        method="POST" class="col-md-12 was-validated"
+                                                        accept-charset="UTF-8" enctype="multipart/form-data">
+                                                        @csrf
+
+                                                        <div class="form-group">
+                                                            <label for="uname" class="w-100">Comentario:
+                                                                "<i>{{ $comentario->texto }}</i>"</label>
+                                                            <label for="uname">Respuesta:</label>
+                                                            <input type="text" class="form-control" id="tit"
+                                                                value="{{ old('texto') }}"
+                                                                placeholder="Escribe la respuesta al comentario"
+                                                                name="texto" required>
+                                                            <div class="valid-feedback">Válido.</div>
+                                                            <div class="invalid-feedback">Por favor, escribe la
+                                                                respuesta.</div>
+                                                        </div>
+                                                        <input type="hidden" name="leido" value="1">
+                                                        <input type="hidden" name="users_id"
+                                                            value="{{ Auth::user()->id }}">
+                                                        <input type="hidden" name="comentario_id"
+                                                            value="{{ $comentario->id }}">
+
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-danger"
+                                                        data-dismiss="modal">Cancelar</button>
+                                                    <button type="button" id="enviarYmarcar" class="btn btn-success">Responder</button>
+                                                </div>
+                                                </form>
+
+                                                <!-- Marcar como leído -->
+                                                <form id="formLeidoMarc" action="{{ url('comentario')}}/{{$comentario->id}}"
+                                                    method="POST" class="col-md-12" accept-charset="UTF-8"
+                                                    enctype="multipart/form-data">
+
+                                                    <input type="hidden" name="_token" id="token"
+                                                        value="{{ csrf_token() }}">
+
+                                                    {{ method_field('PUT') }}
+
+                                                    <input type="hidden" value="1" name="leido">
+                                                    <input type="submit" class="btn btn-success col-md-6"
+                                                        style="display:none" value="Marcar leído">
+
+                                                </form>
+                                                <!-- Marcar como leído -->
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Modal para CONTESTAR comentario -->
+
+
+
+                                    <!-- Marcar como leído -->
+                                    <form id="formLeido" action="{{ url('comentario')}}/{{$comentario->id}}"
+                                        method="POST" class="col-md-12" accept-charset="UTF-8"
+                                        enctype="multipart/form-data">
+
+                                        <input type="hidden" name="_token" id="token" value="{{ csrf_token() }}">
+
+                                        {{ method_field('PUT') }}
+
+                                        <input type="hidden" value="1" name="leido">
+                                        <input type="submit" class="btn btn-success col-md-6" value="Marcar leído">
+
+                                    </form>
+                                    <!-- Marcar como leído -->
+
+                                    <a href="{{ url('articulo')}}/{{$comentario->articulo_id}}"
+                                        class="btn btn-warning col-md-6">Ver artículo</a>
+
+                                    <!-- Borrar comentario -->
+                                    <form id="formLeido" action="{{ url('comentario')}}/{{$comentario->id}}"
+                                        method="POST" class="col-md-12" accept-charset="UTF-8"
+                                        enctype="multipart/form-data">
+                                        <input type="hidden" name="_token" id="token" value="{{ csrf_token() }}">
+
+                                        {{ method_field('DELETE') }}
+
+                                        <button type="submit" class="btn btn-danger col-md-6">Borrar</button>
+
+                                    </form>
+                                    <!-- Borrar comentario -->
+
                                 </div>
 
                             </div>
@@ -679,11 +783,69 @@
 
                                 <div class="row col-12">
                                     <span class="col-12">{{$comentario->fecha_hora}}</span>
-                                    <button class="btn btn-info col-md-6">Contestar</button>
+
+                                    <!-- CONTESTAR comentario -->
+
+                                    <button class="btn btn-info col-md-6" id="contestarComentario">Contestar</button>
+                                    <!-- CONTESTAR comentario -->
+
+                                    <!-- Modal para CONTESTAR comentario -->
+                                    <div class="modal fade" id="modalContestarComentario" tabindex="-1" role="dialog"
+                                        aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLabel">Responder comentario
+                                                    </h5>
+                                                    <button type="button" class="close" data-dismiss="modal"
+                                                        aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+
+                                                    <form id="formCateegoria" action="{{ url('respuesta') }}"
+                                                        method="POST" class="col-md-12 was-validated"
+                                                        accept-charset="UTF-8" enctype="multipart/form-data">
+                                                        @csrf
+
+                                                        <div class="form-group">
+                                                            <label for="uname" class="w-100">Comentario:
+                                                                "<i>{{ $comentario->texto }}</i>"</label>
+                                                            <label for="uname">Respuesta:</label>
+                                                            <input type="text" class="form-control" id="tit"
+                                                                value="{{ old('texto') }}"
+                                                                placeholder="Escribe la respuesta al comentario"
+                                                                name="texto" required>
+                                                            <div class="valid-feedback">Válido.</div>
+                                                            <div class="invalid-feedback">Por favor, escribe la
+                                                                respuesta.</div>
+                                                        </div>
+                                                        <input type="hidden" name="leido" value="1">
+                                                        <input type="hidden" name="users_id"
+                                                            value="{{ Auth::user()->id }}">
+                                                        <input type="hidden" name="comentario_id"
+                                                            value="{{ $comentario->id }}">
+
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-danger"
+                                                        data-dismiss="modal">Cancelar</button>
+                                                    <button type="submit" class="btn btn-success">Responder</button>
+                                                </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Modal para CONTESTAR comentario -->
+
+
+
                                     <!-- Marcar como leído -->
-                                    <form id="formLeido" action="{{ url('comentario')}}/{{$comentario->id}}" method="POST" class="col-md-12"
-                                        accept-charset="UTF-8" enctype="multipart/form-data">
-                                        
+                                    <form id="formLeido" action="{{ url('comentario')}}/{{$comentario->id}}"
+                                        method="POST" class="col-md-12" accept-charset="UTF-8"
+                                        enctype="multipart/form-data">
+
                                         <input type="hidden" name="_token" id="token" value="{{ csrf_token() }}">
 
                                         {{ method_field('PUT') }}
@@ -698,8 +860,9 @@
                                         class="btn btn-warning col-md-6">Ver artículo</a>
 
                                     <!-- Borrar comentario -->
-                                    <form id="formLeido" action="{{ url('comentario')}}/{{$comentario->id}}" method="POST" class="col-md-12"
-                                        accept-charset="UTF-8" enctype="multipart/form-data">
+                                    <form id="formLeido" action="{{ url('comentario')}}/{{$comentario->id}}"
+                                        method="POST" class="col-md-12" accept-charset="UTF-8"
+                                        enctype="multipart/form-data">
                                         <input type="hidden" name="_token" id="token" value="{{ csrf_token() }}">
 
                                         {{ method_field('DELETE') }}
@@ -721,6 +884,25 @@
                         @endforeach
 
                         @endisset
+
+                        @php
+                        $totalSinLeer = DB::table('comentario')->where('leido', 0)->count();
+                        @endphp
+
+                        @if($totalSinLeer == 0)
+
+                        <div class="container-fluid bg-light">
+                            <div class="row h1 p-5 justify-content-center">
+                                <p class="text-center">No hay comentarios sin leer</p>
+                                <br /><br /><br /><br />
+                            </div>
+
+
+                        </div>
+                        @endif
+
+
+
 
                     </div>
 

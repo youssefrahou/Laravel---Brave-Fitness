@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Comentario;
+use App\Respuesta_comentario;
 use Illuminate\Http\Request;
 
 class Respuesta_comentarioController extends Controller
@@ -34,7 +36,19 @@ class Respuesta_comentarioController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $respuesta = $request->all();
+        $respuesta['fecha_hora'] = now();
+
+        Respuesta_comentario::create($respuesta); //respondo el comentario
+/*
+ESTO HACE QUE CUANDO CONTESTE UNA TERCERA PERSONA TAMVIEN SE MARQ COMO LEID
+        $comentario = Comentario::find($respuesta['comentario_id']);
+        $comentario->leido = 1;
+        $comentario->save(); //marco como leido el comentario que ha contestado
+        */ 
+
+        //Redirigir a la url anterior
+        return redirect()->back()->with('mensaje', 'La respuesta se ha publicado correctamente!');
     }
 
     /**

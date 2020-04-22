@@ -45,7 +45,7 @@ class ComentarioController extends Controller
         $comentario->save();
 
         //Redirigir a la url anterior
-        return redirect()->back();
+        return redirect()->back()->with('mensaje', 'Tu comentario se ha publicado correctamente!');
     }
 
     /**
