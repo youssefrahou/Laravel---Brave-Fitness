@@ -38,6 +38,11 @@ $(document).ready(function() {
 
     });
 
+    $('#contestarComentario2').click(function() {
+
+        $("#modalContestarComentario2").modal("show");
+
+    });
 
 
     $("#verComentarios").click(function() {
@@ -55,6 +60,13 @@ $(document).ready(function() {
         $("#formLeidoMarc").submit();
         $("#formRespuestaLeid").submit();
     });
+
+    $("#marcarYResponder2").click(function() {
+        $("#formMarcarYcontestar2").submit();
+        $("#formuMmarcarYResponder2").submit();
+    });
+
+
 
 
 

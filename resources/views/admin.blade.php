@@ -597,13 +597,18 @@
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-danger"
                                                         data-dismiss="modal">Cancelar</button>
-                                                    <button type="button" id="enviarYmarcar" class="btn btn-success">Responder</button>
+                                                    <input type="submit" class="btn btn-success col-md-6"
+                                                        style="display:none" value="M">
+
+                                                    <button type="button" id="enviarYmarcar"
+                                                        class="btn btn-success">Responder</button>
                                                 </div>
                                                 </form>
 
                                                 <!-- Marcar como leído -->
-                                                <form id="formLeidoMarc" action="{{ url('comentario')}}/{{$comentario->id}}"
-                                                    method="POST" class="col-md-12" accept-charset="UTF-8"
+                                                <form id="formLeidoMarc"
+                                                    action="{{ url('comentario')}}/{{$comentario->id}}" method="POST"
+                                                    class="col-md-12" accept-charset="UTF-8"
                                                     enctype="multipart/form-data">
 
                                                     <input type="hidden" name="_token" id="token"
@@ -786,11 +791,11 @@
 
                                     <!-- CONTESTAR comentario -->
 
-                                    <button class="btn btn-info col-md-6" id="contestarComentario">Contestar</button>
+                                    <button class="btn btn-info col-md-6" id="contestarComentario2">Contestar</button>
                                     <!-- CONTESTAR comentario -->
 
                                     <!-- Modal para CONTESTAR comentario -->
-                                    <div class="modal fade" id="modalContestarComentario" tabindex="-1" role="dialog"
+                                    <div class="modal fade" id="modalContestarComentario2" tabindex="-1" role="dialog"
                                         aria-labelledby="exampleModalLabel" aria-hidden="true">
                                         <div class="modal-dialog" role="document">
                                             <div class="modal-content">
@@ -804,7 +809,7 @@
                                                 </div>
                                                 <div class="modal-body">
 
-                                                    <form id="formCateegoria" action="{{ url('respuesta') }}"
+                                                    <form id="formMarcarYcontestar2" action="{{ url('respuesta') }}"
                                                         method="POST" class="col-md-12 was-validated"
                                                         accept-charset="UTF-8" enctype="multipart/form-data">
                                                         @csrf
@@ -831,7 +836,8 @@
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-danger"
                                                         data-dismiss="modal">Cancelar</button>
-                                                    <button type="submit" class="btn btn-success">Responder</button>
+                                                    <button type="button" id="marcarYResponder2"
+                                                        class="btn btn-success">Responder</button>
                                                 </div>
                                                 </form>
                                             </div>
@@ -842,9 +848,9 @@
 
 
                                     <!-- Marcar como leído -->
-                                    <form id="formLeido" action="{{ url('comentario')}}/{{$comentario->id}}"
-                                        method="POST" class="col-md-12" accept-charset="UTF-8"
-                                        enctype="multipart/form-data">
+                                    <form id="formuMmarcarYResponder2"
+                                        action="{{ url('comentario')}}/{{$comentario->id}}" method="POST"
+                                        class="col-md-12" accept-charset="UTF-8" enctype="multipart/form-data">
 
                                         <input type="hidden" name="_token" id="token" value="{{ csrf_token() }}">
 
