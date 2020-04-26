@@ -46,16 +46,10 @@ Route::get('articulo/{id}', function($id){
 
 
 
-Route::get('areapersonal', function(){
+Route::get('areaPersonal', function(){
 
-    $usuarios = App\User::all();
-    $totalUsuarios = DB::table('users')->count();
-    $totalArticulos = DB::table('articulo')->count();
-    $totalConsejos = DB::table('consejo')->count();
-    $totalComentarios = DB::table('comentario')->count();
-    $totalMensajes = DB::table('mensaje')->count();
 
-    return view('plantillas.areapersonal', compact('usuarios', 'totalUsuarios', 'totalArticulos', 'totalConsejos', 'totalComentarios', 'totalMensajes'));
+    return view('plantillas.admin');
     
 });
 
