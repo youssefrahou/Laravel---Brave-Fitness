@@ -9,11 +9,32 @@ Blave Fitness
 @if (!Auth::guest() && Auth::user()->hasRole('admin'))
 
 <div class="row justify-content-center bg-info col-12 ml-0">
-    <div class="row">
 
-        <a class="btn btn-danger text-white" href="{{ url('/admin') }}">Pulse para acceder al panel del
+    <div class="row">
+        <a class="btn btn-warning text-white" href="{{ url('/admin') }}">Pulse para acceder al panel del
             administrador</a>
 
+        <a href="{{ route('logout') }}" class="btn btn-danger text-white"
+            onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+            Cerrar sesión
+        </a>
+
+        <!-- Form para cerrar sesion -->
+        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+            {{ csrf_field() }}
+        </form>
+
+    </div>
+
+</div>
+
+@elseif (!Auth::guest() && Auth::user()->hasRole('user'))
+
+<div class="row justify-content-center bg-info col-12 ml-0">
+
+    <div class="row">
+        <a class="btn btn-danger text-white" href="{{ url('/areaPersonal') }}">Pulse para acceder al panel de
+            usuario</a>
     </div>
 
 </div>
