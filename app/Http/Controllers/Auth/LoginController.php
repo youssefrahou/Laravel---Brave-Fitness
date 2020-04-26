@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use App\Role;
 
 
 
@@ -61,9 +62,17 @@ class LoginController extends Controller
     }
 
 
-
+    /*
     protected function authenticated(Request $request, $user)
     {
         return redirect()->intended('/'); //ES PARA QUE AL INICIAR SESIÓN VUELVA ATRÁS
+    }*/
+
+
+    protected function authenticated(Request $request, $user)
+    {
+
+        return redirect()->intended('/'); //ES PARA QUE AL INICIAR SESIÓN VUELVA ATRÁS
+
     }
 }

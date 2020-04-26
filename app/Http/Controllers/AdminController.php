@@ -17,8 +17,11 @@ class AdminController extends Controller
         $this->middleware('auth');
     }
 
-    public function inicio()
+    public function inicio(Request $request)
     {
+
+        $request->user()->authorizeRoles(['admin']);
+
         $usuarios = User::all();
         $totalUsuarios = DB::table('users')->count();
         $totalArticulos = DB::table('articulo')->count();

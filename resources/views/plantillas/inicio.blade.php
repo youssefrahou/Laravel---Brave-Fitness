@@ -33,10 +33,10 @@
 
 </head>
 
-<body>
+<body class="container-fluid">
 
     <!--/top-header-content-->
-    <section class="w3l-top-header-content">
+    <section>
         <div>
 
             <!--/nav-->
