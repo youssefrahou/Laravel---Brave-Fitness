@@ -8,7 +8,7 @@
     <meta http-equiv="Pragma" content="no-cache">
 
     <title>
-    @yield('titulo')
+        @yield('titulo')
     </title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -29,11 +29,75 @@
 
     @yield('head')
 
-    
+
+    <style>
+        /*
+        CSS para barra lateral redes sociales
+        */
+        .sticky-container {
+            padding: 0px;
+            margin: 0px;
+            position: fixed;
+            right: -130px;
+            top: 230px;
+            width: 210px;
+            z-index: 1100;
+        }
+
+        .sticky li {
+            list-style-type: none;
+            color: #efefef;
+            height: 43px;
+            padding: 0px;
+            margin: 0px 0px 1px 0px;
+            -webkit-transition: all 0.25s ease-in-out;
+            -moz-transition: all 0.25s ease-in-out;
+            -o-transition: all 0.25s ease-in-out;
+            transition: all 0.25s ease-in-out;
+            cursor: pointer;
+        }
+
+        .sticky li:hover {
+            margin-left: -115px;
+        }
+
+        .sticky li img {
+            float: left;
+            margin: 5px 4px;
+            margin-right: 5px;
+        }
+
+        .sticky li p {
+            
+            padding-top: 5px;
+            margin: 0px;
+            line-height: 16px;
+            font-size: 11px;
+            background-color: #efefef;
+            border-radius: 10px;
+        }
+
+        .fondoBlanco {
+            background-color: white;
+        }
+
+        .sticky li p a {
+            
+            text-decoration: none;
+            color: #2C3539;
+        }
+
+        .sticky li p a:hover {
+            text-decoration: underline;
+        }
+    </style>
+
+
 
 </head>
 
 <body class="container-fluid">
+
 
     <!--/top-header-content-->
     <section>
@@ -42,7 +106,8 @@
             <!--/nav-->
             <nav class="navbar navbar-expand-md navbar-dark bg-info ">
                 <!-- fixed-top para FIJARLOOOOO-->
-                <a class="navbar-brand col-3 col-md-1" href="{{ url('/') }}"><img src="{{asset('img/logo.png')}}" class="img-fluid" /></a>
+                <a class="navbar-brand col-3 col-md-1" href="{{ url('/') }}"><img src="{{asset('img/logo.png')}}"
+                        class="img-fluid" /></a>
                 <button class="navbar-toggler bg-info" type="button" data-toggle="collapse" data-target="#menu">
                     <span class="navbar-toggler-icon text-white"></span>
                 </button>
@@ -78,10 +143,12 @@
                     <ul class="nav ml-auto">
 
                         <li class="nav-item">
-                            <a class="nav-link active" href="https://www.instagram.com/youssefrahou0/"><i class="fa fa-instagram text-white"></i></a>
+                            <a class="nav-link active" href="https://www.instagram.com/youssefrahou0/"><i
+                                    class="fa fa-instagram text-white"></i></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="https://www.facebook.com/youssefra333"><i class="fa fa-facebook text-white"></i></a>
+                            <a class="nav-link" href="https://www.facebook.com/youssefra333"><i
+                                    class="fa fa-facebook text-white"></i></a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#"><i class="fa fa-twitter text-white"></i></a>
@@ -99,10 +166,10 @@
         </div>
 
     </section>
-   
 
-   @yield('body')
- 
+
+    @yield('body')
+
 
 
     <section class="w3l-footer-22-main">

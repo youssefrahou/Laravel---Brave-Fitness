@@ -37,6 +37,39 @@
         </div>-->
 
 
+<!-- Botones redes sociales -->
+        <div class="sticky-container">
+            <ul class="sticky">
+                <li class="d-none d-sm-none d-md-block">
+                    <img src="{{asset('images/facebook-circle.png')}}" width="32" height="32">
+                    <p><a href="https://www.facebook.com/braveFitness" target="_blank">Síguenos en<br>Facebook</a></p>
+                </li>
+
+                <li class="d-none d-sm-none d-md-block">
+                    <img src="{{ asset('images/twitter-circle.png') }}" width="32" height="32">
+                    <p><a href="https://twitter.com/noprog" target="_blank">Síguenos en<br>Twitter</a></p>
+                </li>
+
+                <li class="d-none d-sm-none d-md-block">
+                    <img src="{{ asset('images/instagram-circle.png') }}" width="32" height="32">
+                    <p><a href="http://www.youtube.com/programacionnet" target="_blank">Síguenos en<br>Instagram</a></p>
+                </li>
+
+                <li class="d-none d-sm-none d-md-block">
+                    <img src="{{ asset('images/youtube-circle.png') }}" width="32" height="32">
+                    <p><a href="http://www.youtube.com/programacionnet" target="_blank">Suscríbete en<br>Youtube</a></p>
+                </li>
+
+                <li class="d-block d-sm-block d-md-none">
+                    <img src="{{ asset('images/whatsapp-circle.png') }}" width="32" height="32">
+                    <p><a href="http://www.youtube.com/programacionnet" target="_blank">Escríbenos en<br>Whatsapp</a></p>
+                </li>
+
+            </ul>
+        </div>
+<!-- Fin botones redes sociales -->
+
+
         <div class="row col-md-8">
             <div class="row col-12 h2 m-3 text-info">
                 <p class="text-center">{!! $articulo->titulo !!}</p>
