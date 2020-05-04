@@ -31,6 +31,10 @@
 
 
     <style>
+        #mostrarComments {
+            cursor: pointer;
+        }
+
         /*
         CSS para barra lateral redes sociales
         */
@@ -140,7 +144,7 @@
                     </ul>
 
 
-                    <ul class="nav ml-auto">
+                    <ul class="nav ml-auto justify-content-center">
 
                         <li class="nav-item">
                             <a class="nav-link active" href="https://www.instagram.com/youssefrahou0/"><i

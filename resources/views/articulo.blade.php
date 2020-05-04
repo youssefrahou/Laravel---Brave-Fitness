@@ -22,10 +22,10 @@
 @isset ( $articulo->titulo )
 <div class="container-fluid bg-light p-3">
 
-    <div class="row col-md-6">
+    <div class="row col-md-6 bg-gray">
         <p>
             <a href="{{ url('/') }}"> Inicio </a> <span>> </span>
-            <a href="{{ url('/articulos') }}">Articulos </a> <span>> </span> <span>{{ $articulo->titulo }} </span>
+            <a href="{{ url('/articulos') }}">Artículos </a> <span>> </span> <span>{!! $articulo->titulo !!} </span>
         </p>
 
 
@@ -37,7 +37,7 @@
         </div>-->
 
 
-<!-- Botones redes sociales -->
+        <!-- Botones redes sociales -->
         <div class="sticky-container">
             <ul class="sticky">
                 <li class="d-none d-sm-none d-md-block">
@@ -62,12 +62,13 @@
 
                 <li class="d-block d-sm-block d-md-none">
                     <img src="{{ asset('images/whatsapp-circle.png') }}" width="32" height="32">
-                    <p><a href="http://www.youtube.com/programacionnet" target="_blank">Escríbenos en<br>Whatsapp</a></p>
+                    <p><a href="http://www.youtube.com/programacionnet" target="_blank">Escríbenos en<br>Whatsapp</a>
+                    </p>
                 </li>
 
             </ul>
         </div>
-<!-- Fin botones redes sociales -->
+        <!-- Fin botones redes sociales -->
 
 
         <div class="row col-md-8">
@@ -99,28 +100,22 @@
 
         <div class="row col-12 mt-5 justify-content-center">
 
-            <div class="row col-12">
 
-                <div class="row col-12 p-4 bg-info justify-content-center" id="mostrarComments">
+            <div class="row col-12 p-4 bg-info justify-content-center" id="mostrarComments">
 
-                    <div class="row col-1 justify-content-start text-white">
-
-                        <i class="far fa-comments fa-2x"></i>
-
-                    </div>
-
-                    <div class="row col-10 justify-content-center text-white">
-                        <h3 class="text-center">Comentarios</h3>
-                    </div>
-
-                    <div class="row col-1 justify-content-end text-white">
-
-                        <i class="fas fa-arrow-down fa-2x" id="bajarSubir"></i>
-
-                    </div>
-
-
+                <div class="row col-1 justify-content-start text-white d-none d-sm-none d-md-block">
+                    <i class="far fa-comments fa-2x"></i>
                 </div>
+
+                <div class="row col-10 col-md-10 justify-content-center text-white">
+                    <h3 class="text-center">Comentarios</h3>
+                </div>
+
+                <div class="row col-2 col-md-1 justify-content-end text-white">
+                    <i class="fas fa-arrow-down fa-2x" id="bajarSubir"></i>
+                </div>
+
+
             </div>
 
             <div class="row col-lg-10 justify-content-center" id="comments" style="display:none">
@@ -183,7 +178,7 @@
                                 sesión</a></button>
 
                         @else
-                        <span id="comentar">Comentar</span>
+                        <button class="btn btn-primary" id="comentar">Comentar</button>
 
 
                         <div class="row">
