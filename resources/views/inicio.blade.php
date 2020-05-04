@@ -5,7 +5,6 @@ Blave Fitness
 @stop
 
 @section('body')
-
 @if (!Auth::guest() && Auth::user()->hasRole('admin'))
 
 <div class="row justify-content-center bg-info col-12 ml-0">

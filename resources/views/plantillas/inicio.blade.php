@@ -68,7 +68,7 @@
         }
 
         .sticky li p {
-            
+
             padding-top: 5px;
             margin: 0px;
             line-height: 16px;
@@ -82,7 +82,7 @@
         }
 
         .sticky li p a {
-            
+
             text-decoration: none;
             color: #2C3539;
         }
@@ -96,7 +96,7 @@
 
 </head>
 
-<body class="container-fluid">
+<body>
 
 
     <!--/top-header-content-->
@@ -104,7 +104,7 @@
         <div>
 
             <!--/nav-->
-            <nav class="navbar navbar-expand-md navbar-dark bg-info ">
+            <nav class="navbar navbar-expand-md navbar-dark bg-info">
                 <!-- fixed-top para FIJARLOOOOO-->
                 <a class="navbar-brand col-3 col-md-1" href="{{ url('/') }}"><img src="{{asset('img/logo.png')}}"
                         class="img-fluid" /></a>
@@ -171,7 +171,6 @@
     @yield('body')
 
 
-
     <section class="w3l-footer-22-main">
         <!-- footer-22 -->
         <div class="footer-hny py-5">
@@ -188,15 +187,15 @@
                         <h6>Menú</h6>
                         <div class="footer-hny-ul">
                             <ul>
-                                <li><a href="{{ url('/') }}">Inicio</a></li>
-                                <li><a href="{{ url('/articulos') }}">Artículos</a></li>
-                                <li><a href="{{ url('/planes') }}">Planes</a></li>
-                                <li><a href="{{ url('/sobreNosotros') }}">Sobre nosotros</a></li>
+                                <li><a href="index.html">Inicio</a></li>
+                                <li><a href="about.html">Artículos</a></li>
+                                <li><a href="services.html">Planes</a></li>
+                                <li><a href="contact.html">Sobre nosotros</a></li>
                             </ul>
                             <ul>
-                                <li><a href="{{ url('/politicaPrivacidad') }}">Política de privacidad</a></li>
-                                <li><a href="{{ url('/terminosCondiciones') }}">Términos y condiciones</a></li>
-                                <li><a href="{{ url('/ayuda') }}">Ayuda</a></li>
+                                <li><a href="#">Política de privacidad</a></li>
+                                <li><a href="#">Términos y condiciones</a></li>
+                                <li><a href="contact.html">Ayuda</a></li>
                             </ul>
                         </div>
                     </div>
@@ -234,38 +233,35 @@
                 </div>
             </div>
         </div>
-        </div>
         <!-- //titels-5 -->
         <!-- move top -->
-        <button onclick="topFunction()" id="movetop" title="Subir">
+        <button onclick="topFunction()" id="movetop" title="Go to top">
             <span class="fa fa-long-arrow-up"></span>
         </button>
         <script>
             // When the user scrolls down 20px from the top of the document, show the button
-            window.onscroll = function () {
-                scrollFunction()
-            };
+                window.onscroll = function () {
+                    scrollFunction()
+                };
 
-            function scrollFunction() {
-                if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-                    document.getElementById("movetop").style.display = "block";
-                } else {
-                    document.getElementById("movetop").style.display = "none";
+                function scrollFunction() {
+                    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                        document.getElementById("movetop").style.display = "block";
+                    } else {
+                        document.getElementById("movetop").style.display = "none";
+                    }
                 }
-            }
 
-            // When the user clicks on the button, scroll to the top of the document
-            function topFunction() {
-                document.body.scrollTop = 0;
-                document.documentElement.scrollTop = 0;
-            }
+                // When the user clicks on the button, scroll to the top of the document
+                function topFunction() {
+                    document.body.scrollTop = 0;
+                    document.documentElement.scrollTop = 0;
+                }
         </script>
         <!-- /move top -->
 
     </section>
 
-
-    </div>
 </body>
 
 </html>
