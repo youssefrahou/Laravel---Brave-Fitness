@@ -54,10 +54,21 @@
         <!-- Main Sidebar Container -->
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
+            @if (!Auth::guest() && Auth::user()->hasRole('user'))
+            
+            <a href="{{ url('/areaPersonal') }}" class="brand-link">
+                <img src="dist/img/logo.png" alt="Logo Brave Fitness" class="brand-image img-circle elevation-3">
+                <span class="brand-text font-weight-light">BRAVE FITNESS</span>
+            </a>
+            
+            @else
+
             <a href="{{ url('/admin') }}" class="brand-link">
                 <img src="dist/img/logo.png" alt="Logo Brave Fitness" class="brand-image img-circle elevation-3">
                 <span class="brand-text font-weight-light">BRAVE FITNESS</span>
             </a>
+
+            @endif
 
             <!-- Sidebar -->
             <div class="sidebar">
@@ -67,7 +78,17 @@
                         <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
                     </div>
                     <div class="info">
+
+                        @if (!Auth::guest() && Auth::user()->hasRole('admin'))
+
                         <a href="{{ url('/admin') }}" class="d-block">{{ Auth::user()->name }}</a>
+
+                        @else 
+
+                        <a href="{{ url('/areaPersonal') }}" class="d-block">{{ Auth::user()->name }}</a>
+
+                        @endif
+
                     </div>
                 </div>
 

@@ -49,7 +49,7 @@ Route::get('articulo/{id}', function($id){
 Route::get('areaPersonal', function(){
 
 
-    return view('plantillas.admin');
+    return view('areaPersonal');
     
 });
 
