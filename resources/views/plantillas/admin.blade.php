@@ -58,7 +58,7 @@
             
             <a href="{{ url('/areaPersonal') }}" class="brand-link">
                 <img src="dist/img/logo.png" alt="Logo Brave Fitness" class="brand-image img-circle elevation-3">
-                <span class="brand-text font-weight-light">BRAVE FITNESS</span>
+                <span class="brand-text font-weight-light"><b>BRAVE</b> <i>FITNESS</i></span>
             </a>
             
             @else
@@ -139,14 +139,14 @@
 
                         </div>
 
-                        <div class="col-sm-6">
+                        <div class="col-12">
 
                             @if (!Auth::guest() && Auth::user()->hasRole('admin'))
-                            <h1 class="m-0 text-dark">Zona administrador</h1>
+                            <h1 class="m-0 text-info text-center">ZONA ADMINISTRADOR</h1>
                             @endif
 
                             @if (!Auth::guest() && Auth::user()->hasRole('user'))
-                            <h1 class="m-0 text-dark">Área personal</h1>
+                            <h1 class="m-0 text-info text-center">ÁREA PERSONAL</h1>
                             @endif
 
                             

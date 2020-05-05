@@ -11,25 +11,15 @@
         <a href="#" class="nav-link">
             <i class="nav-icon fas fa-copy"></i>
             <p>
-                Usuarios
-                <i class="fas fa-angle-left right"></i>
-                <span class="badge badge-info right"></span>
+                Inicio
             </p>
         </a>
-        <ul class="nav nav-treeview">
-            <li class="nav-item" id="verUsuarios">
-                <span class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Ver usuarios</p>
-                </span>
-            </li>
-        </ul>
     </li>
     <li class="nav-item has-treeview">
         <a href="#" class="nav-link">
             <i class="nav-icon fas fa-chart-pie"></i>
             <p>
-                Articulos
+                Progreso
                 <i class="fas fa-angle-left right"></i>
                 <span class="badge badge-info right"></span>
             </p>
@@ -38,18 +28,19 @@
             <li class="nav-item" id="verArticulos">
                 <span class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
-                    <p>Ver artículos</p>
+                    <p>Mi progreso</p>
                 </span>
             </li>
             <li class="nav-item" id="escribirArticulo">
                 <span class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
-                    <p>Escribir artículo</p>
+                    <p>Comparación</p>
                 </span>
             </li>
 
         </ul>
     </li>
+    <!--
     <li class="nav-item has-treeview">
         <a href="#" class="nav-link">
             <i class="nav-icon fas fa-tree"></i>
@@ -125,6 +116,7 @@
 
         </ul>
     </li>
+-->
 
 </ul>
 
@@ -135,11 +127,11 @@
 
 <div class="row">
 
-    <!-- Mensaje de bienvenida -->
+    <!-- Mensaje de bienvenida
     <div class="table-responsive justify-content-center" id="bienvenida">
-        <p class="h3">Bienvenido a Brave Fitness. Elige una opción en el menú lateral. </p>
+        <p class="h3 text-center">Bienvenido a Brave Fitness. Elige una opción en el menú lateral. </p>
     </div>
-    <!-- Mensaje de bienvenida -->
+    Mensaje de bienvenida -->
 
 
     <!-- Tabla usuarios -->
