@@ -182,7 +182,6 @@
 
 
                         <div class="row">
-
                             <!-- Modal para publicar comentario -->
                             <div class="row">
                                 <div class="modal fade" id="modalComentar" tabindex="-1" role="dialog"

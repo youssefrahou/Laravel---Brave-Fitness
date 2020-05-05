@@ -119,7 +119,16 @@
                         </div>
 
                         <div class="col-sm-6">
+
+                            @if (!Auth::guest() && Auth::user()->hasRole('admin'))
                             <h1 class="m-0 text-dark">Zona administrador</h1>
+                            @endif
+
+                            @if (!Auth::guest() && Auth::user()->hasRole('user'))
+                            <h1 class="m-0 text-dark">Área personal</h1>
+                            @endif
+
+                            
                         </div><!-- /.col -->
 
                     </div><!-- /.row -->
