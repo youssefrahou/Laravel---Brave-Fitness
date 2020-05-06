@@ -74,4 +74,11 @@ class RegisterController extends Controller
         $user->roles()->attach(Role::where('nombre', 'user')->first());
         return $user;
     }
+
+
+    public function showRegistrationForm() {
+        return view('auth.registro');
+    }
+
+
 }
