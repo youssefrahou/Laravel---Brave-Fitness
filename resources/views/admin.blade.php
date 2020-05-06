@@ -137,7 +137,7 @@
 
     <!-- Mensaje de bienvenida -->
     <div class="table-responsive justify-content-center" id="bienvenida">
-        <p class="h3">Bienvenido a Brave Fitness. Elige una opción en el menú lateral. </p>
+        <p class="h3 text-center">Bienvenido a Brave Fitness. Elige una opción en el menú lateral. </p>
     </div>
     <!-- Mensaje de bienvenida -->
 
