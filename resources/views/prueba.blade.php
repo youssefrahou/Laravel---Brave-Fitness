@@ -40,8 +40,8 @@ Registro - Blave Fitness
         margin-top: 15%;
         margin-bottom: 5%;
         width: 25%;
-        -webkit-animation: mover 2s infinite alternate;
-        animation: mover 1s infinite alternate;
+        -webkit-animation: mover 1s infinite alternate;
+        animation: mover 0.5s infinite alternate;
     }
 
     @-webkit-keyframes mover {
@@ -124,6 +124,10 @@ Registro - Blave Fitness
         margin-bottom: -15%;
         color: #495057;
     }
+
+    /*altura barra de progreso de registro*/
+    .progress {height: 30px;}
+
 </style>
 
 <style type="text/css">
@@ -157,7 +161,7 @@ Registro - Blave Fitness
                             </div>
 
                             <div class="progress mb-3">
-                                <div class="progress-bar progress-bar-info" role="progressbar" aria-valuemin="0"
+                                <div class="progress-bar progress-bar-striped progress-bar-animated bg-info" role="progressbar" aria-valuemin="0"
                                     aria-valuemax="100">
                                 </div>
                             </div>
@@ -215,31 +219,59 @@ Registro - Blave Fitness
                                         </div>
                                     </div>
 
-
-
-
-
-
                                     <input type="button" class="next-form btn btn-info" value="Siguiente" />
                                 </fieldset>
 
 
 
                                 <fieldset>
-                                    <h2> Step 2: Add Personal Details</h2>
-                                    <div class="form-group">
-                                        <label for="first_name">First Name</label>
-                                        <input type="text" class="form-control" name="first_name" id="first_name"
-                                            placeholder="First Name">
+                                    <h2> Paso 2: Condición física</h2>
+                                    <div class="row">
+
+                                        <div class="col-md-6">
+
+                                            <div class="row">
+                                                <div class="col-6">
+                                                    <div class="form-group">
+                                                        <label for="password">Peso</label>
+                                                        <input type="text" class="form-control" name="app" id="password"
+                                                            placeholder="Peso">
+                                                    </div>
+                                                </div>
+                                                <div class="col-6">
+                                                    <div class="form-group">
+                                                        <label for="password">Altura (en cm)</label>
+                                                        <input type="text" class="form-control" name="app" id="password"
+                                                            placeholder="Altura (en cm)">
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                        <div class="col-md-6">
+
+                                            <div class="row">
+                                                
+                                                <div class="col-12">
+                                                    <div class="form-group">
+                                                        <label for="password">Lesión</label>
+                                                        <input type="text" class="form-control" name="app" id="password"
+                                                            placeholder="Altura (en cm)">
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
                                     </div>
-                                    <div class="form-group">
-                                        <label for="last_name">Last Name</label>
-                                        <input type="text" class="form-control" name="last_name" id="last_name"
-                                            placeholder="Last Name">
-                                    </div>
+                                    
+
+
+                                    
                                     <input type="button" name="previous" class="previous-form btn btn-default"
-                                        value="Previous" />
-                                    <input type="button" name="next" class="next-form btn btn-info" value="Next" />
+                                        value="Anterior" />
+                                    <input type="button" name="next" class="next-form btn btn-info" value="Siguiente" />
                                 </fieldset>
                                 <fieldset>
                                     <h2> Step 2: Add Personal Details</h2>
