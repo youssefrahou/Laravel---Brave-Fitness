@@ -44,10 +44,12 @@ Route::get('articulo/{id}', function($id){
     
 });
 
+Route::get('prueba2', function(){
+    return view('prueba');
+});
 
 
 Route::get('areaPersonal', function(){
-
 
     return view('areaPersonal');
     
