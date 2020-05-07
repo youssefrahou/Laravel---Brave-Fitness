@@ -65,4 +65,13 @@ $(document).ready(function() {
 
 
 
+    $("#lesionado").click(function() {
+        if (this.checked) {
+            $("#mostrarLesionado").show();
+        }
+        if (!this.checked) {
+            $("#mostrarLesionado").hide();
+        }
+    });
+
 });

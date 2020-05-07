@@ -126,8 +126,78 @@ Registro - Blave Fitness
     }
 
     /*altura barra de progreso de registro*/
-    .progress {height: 30px;}
+    .progress {
+        height: 30px;
+    }
 
+    /*altura barra de progreso de registro*/
+
+
+    /*SWITCH DE LESION*/
+
+    .switch {
+        position: relative;
+        display: inline-block;
+        width: 60px;
+        height: 24px;
+    }
+
+    .switch input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+    }
+
+    .slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #ccc;
+        -webkit-transition: .4s;
+        transition: .4s;
+    }
+
+    .slider:before {
+        position: absolute;
+        content: "";
+        height: 18px;
+        width: 18px;
+        left: 4px;
+        bottom: 4px;
+        background-color: white;
+        -webkit-transition: .4s;
+        transition: .4s;
+    }
+
+    input:checked+.slider {
+        background-color: #2196F3;
+    }
+
+    input:focus+.slider {
+        box-shadow: 0 0 1px #2196F3;
+    }
+
+    input:checked+.slider:before {
+        -webkit-transform: translateX(26px);
+        -ms-transform: translateX(26px);
+        transform: translateX(26px);
+    }
+
+    /* Rounded sliders */
+    .slider.round {
+        border-radius: 34px;
+    }
+
+    .slider.round:before {
+        border-radius: 50%;
+    }
+
+
+
+    /*SWITCH DE LESION*/
 </style>
 
 <style type="text/css">
@@ -161,8 +231,8 @@ Registro - Blave Fitness
                             </div>
 
                             <div class="progress mb-3">
-                                <div class="progress-bar progress-bar-striped progress-bar-animated bg-info" role="progressbar" aria-valuemin="0"
-                                    aria-valuemax="100">
+                                <div class="progress-bar progress-bar-striped progress-bar-animated bg-info"
+                                    role="progressbar" aria-valuemin="0" aria-valuemax="100">
                                 </div>
                             </div>
 
@@ -203,14 +273,14 @@ Registro - Blave Fitness
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label for="password">Sexo</label>
-                                                        <br/>
+                                                        <br />
                                                         <select class="form-control" name="cars">
                                                             <option value="">Selecciona sexo</option>
                                                             <option value="hombre">Hombre</option>
                                                             <option value="mujer">Mujer</option>
                                                             <option value="otro">Otro</option>
                                                             <option value="noDecirlo">Prefiero no decirlo</option>
-                                                          </select>
+                                                        </select>
                                                     </div>
                                                 </div>
 
@@ -247,16 +317,11 @@ Registro - Blave Fitness
                                                 </div>
                                             </div>
 
-                                        </div>
-
-                                        <div class="col-md-6">
-
                                             <div class="row">
-                                                
-                                                <div class="col-12">
+                                                <div class="col-6">
                                                     <div class="form-group">
-                                                        <label for="password">Lesión</label>
-                                                        <input type="text" class="form-control" name="app" id="password"
+                                                        <label for="password">Fecha de nacimiento:</label>
+                                                        <input type="date" class="form-control" name="app" id="password"
                                                             placeholder="Altura (en cm)">
                                                     </div>
                                                 </div>
@@ -264,17 +329,44 @@ Registro - Blave Fitness
 
                                         </div>
 
+                                        <div class="col-md-6">
+
+                                            <div class="row">
+
+                                                <div class="col-12">
+                                                    <div class="form-group">
+                                                        <label>Estás lesionado? </label><br/>
+                                                        <label class="switch">
+                                                            <input type="checkbox" id="lesionado">
+                                                            <span class="slider round"></span>
+                                                        </label>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-12">
+                                                    <div class="form-group" id="mostrarLesionado" style="display: none">
+                                                        <label for="password">¿Cuál es la lesión?</label>
+                                                        <input type="text" class="form-control" name="app" id="password"
+                                                            placeholder="Altura (en cm)">
+                                                    </div>
+                                                </div>
+
+
+                                            </div>
+
+                                        </div>
+
                                     </div>
-                                    
 
 
-                                    
+
+
                                     <input type="button" name="previous" class="previous-form btn btn-default"
                                         value="Anterior" />
                                     <input type="button" name="next" class="next-form btn btn-info" value="Siguiente" />
                                 </fieldset>
                                 <fieldset>
-                                    <h2> Step 2: Add Personal Details</h2>
+                                    <h2> Paso 3: Perfil de usuario</h2>
                                     <div class="form-group">
                                         <label for="first_name">First Name</label>
                                         <input type="text" class="form-control" name="first_name" id="first_name"
