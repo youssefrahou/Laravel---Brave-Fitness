@@ -1,7 +1,7 @@
 @extends('plantillas.landingPage')
 
 @section('titulo')
-Registro - Blave Fitness
+Entrar - Blave Fitness
 @stop
 
 
@@ -207,6 +207,12 @@ Registro - Blave Fitness
     }
 </style>
 
+<!-- AVISO COOKIES -->
+<div class="alert alert-primary alert-dismissible mb-0">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    Utilizamos las cookies para ayudar a personalizar contenido, adaptar y medir los anuncios, y facilitar una experiencia más segura. Al hacer clic o navegar en el sitio, aceptas que recopilemos información dentro y fuera de Brave Fitness mediante las cookies. Consulta aquí más información, incluida la relativa a los controles disponibles: <a href="#">Política de cookies</a>
+  </div>
+
 
 <div class="container-fluid register">
     <div class="row">
@@ -217,7 +223,7 @@ Registro - Blave Fitness
                 <br /><br /><br />Si ya estás
                 registrado, inicia sesión</p>
 
-            <a href="{{url('login')}}" class="btn btn-primary">Iniciar sesión</a><br />
+            <span class="btn btn-primary" id="botInicSes" style="display: none">Iniciar sesión</span><br />
             <br />
         </div>
         <div class="col-md-9 register-right">
@@ -443,7 +449,7 @@ Registro - Blave Fitness
 
                                             </div>
                                         </div>
-                                        <input type="button" name="previous" class="previous-form btn btn-default"
+                                        <input type="button" class="btn btn-default"
                                         value="Atrás" id="atras"/>
                                         <input type="button" class="next-form btn btn-info" value="Siguiente" />
                                     </fieldset>

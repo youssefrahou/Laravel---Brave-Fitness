@@ -77,6 +77,7 @@ $(document).ready(function() {
     $("#botonRegistro").click(function() {
 
         $("#bienvenidaRegistro").hide();
+        $("#botInicSes").show();
         $("#FormRegistro").show();
 
         $(".register-form").css("padding", "14%");
@@ -85,10 +86,23 @@ $(document).ready(function() {
 
     });
 
+    $("#botInicSes").click(function() {
+
+        $("#bienvenidaRegistro").show();
+        $("#botInicSes").hide();
+        $("#FormRegistro").hide();
+
+        $(".register-form").css("padding", "3%");
+        $(".register-form").css("margin-top", "0%");
+
+
+    });
+
 
     $("#atras").click(function() {
 
         $("#bienvenidaRegistro").show();
+        $("#botInicSes").hide();
         $("#FormRegistro").hide();
 
         $(".register-form").css("padding", "3%");
