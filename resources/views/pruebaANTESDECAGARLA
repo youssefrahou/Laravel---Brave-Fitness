@@ -71,9 +71,8 @@ Registro - Blave Fitness
     }
 
     .register .register-form {
-        padding: 3%;
-        margin-top: 0%;
-        /*ESTABA EN 10*/
+        padding: 10%;
+        margin-top: 10%; /*ESTABA EN 10*/
     }
 
     .btnRegister {
@@ -226,107 +225,87 @@ Registro - Blave Fitness
                 <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
 
                     <div id="bienvenidaRegistro">
+                        <h3 class="register-heading">Brave fitness</h3>
                         <div class="row register-form">
                             <div class="container">
                                 <div class="row">
 
-                                    <div class="row col-md-6 p-5 justify-content-center d-none d-sm-none d-md-block"
-                                        style="border: 1px solid black;">
+                                    <div class="row col-md-6 p-5 justify-content-center" style="border: 1px solid black;">
 
-                                        <img src="{{asset('images/iphone.png')}}">
+                                    <img src="{{asset('images/iphone.png')}}">
 
                                     </div>
 
-                                    <div class="row col-md-6 p-5 justify-content-center"
-                                        style="border: 1px solid black;">
+                                    <div class="row col-md-6 p-5 justify-content-center" style="border: 1px solid black;">
 
 
-                                        <div class="row col-12 p-3" style="border: 1px solid black;">
+                                        <form method="POST" action="{{ route('login') }}">
+                                            @csrf
 
-                                            <form method="POST" action="{{ route('login') }}">
-                                                @csrf
+                                            <div class="form-group row">
+                                                <label for="email"
+                                                    class="col-md-4 col-form-label text-md-right">{{ __('Email') }}</label>
 
-                                                <h3 class="text-center">Brave Fitness</h3>
-                                                <div class="form-group row justify-content-center">
+                                                <div class="col-md-6">
+                                                    <input id="email" type="email"
+                                                        class="form-control @error('email') is-invalid @enderror"
+                                                        name="email" value="{{ old('email') }}" required
+                                                        autocomplete="email" autofocus>
 
-
-                                                    <div class="col-md-8">
-                                                        <input id="email" type="email"
-                                                            class="form-control @error('email') is-invalid @enderror"
-                                                            name="email" value="{{ old('email') }}" required
-                                                            autocomplete="email" autofocus placeholder="Email">
-
-                                                        @error('email')
-                                                        <span class="invalid-feedback" role="alert">
-                                                            <strong>{{ $message }}</strong>
-                                                        </span>
-                                                        @enderror
-                                                    </div>
+                                                    @error('email')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                    @enderror
                                                 </div>
-
-                                                <div class="form-group row justify-content-center">
-
-                                                    <div class="col-md-8">
-                                                        <input id="password" type="password"
-                                                            class="form-control @error('password') is-invalid @enderror"
-                                                            name="password" required autocomplete="current-password"
-                                                            placeholder="Contraseña">
-
-                                                        @error('password')
-                                                        <span class="invalid-feedback" role="alert">
-                                                            <strong>{{ $message }}</strong>
-                                                        </span>
-                                                        @enderror
-                                                    </div>
-                                                </div>
-
-                                                <div class="form-group row justify-content-center">
-                                                    <div class="col-md-8">
-                                                        <div class="form-check">
-                                                            <input class="form-check-input" type="checkbox"
-                                                                name="remember" id="remember"
-                                                                {{ old('remember') ? 'checked' : '' }}>
-
-                                                            <label class="form-check-label" for="remember">
-                                                                {{ __('Recuérdame') }}
-                                                            </label>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="form-group row mb-0 justify-content-center">
-                                                    <div class="col-md-8">
-                                                        <button type="submit" class="btn btn-primary col-md-12">
-                                                            {{ __('Iniciar sesión') }}
-                                                        </button>
-
-                                                        @if (Route::has('password.request'))
-                                                        <a class="btn btn-link" href="{{ route('password.request') }}">
-                                                            {{ __('¿Te has olvidado de la contraseña?') }}
-                                                        </a>
-                                                        @endif
-                                                    </div>
-                                                </div>
-                                            </form>
-
-
-                                        </div>
-                                        <div class="row col-12 p-3 mt-5 justify-content-center"
-                                            style="border: 1px solid black;">
-                                            <div class="row">
-                                                <p class="row text-center">¿No tienes una cuenta? <a
-                                                        href="#">Regístrate</a></p>
                                             </div>
 
-                                        </div>
+                                            <div class="form-group row">
+                                                <label for="password"
+                                                    class="col-md-4 col-form-label text-md-right">{{ __('Contraseña') }}</label>
 
-                                        <div class="row col-12 mt-2 justify-content-center">
-                                            <p class="row text-center">Descarga la aplicación</p>
-                                            <div class="row col-12 justify-content-center">
-                                                <img src="{{asset('images/playstore.png')}}" height="40px"
-                                                    width="134px">
+                                                <div class="col-md-6">
+                                                    <input id="password" type="password"
+                                                        class="form-control @error('password') is-invalid @enderror"
+                                                        name="password" required autocomplete="current-password">
+
+                                                    @error('password')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                    @enderror
+                                                </div>
                                             </div>
-                                        </div>
+
+                                            <div class="form-group row">
+                                                <div class="col-md-6 offset-md-4">
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="checkbox" name="remember"
+                                                            id="remember" {{ old('remember') ? 'checked' : '' }}>
+
+                                                        <label class="form-check-label" for="remember">
+                                                            {{ __('Recuérdame') }}
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row mb-0">
+                                                <div class="col-md-8 offset-md-4">
+                                                    <button type="submit" class="btn btn-primary">
+                                                        {{ __('Inicir sesión') }}
+                                                    </button>
+
+                                                    @if (Route::has('password.request'))
+                                                    <a class="btn btn-link" href="{{ route('password.request') }}">
+                                                        {{ __('¿Te has olvidado de la contraseña?') }}
+                                                    </a>
+                                                    @endif
+                                                </div>
+                                            </div>
+                                        </form>
+
+
 
 
 
@@ -337,14 +316,6 @@ Registro - Blave Fitness
 
 
                                     </div>
-
-
-
-
-
-
-
-
                                     <!--
                                     <div class="row col-12 text-center justify-content-center">
                                         <h3>Ya formas parte de Brave Fitness?</h3>
