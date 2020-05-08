@@ -212,7 +212,8 @@ Registro - Blave Fitness
         <div class="col-md-3 register-left">
             <img src="https://image.ibb.co/n7oTvU/logo_white.png" alt="" />
             <h3>Bienvenida a <br /><b>Brave Fitness</b></h3>
-            <p>Regístrate para acceder a todas las ventajas que te ofrece Brave Fitness. <br /><br /><br />Si ya estás
+            <p>Inicia sesión o regístrate para acceder a todas las ventajas que te ofrece Brave Fitness.
+                <br /><br /><br />Si ya estás
                 registrado, inicia sesión</p>
 
             <a href="{{url('login')}}" class="btn btn-primary">Iniciar sesión</a><br />
@@ -222,181 +223,315 @@ Registro - Blave Fitness
 
             <div class="tab-content" id="myTabContent">
                 <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                    <h3 class="register-heading">Regístrate, es gratis</h3>
-                    <div class="row register-form">
 
-                        <div class="container">
+                    <div id="bienvenidaRegistro">
+                        <h3 class="register-heading">Brave fitness</h3>
+                        <div class="row register-form">
+                            <div class="container">
+                                <div class="row">
 
-                            <div class="alert alert-danger" id="DivErrores" style="display: none">
-                            </div>
+                                    <div class="row col-md-6 p-5 justify-content-center" style="border: 1px solid black;">
 
-                            <div class="progress mb-3">
-                                <div class="progress-bar progress-bar-striped progress-bar-animated bg-info"
-                                    role="progressbar" aria-valuemin="0" aria-valuemax="100">
-                                </div>
-                            </div>
+                                    <img src="{{asset('images/iphone.png')}}">
 
-                            <form id="register_form" novalidate action="form_action.php" method="post">
-                                <fieldset>
-                                    <h2>Paso 1: Datos personales</h2>
-
-                                    <div class="row">
-                                        <div class="col-md-6">
-
-                                            <div class="form-group">
-                                                <label for="email">Nombre</label>
-                                                <input type="text" class="form-control" required id="nombre" name="name"
-                                                    placeholder="Nombre">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="password">Segundo apellido</label>
-                                                <input type="text" class="form-control" name="app" id="password"
-                                                    placeholder="Segundo apellido">
-                                            </div>
-
-                                        </div>
-                                        <div class="col-md-6">
-
-                                            <div class="form-group">
-                                                <label for="email">Primer apellido</label>
-                                                <input type="text" class="form-control" required id="ap" name="email"
-                                                    placeholder="Primer apellido">
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <label for="password">Edad</label>
-                                                        <input type="number" class="form-control" name="password"
-                                                            id="password" placeholder="Edad" min="7" max="110">
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <label for="password">Sexo</label>
-                                                        <br />
-                                                        <select class="form-control" name="cars">
-                                                            <option value="">Selecciona sexo</option>
-                                                            <option value="hombre">Hombre</option>
-                                                            <option value="mujer">Mujer</option>
-                                                            <option value="otro">Otro</option>
-                                                            <option value="noDecirlo">Prefiero no decirlo</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-
-                                        </div>
                                     </div>
 
-                                    <input type="button" class="next-form btn btn-info" value="Siguiente" />
-                                </fieldset>
+                                    <div class="row col-md-6 p-5 justify-content-center" style="border: 1px solid black;">
 
 
+                                        <form method="POST" action="{{ route('login') }}">
+                                            @csrf
 
-                                <fieldset>
-                                    <h2> Paso 2: Condición física</h2>
-                                    <div class="row">
+                                            <div class="form-group row">
+                                                <label for="email"
+                                                    class="col-md-4 col-form-label text-md-right">{{ __('Email') }}</label>
 
-                                        <div class="col-md-6">
+                                                <div class="col-md-6">
+                                                    <input id="email" type="email"
+                                                        class="form-control @error('email') is-invalid @enderror"
+                                                        name="email" value="{{ old('email') }}" required
+                                                        autocomplete="email" autofocus>
 
-                                            <div class="row">
-                                                <div class="col-6">
-                                                    <div class="form-group">
-                                                        <label for="password">Peso</label>
-                                                        <input type="text" class="form-control" name="app" id="password"
-                                                            placeholder="Peso">
-                                                    </div>
-                                                </div>
-                                                <div class="col-6">
-                                                    <div class="form-group">
-                                                        <label for="password">Altura (en cm)</label>
-                                                        <input type="text" class="form-control" name="app" id="password"
-                                                            placeholder="Altura (en cm)">
-                                                    </div>
+                                                    @error('email')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                    @enderror
                                                 </div>
                                             </div>
 
-                                            <div class="row">
-                                                <div class="col-6">
-                                                    <div class="form-group">
-                                                        <label for="password">Fecha de nacimiento:</label>
-                                                        <input type="date" class="form-control" name="app" id="password"
-                                                            placeholder="Altura (en cm)">
-                                                    </div>
+                                            <div class="form-group row">
+                                                <label for="password"
+                                                    class="col-md-4 col-form-label text-md-right">{{ __('Contraseña') }}</label>
+
+                                                <div class="col-md-6">
+                                                    <input id="password" type="password"
+                                                        class="form-control @error('password') is-invalid @enderror"
+                                                        name="password" required autocomplete="current-password">
+
+                                                    @error('password')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                    @enderror
                                                 </div>
                                             </div>
 
-                                        </div>
+                                            <div class="form-group row">
+                                                <div class="col-md-6 offset-md-4">
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="checkbox" name="remember"
+                                                            id="remember" {{ old('remember') ? 'checked' : '' }}>
 
-                                        <div class="col-md-6">
-
-                                            <div class="row">
-
-                                                <div class="col-12">
-                                                    <div class="form-group">
-                                                        <label>Estás lesionado? </label><br/>
-                                                        <label class="switch">
-                                                            <input type="checkbox" id="lesionado">
-                                                            <span class="slider round"></span>
+                                                        <label class="form-check-label" for="remember">
+                                                            {{ __('Recuérdame') }}
                                                         </label>
                                                     </div>
                                                 </div>
+                                            </div>
 
-                                                <div class="col-12">
-                                                    <div class="form-group" id="mostrarLesionado" style="display: none">
-                                                        <label for="password">¿Cuál es la lesión?</label>
-                                                        <input type="text" class="form-control" name="app" id="password"
-                                                            placeholder="Altura (en cm)">
+                                            <div class="form-group row mb-0">
+                                                <div class="col-md-8 offset-md-4">
+                                                    <button type="submit" class="btn btn-primary">
+                                                        {{ __('Inicir sesión') }}
+                                                    </button>
+
+                                                    @if (Route::has('password.request'))
+                                                    <a class="btn btn-link" href="{{ route('password.request') }}">
+                                                        {{ __('¿Te has olvidado de la contraseña?') }}
+                                                    </a>
+                                                    @endif
+                                                </div>
+                                            </div>
+                                        </form>
+
+
+
+
+
+
+
+
+
+
+
+                                    </div>
+                                    <!--
+                                    <div class="row col-12 text-center justify-content-center">
+                                        <h3>Ya formas parte de Brave Fitness?</h3>
+                                    </div>
+                                    <div class="row col-12 justify-content-center">
+                                        <button type="button" class="btn btn-primary">Iniciar sesión</button>
+                                    </div>
+
+                                    <div class="row col-12">
+                                        <br/><br/>
+                                    </div>
+
+                                    <div class="row col-12 text-center justify-content-center">
+                                        <h3>¿Eres nuevo?</h3>
+                                    </div>
+                                    <div class="row col-12 justify-content-center">
+                                        <button type="button" class="btn btn-info">Regístrate</button>
+                                    </div>
+                                 -->
+
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+
+
+
+
+
+
+
+
+                    <div id="FormRegistro" style="display: none">
+                        <h3 class="register-heading">Regístrate, es gratis</h3>
+                        <div class="row register-form">
+
+                            <div class="container">
+
+                                <div class="alert alert-danger" id="DivErrores" style="display: none">
+                                </div>
+
+                                <div class="progress mb-3">
+                                    <div class="progress-bar progress-bar-striped progress-bar-animated bg-info"
+                                        role="progressbar" aria-valuemin="0" aria-valuemax="100">
+                                    </div>
+                                </div>
+
+                                <form id="register_form" novalidate action="form_action.php" method="post">
+                                    <fieldset>
+                                        <h2>Paso 1: Datos personales</h2>
+
+                                        <div class="row">
+                                            <div class="col-md-6">
+
+                                                <div class="form-group">
+                                                    <label for="email">Nombre</label>
+                                                    <input type="text" class="form-control" required id="nombre"
+                                                        name="name" placeholder="Nombre">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="password">Segundo apellido</label>
+                                                    <input type="text" class="form-control" name="app" id="password"
+                                                        placeholder="Segundo apellido">
+                                                </div>
+
+                                            </div>
+                                            <div class="col-md-6">
+
+                                                <div class="form-group">
+                                                    <label for="email">Primer apellido</label>
+                                                    <input type="text" class="form-control" required id="ap"
+                                                        name="email" placeholder="Primer apellido">
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label for="password">Edad</label>
+                                                            <input type="number" class="form-control" name="password"
+                                                                id="password" placeholder="Edad" min="7" max="110">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label for="password">Sexo</label>
+                                                            <br />
+                                                            <select class="form-control" name="cars">
+                                                                <option value="">Selecciona sexo</option>
+                                                                <option value="hombre">Hombre</option>
+                                                                <option value="mujer">Mujer</option>
+                                                                <option value="otro">Otro</option>
+                                                                <option value="noDecirlo">Prefiero no decirlo
+                                                                </option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                        <input type="button" class="next-form btn btn-info" value="Siguiente" />
+                                    </fieldset>
+
+
+
+                                    <fieldset>
+                                        <h2> Paso 2: Condición física</h2>
+                                        <div class="row">
+
+                                            <div class="col-md-6">
+
+                                                <div class="row">
+                                                    <div class="col-6">
+                                                        <div class="form-group">
+                                                            <label for="password">Peso</label>
+                                                            <input type="text" class="form-control" name="app"
+                                                                id="password" placeholder="Peso">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <div class="form-group">
+                                                            <label for="password">Altura (en cm)</label>
+                                                            <input type="text" class="form-control" name="app"
+                                                                id="password" placeholder="Altura (en cm)">
+                                                        </div>
                                                     </div>
                                                 </div>
 
+                                                <div class="row">
+                                                    <div class="col-6">
+                                                        <div class="form-group">
+                                                            <label for="password">Fecha de nacimiento:</label>
+                                                            <input type="date" class="form-control" name="app"
+                                                                id="password" placeholder="Altura (en cm)">
+                                                        </div>
+                                                    </div>
+                                                </div>
 
+                                            </div>
+
+
+                                        </div>
+
+
+
+
+                                        <input type="button" name="previous" class="previous-form btn btn-default"
+                                            value="Anterior" />
+                                        <input type="button" name="next" class="next-form btn btn-info"
+                                            value="Siguiente" />
+                                    </fieldset>
+
+                                    <fieldset>
+                                        <h2> Paso 3: Crea tu cuenta</h2>
+
+
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <div class="form-group">
+                                                    <label for="first_name">Correo electrónico:</label>
+                                                    <input type="text" class="form-control" name="first_name"
+                                                        id="first_name" placeholder="Correo electrónico">
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <div class="form-group">
+                                                    <label for="last_name">Contraseña:</label>
+                                                    <input type="password" class="form-control" name="last_name"
+                                                        id="last_name" placeholder="Contraseña">
+                                                </div>
+                                            </div>
+                                            <div class="col-6">
+                                                <div class="form-group">
+                                                    <label for="last_name">Vuelve a escribir tu contraseña:</label>
+                                                    <input type="password" class="form-control" name="last_name"
+                                                        id="last_name" placeholder="Vuelve a escribir tu contraseña">
+                                                </div>
                                             </div>
 
                                         </div>
 
-                                    </div>
+
+                                        <input type="button" name="previous" class="previous-form btn btn-default"
+                                            value="Anterior" />
+                                        <input type="button" name="next" class="next-form btn btn-info"
+                                            value="Siguiente" />
+                                    </fieldset>
 
 
+                                    <fieldset>
+                                        <h2> Paso 4: Condiciones de uso</h2>
 
+                                        <div>
+                                            <br /><br />
+                                            <p>Si te registras, significa que aceptas los <a href="#">Términos</a>,
+                                                la <a href="#">Política de privacidad</a> y la política de <a
+                                                    href="#">Uso
+                                                    de cookies</a>.
+                                                Además, confirmas que eres mayor de 14 años de edad.</p>
+                                            <br /><br /><br />
+                                        </div>
 
-                                    <input type="button" name="previous" class="previous-form btn btn-default"
-                                        value="Anterior" />
-                                    <input type="button" name="next" class="next-form btn btn-info" value="Siguiente" />
-                                </fieldset>
-                                <fieldset>
-                                    <h2> Paso 3: Perfil de usuario</h2>
-                                    <div class="form-group">
-                                        <label for="first_name">First Name</label>
-                                        <input type="text" class="form-control" name="first_name" id="first_name"
-                                            placeholder="First Name">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="last_name">Last Name</label>
-                                        <input type="text" class="form-control" name="last_name" id="last_name"
-                                            placeholder="Last Name">
-                                    </div>
-                                    <input type="button" name="previous" class="previous-form btn btn-default"
-                                        value="Previous" />
-                                    <input type="button" name="next" class="next-form btn btn-info" value="Next" />
-                                </fieldset>
-                                <fieldset>
-                                    <h2> Step 2: Add Personal Details</h2>
-                                    <div class="form-group">
-                                        <label for="first_name">First Name</label>
-                                        <input type="text" class="form-control" name="first_name" id="first_name"
-                                            placeholder="First Name">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="last_name">Last Name</label>
-                                        <input type="text" class="form-control" name="last_name" id="last_name"
-                                            placeholder="Last Name">
-                                    </div>
-                                    <input type="button" name="previous" class="previous-form btn btn-default"
-                                        value="Previous" />
-                                    <input type="button" name="next" class="next-form btn btn-info" value="Next" />
-                                </fieldset>
+                                        <input type="button" name="previous" class="previous-form btn btn-default"
+                                            value="Anterior" />
+                                        <input type="submit" name="submit" class="submit btn btn-primary"
+                                            value="Registrarte" />
+                                    </fieldset>
+                                </form>
+                            </div>
 
 
 
@@ -408,58 +543,13 @@ Registro - Blave Fitness
 
 
 
-                                <fieldset>
-                                    <h2> Step 2: Add Personal Details</h2>
-                                    <div class="form-group">
-                                        <label for="first_name">First Name</label>
-                                        <input type="text" class="form-control" name="first_name" id="first_name"
-                                            placeholder="First Name">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="last_name">Last Name</label>
-                                        <input type="text" class="form-control" name="last_name" id="last_name"
-                                            placeholder="Last Name">
-                                    </div>
-                                    <input type="button" name="previous" class="previous-form btn btn-default"
-                                        value="Previous" />
-                                    <input type="button" name="next" class="next-form btn btn-info" value="Next" />
-                                </fieldset>
-                                <fieldset>
-                                    <h2>Step 3: Add Contact Information</h2>
-                                    <div class="form-group">
-                                        <label for="mobile">Mobile*</label>
-                                        <input type="text" class="form-control" name="mobile" id="mobile"
-                                            placeholder="Mobile Number">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="address">Address</label>
-                                        <textarea class="form-control" name="address"
-                                            placeholder="Communication Address"></textarea>
-                                    </div>
-                                    <input type="button" name="previous" class="previous-form btn btn-default"
-                                        value="Previous" />
-                                    <input type="submit" name="submit" class="submit btn btn-success" value="Submit" />
-                                </fieldset>
-                            </form>
+
+
+
+
+
+
                         </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
                     </div>
                 </div>
