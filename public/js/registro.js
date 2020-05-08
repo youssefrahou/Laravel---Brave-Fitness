@@ -34,7 +34,8 @@ $(document).ready(function() {
 
         var error_message = '<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><p class="text-dark">Hay los siguientes errores:</p>';
 
-        if (!$("#email").val()) {
+        //VALIDACIONES
+        /*if (!$("#email").val()) {
             error_message += "Please Fill Email Address<br>";
         }
         if (!$("#password").val()) {
@@ -42,10 +43,10 @@ $(document).ready(function() {
         }
         if (!$("#mobile").val()) {
             error_message += "Please Fill Mobile Number<br>";
-        }
+        }*/
 
         // Display error if any else submit form
-        if (error_message) {
+        if (error_message != '<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><p class="text-dark">Hay los siguientes errores:</p>') {
             $('#DivErrores').show().html(error_message);
 
             form_count = 1;

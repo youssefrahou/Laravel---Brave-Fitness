@@ -396,7 +396,9 @@ Entrar - Blave Fitness
                                     </div>
                                 </div>
 
-                                <form id="register_form" novalidate action="form_action.php" method="post">
+                            <form id="register_form" novalidate action="{{ route('register') }}" method="post">
+
+                                @csrf
                                     <fieldset>
                                         <h2>Paso 1: Datos personales</h2>
 
@@ -404,13 +406,13 @@ Entrar - Blave Fitness
                                             <div class="col-md-6">
 
                                                 <div class="form-group">
-                                                    <label for="email">Nombre</label>
+                                                    <label for="name">Nombre *</label>
                                                     <input type="text" class="form-control" required id="nombre"
                                                         name="name" placeholder="Nombre">
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="password">Segundo apellido</label>
-                                                    <input type="text" class="form-control" name="app" id="password"
+                                                    <input type="text" class="form-control" name="apellido2" id="password"
                                                         placeholder="Segundo apellido">
                                                 </div>
 
@@ -418,29 +420,27 @@ Entrar - Blave Fitness
                                             <div class="col-md-6">
 
                                                 <div class="form-group">
-                                                    <label for="email">Primer apellido</label>
+                                                    <label for="email">Primer apellido *</label>
                                                     <input type="text" class="form-control" required id="ap"
-                                                        name="email" placeholder="Primer apellido">
+                                                        name="apellido1" placeholder="Primer apellido">
                                                 </div>
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                         <div class="form-group">
-                                                            <label for="password">Edad</label>
-                                                            <input type="number" class="form-control" name="password"
-                                                                id="password" placeholder="Edad" min="7" max="110">
+                                                            <label for="password">Objetivo</label>
+                                                            <input type="text" class="form-control" name="objetivo"
+                                                                id="password" value="adelgazar" placeholder="Edad" min="7" max="110">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label for="password">Sexo</label>
                                                             <br />
-                                                            <select class="form-control" name="cars">
+                                                            <select class="form-control" name="sexo">
                                                                 <option value="">Selecciona sexo</option>
                                                                 <option value="hombre">Hombre</option>
                                                                 <option value="mujer">Mujer</option>
                                                                 <option value="otro">Otro</option>
-                                                                <option value="noDecirlo">Prefiero no decirlo
-                                                                </option>
                                                             </select>
                                                         </div>
                                                     </div>
@@ -466,14 +466,14 @@ Entrar - Blave Fitness
                                                     <div class="col-6">
                                                         <div class="form-group">
                                                             <label for="password">Peso</label>
-                                                            <input type="text" class="form-control" name="app"
+                                                            <input type="number" class="form-control" name="peso"
                                                                 id="password" placeholder="Peso">
                                                         </div>
                                                     </div>
                                                     <div class="col-6">
                                                         <div class="form-group">
                                                             <label for="password">Altura (en cm)</label>
-                                                            <input type="text" class="form-control" name="app"
+                                                            <input type="number" class="form-control" name="altura"
                                                                 id="password" placeholder="Altura (en cm)">
                                                         </div>
                                                     </div>
@@ -483,7 +483,7 @@ Entrar - Blave Fitness
                                                     <div class="col-6">
                                                         <div class="form-group">
                                                             <label for="password">Fecha de nacimiento:</label>
-                                                            <input type="date" class="form-control" name="app"
+                                                            <input type="date" class="form-control" name="fechaNacimiento"
                                                                 id="password" placeholder="Altura (en cm)">
                                                         </div>
                                                     </div>
@@ -511,7 +511,7 @@ Entrar - Blave Fitness
                                             <div class="col-12">
                                                 <div class="form-group">
                                                     <label for="first_name">Correo electrónico:</label>
-                                                    <input type="text" class="form-control" name="first_name"
+                                                    <input type="text" class="form-control" name="email"
                                                         id="first_name" placeholder="Correo electrónico">
                                                 </div>
                                             </div>
@@ -522,14 +522,14 @@ Entrar - Blave Fitness
                                             <div class="col-6">
                                                 <div class="form-group">
                                                     <label for="last_name">Contraseña:</label>
-                                                    <input type="password" class="form-control" name="last_name"
+                                                    <input type="password" class="form-control" name="password"
                                                         id="last_name" placeholder="Contraseña">
                                                 </div>
                                             </div>
                                             <div class="col-6">
                                                 <div class="form-group">
                                                     <label for="last_name">Vuelve a escribir tu contraseña:</label>
-                                                    <input type="password" class="form-control" name="last_name"
+                                                    <input type="password" class="form-control" name="password_confirmation"
                                                         id="last_name" placeholder="Vuelve a escribir tu contraseña">
                                                 </div>
                                             </div>
