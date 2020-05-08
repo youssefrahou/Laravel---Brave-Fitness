@@ -225,7 +225,7 @@ Registro - Blave Fitness
             <div class="tab-content" id="myTabContent">
                 <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
 
-                    <div id="bienvenidaRegistro" style="display: none">
+                    <div id="bienvenidaRegistro">
                         <div class="row register-form">
                             <div class="container">
                                 <div class="row">
@@ -314,8 +314,7 @@ Registro - Blave Fitness
                                         <div class="row col-12 p-3 mt-5 justify-content-center"
                                             style="border: 1px solid black;">
                                             <div class="row">
-                                                <p class="row text-center">¿No tienes una cuenta? <a
-                                                        href="#">Regístrate</a></p>
+                                                <p class="row text-center">¿No tienes una cuenta? <span id="botonRegistro">Regístrate</span></p>
                                             </div>
 
                                         </div>
@@ -379,7 +378,7 @@ Registro - Blave Fitness
 
 
 
-                    <div id="FormRegistro" style="display: ">
+                    <div id="FormRegistro" style="display: none">
                         <h3 class="register-heading">Regístrate, es gratis</h3>
                         <div class="row register-form">
 
@@ -447,7 +446,8 @@ Registro - Blave Fitness
 
                                             </div>
                                         </div>
-
+                                        <input type="button" name="previous" class="previous-form btn btn-default"
+                                        value="Atrás" id="atras"/>
                                         <input type="button" class="next-form btn btn-info" value="Siguiente" />
                                     </fieldset>
 

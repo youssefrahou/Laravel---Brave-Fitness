@@ -74,4 +74,45 @@ $(document).ready(function() {
         }
     });
 
+    $("#botonRegistro").click(function() {
+
+        $("#bienvenidaRegistro").hide();
+        $("#FormRegistro").show();
+
+        $(".register-form").css("padding", "14%");
+        $(".register-form").css("margin-top", "10%");
+
+
+    });
+
+
+    $("#atras").click(function() {
+
+        $("#bienvenidaRegistro").show();
+        $("#FormRegistro").hide();
+
+        $(".register-form").css("padding", "3%");
+        $(".register-form").css("margin-top", "0%");
+
+
+    });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 });
