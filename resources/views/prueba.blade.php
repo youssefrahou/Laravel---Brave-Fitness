@@ -230,18 +230,16 @@ Registro - Blave Fitness
                             <div class="container">
                                 <div class="row">
 
-                                    <div class="row col-md-6 p-5 justify-content-center d-none d-sm-none d-md-block"
-                                        style="border: 1px solid black;">
+                                    <div class="row col-md-6 p-5 justify-content-center d-none d-sm-none d-md-block">
 
                                         <img src="{{asset('images/iphone.png')}}">
 
                                     </div>
 
-                                    <div class="row col-md-6 p-5 justify-content-center"
-                                        style="border: 1px solid black;">
+                                    <div class="row col-md-6 p-5 justify-content-center">
 
 
-                                        <div class="row col-12 p-3" style="border: 1px solid black;">
+                                        <div class="row col-12 p-3" style="background-color: #EDECEC">
 
                                             <form method="POST" action="{{ route('login') }}">
                                                 @csrf
@@ -311,8 +309,7 @@ Registro - Blave Fitness
 
 
                                         </div>
-                                        <div class="row col-12 p-3 mt-5 justify-content-center"
-                                            style="border: 1px solid black;">
+                                        <div class="row col-12 p-3 mt-5 justify-content-center" style="background-color: #EDECEC">
                                             <div class="row">
                                                 <p class="row text-center">¿No tienes una cuenta? <span id="botonRegistro">Regístrate</span></p>
                                             </div>
