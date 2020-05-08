@@ -73,7 +73,7 @@ Registro - Blave Fitness
     .register .register-form {
         padding: 3%;
         margin-top: 0%;
-        /*ESTABA EN 10*/
+        /*ESTABAN EN 10 LOS DOS*/
     }
 
     .btnRegister {
@@ -225,7 +225,7 @@ Registro - Blave Fitness
             <div class="tab-content" id="myTabContent">
                 <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
 
-                    <div id="bienvenidaRegistro">
+                    <div id="bienvenidaRegistro" style="display: none">
                         <div class="row register-form">
                             <div class="container">
                                 <div class="row">
@@ -379,7 +379,7 @@ Registro - Blave Fitness
 
 
 
-                    <div id="FormRegistro" style="display: none">
+                    <div id="FormRegistro" style="display: ">
                         <h3 class="register-heading">Regístrate, es gratis</h3>
                         <div class="row register-form">
 
