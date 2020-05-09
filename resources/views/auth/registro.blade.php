@@ -227,7 +227,8 @@ Entrar - Blave Fitness
                 <br /><br /><br />Si ya estás
                 registrado, inicia sesión</p>
 
-            <span class="btn btn-primary" id="botInicSes"><a href="{{ route('login') }}" class="text-white">Inicia sesión</a></span><br />
+            <span class="btn btn-primary" id="botInicSes"><a href="{{ route('login') }}" class="text-white">Inicia
+                    sesión</a></span><br />
             <br />
         </div>
         <div class="col-md-9 register-right">
@@ -250,7 +251,8 @@ Entrar - Blave Fitness
                                     </div>
                                 </div>
 
-                                <form id="register_form" action="{{ route('register') }}" method="post" class="needs-validation" novalidate>
+                                <form id="register_form" action="{{ route('register') }}" method="post"
+                                    class="needs-validation" novalidate>
 
                                     @csrf
                                     <fieldset>
@@ -261,8 +263,16 @@ Entrar - Blave Fitness
 
                                                 <div class="form-group">
                                                     <label for="name">Nombre *</label>
-                                                    <input type="text" class="form-control" id="nom" name="name"
-                                                        placeholder="Nombre" required>
+                                                    <input type="text"
+                                                        class="form-control  @error('name') is-invalid @enderror"
+                                                        id="nom" name="name" value="{{ old('name') }}" required
+                                                        autocomplete="name" autofocus placeholder="Nombre" required>
+
+                                                    @error('name')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                    @enderror
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="password">Segundo apellido</label>
@@ -365,10 +375,18 @@ Entrar - Blave Fitness
                                             <div class="col-12">
                                                 <div class="form-group">
                                                     <label for="first_name">Correo electrónico:</label>
-                                                    <input type="text" class="form-control" name="email" id="first_name"
-                                                        placeholder="Correo electrónico">
+                                                    <input type="text"
+                                                        class="form-control @error('email') is-invalid @enderror"
+                                                        name="email" value="{{ old('email') }}" required
+                                                        autocomplete="email" placeholder="Correo electrónico">
                                                     <small id="emailHelp" class="form-text text-muted">Lo usarás para
                                                         acceder a Brave Fitness.</small>
+                                                    @error('email')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                    @enderror
+
                                                 </div>
                                             </div>
                                         </div>
@@ -378,8 +396,17 @@ Entrar - Blave Fitness
                                             <div class="col-6">
                                                 <div class="form-group">
                                                     <label for="last_name">Contraseña:</label>
-                                                    <input type="password" class="form-control" name="password"
-                                                        id="last_name" placeholder="Contraseña">
+                                                    <input type="password"
+                                                        class="form-control @error('password') is-invalid @enderror"
+                                                        name="password" id="last_name" placeholder="Contraseña" required
+                                                        autocomplete="new-password">
+
+                                                    @error('password')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                    @enderror
+
                                                 </div>
                                             </div>
                                             <div class="col-6">
@@ -387,7 +414,8 @@ Entrar - Blave Fitness
                                                     <label for="last_name">Vuelve a escribir tu contraseña:</label>
                                                     <input type="password" class="form-control"
                                                         name="password_confirmation" id="last_name"
-                                                        placeholder="Vuelve a escribir tu contraseña">
+                                                        placeholder="Vuelve a escribir tu contraseña" required
+                                                        autocomplete="new-password">
                                                 </div>
                                             </div>
 
