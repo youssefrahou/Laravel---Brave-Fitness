@@ -9,6 +9,7 @@ use App\Role;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use App\Http\Requests\ValidarRegistroRequest;
 
 class RegisterController extends Controller
 {
@@ -50,7 +51,7 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
-        
+
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
@@ -67,22 +68,23 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \App\User
      */
-    protected function create(array $data)
-    {
-        
-        $user = User::create([
-            'name' => $data['name'],
-            'apellido1' => $data['apellido1'],
-            'apellido2' => $data['apellido2'],
-            'objetivo' => $data['objetivo'],
-            'sexo' => $data['sexo'],
-            'peso' => $data['peso'],
-            'altura' => $data['altura'],
-            'fechaNacimiento' => $data['fechaNacimiento'],
-            'email' => $data['email'],
+    
 
+    public function register(ValidarRegistroRequest $request)
+    {
+        $user = User::create([
+
+            'name' => $request['name'],
+            'apellido1' => $request['apellido1'],
+            'apellido2' => $request['apellido2'],
+            'objetivo' => $request['objetivo'],
+            'sexo' => $request['sexo'],
+            'peso' => $request['peso'],
+            'altura' => $request['altura'],
+            'fechaNacimiento' => $request['fechaNacimiento'],
+            'email' => $request['email'],
+            'password' => Hash::make($request['password']),
             
-            'password' => Hash::make($data['password']),
         ]);
 
         $user->roles()->attach(Role::where('nombre', 'user')->first());
@@ -90,9 +92,8 @@ class RegisterController extends Controller
     }
 
 
-    public function showRegistrationForm() {
+    public function showRegistrationForm()
+    {
         return view('auth.registro');
     }
-
-
 }

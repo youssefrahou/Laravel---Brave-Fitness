@@ -285,8 +285,13 @@ Entrar - Blave Fitness
 
                                                 <div class="form-group">
                                                     <label for="email">Primer apellido *</label>
-                                                    <input type="text" class="form-control" required id="ap"
+                                                    <input type="text" class="form-control @error('apellido1') is-invalid @enderror" required id="ap"
                                                         name="apellido1" placeholder="Primer apellido">
+                                                        @error('apellido1')
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                        @enderror
                                                 </div>
                                                 <div class="row">
                                                     <div class="col-md-6">

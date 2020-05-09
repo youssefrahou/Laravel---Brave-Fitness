@@ -24,16 +24,17 @@ class ValidarRegistroRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name'        => 'required|min:1|max:100',
+            'apellido1'        => 'required|min:1|max:100',
+           // 'name', 'apellido1', 'apellido2', 'objetivo', 'sexo', 'peso', 'altura', 'fechaNacimiento', 'email', 'password',
         ];
     }
 
     public function messages()
     {
         return [
-            'name.required'   => 'El título es obligatorio.',
-
-            'apellido1.required'   => 'El subtítulo es obligatorio.',
+            'name.required'   => 'El nombre es obligatorio.',
+            'apellido1.required'   => 'El apellido es obligatorio.',
 
 
         ];
