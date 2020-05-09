@@ -6,6 +6,7 @@ Entrar - Blave Fitness
 
 
 @section('body')
+
 <style>
     .register {
         background: -webkit-linear-gradient(top, #17a2b8, #00c6ff);
@@ -210,8 +211,11 @@ Entrar - Blave Fitness
 <!-- AVISO COOKIES -->
 <div class="alert alert-primary alert-dismissible mb-0">
     <button type="button" class="close" data-dismiss="alert">&times;</button>
-    Utilizamos las cookies para ayudar a personalizar contenido, adaptar y medir los anuncios, y facilitar una experiencia más segura. Al hacer clic o navegar en el sitio, aceptas que recopilemos información dentro y fuera de Brave Fitness mediante las cookies. Consulta aquí más información, incluida la relativa a los controles disponibles: <a href="#">Política de cookies</a>
-  </div>
+    Utilizamos las cookies para ayudar a personalizar contenido, adaptar y medir los anuncios, y facilitar una
+    experiencia más segura. Al hacer clic o navegar en el sitio, aceptas que recopilemos información dentro y fuera de
+    Brave Fitness mediante las cookies. Consulta aquí más información, incluida la relativa a los controles disponibles:
+    <a href="#">Política de cookies</a>
+</div>
 
 
 <div class="container-fluid register">
@@ -315,9 +319,11 @@ Entrar - Blave Fitness
 
 
                                         </div>
-                                        <div class="row col-12 p-3 mt-5 justify-content-center" style="background-color: #EDECEC">
+                                        <div class="row col-12 p-3 mt-5 justify-content-center"
+                                            style="background-color: #EDECEC">
                                             <div class="row">
-                                                <p class="row text-center">¿No tienes una cuenta? <span id="botonRegistro">Regístrate</span></p>
+                                                <p class="row text-center">¿No tienes una cuenta? <span
+                                                        id="botonRegistro">Regístrate</span></p>
                                             </div>
 
                                         </div>
@@ -380,7 +386,6 @@ Entrar - Blave Fitness
 
 
 
-
                     <div id="FormRegistro" style="display: none">
                         <h3 class="register-heading">Regístrate, es gratis</h3>
                         <div class="row register-form">
@@ -396,9 +401,9 @@ Entrar - Blave Fitness
                                     </div>
                                 </div>
 
-                            <form id="register_form" novalidate action="{{ route('register') }}" method="post">
+                                <form id="register_form" action="{{ route('register') }}" method="post">
 
-                                @csrf
+                                    @csrf
                                     <fieldset>
                                         <h2>Paso 1: Datos personales</h2>
 
@@ -407,13 +412,13 @@ Entrar - Blave Fitness
 
                                                 <div class="form-group">
                                                     <label for="name">Nombre *</label>
-                                                    <input type="text" class="form-control" required id="nombre"
-                                                        name="name" placeholder="Nombre">
+                                                    <input type="text" class="form-control" id="nom" name="name"
+                                                        placeholder="Nombre" required>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="password">Segundo apellido</label>
-                                                    <input type="text" class="form-control" name="apellido2" id="password"
-                                                        placeholder="Segundo apellido">
+                                                    <input type="text" class="form-control" name="apellido2"
+                                                        id="password" placeholder="Segundo apellido">
                                                 </div>
 
                                             </div>
@@ -429,7 +434,8 @@ Entrar - Blave Fitness
                                                         <div class="form-group">
                                                             <label for="password">Objetivo</label>
                                                             <input type="text" class="form-control" name="objetivo"
-                                                                id="password" value="adelgazar" placeholder="Edad" min="7" max="110">
+                                                                id="password" value="adelgazar" placeholder="Edad"
+                                                                min="7" max="110">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
@@ -449,8 +455,7 @@ Entrar - Blave Fitness
 
                                             </div>
                                         </div>
-                                        <input type="button" class="btn btn-default"
-                                        value="Atrás" id="atras"/>
+                                        <input type="button" class="btn btn-default" value="Atrás" id="atras" />
                                         <input type="button" class="next-form btn btn-info" value="Siguiente" />
                                     </fieldset>
 
@@ -483,8 +488,9 @@ Entrar - Blave Fitness
                                                     <div class="col-6">
                                                         <div class="form-group">
                                                             <label for="password">Fecha de nacimiento:</label>
-                                                            <input type="date" class="form-control" name="fechaNacimiento"
-                                                                id="password" placeholder="Altura (en cm)">
+                                                            <input type="date" class="form-control"
+                                                                name="fechaNacimiento" id="password"
+                                                                placeholder="Altura (en cm)">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -511,8 +517,10 @@ Entrar - Blave Fitness
                                             <div class="col-12">
                                                 <div class="form-group">
                                                     <label for="first_name">Correo electrónico:</label>
-                                                    <input type="text" class="form-control" name="email"
-                                                        id="first_name" placeholder="Correo electrónico">
+                                                    <input type="text" class="form-control" name="email" id="first_name"
+                                                        placeholder="Correo electrónico">
+                                                    <small id="emailHelp" class="form-text text-muted">Lo usarás para
+                                                        acceder a Brave Fitness.</small>
                                                 </div>
                                             </div>
                                         </div>
@@ -529,8 +537,9 @@ Entrar - Blave Fitness
                                             <div class="col-6">
                                                 <div class="form-group">
                                                     <label for="last_name">Vuelve a escribir tu contraseña:</label>
-                                                    <input type="password" class="form-control" name="password_confirmation"
-                                                        id="last_name" placeholder="Vuelve a escribir tu contraseña">
+                                                    <input type="password" class="form-control"
+                                                        name="password_confirmation" id="last_name"
+                                                        placeholder="Vuelve a escribir tu contraseña">
                                                 </div>
                                             </div>
 

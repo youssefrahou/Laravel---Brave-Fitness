@@ -113,10 +113,10 @@ $(document).ready(function() {
     });
 
 
+    //VALIDACION FORMULARIO REGISTRO
 
 
-
-
+    //VALIDACION FORMULARIO REGISTRO
 
 
 
