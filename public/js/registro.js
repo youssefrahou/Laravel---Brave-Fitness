@@ -66,52 +66,6 @@ $(document).ready(function() {
 
 
 
-    $("#lesionado").click(function() {
-        if (this.checked) {
-            $("#mostrarLesionado").show();
-        }
-        if (!this.checked) {
-            $("#mostrarLesionado").hide();
-        }
-    });
-
-    $("#botonRegistro").click(function() {
-
-        $("#bienvenidaRegistro").hide();
-        $("#botInicSes").show();
-        $("#FormRegistro").show();
-
-        $(".register-form").css("padding", "14%");
-        $(".register-form").css("margin-top", "10%");
-
-
-    });
-
-    $("#botInicSes").click(function() {
-
-        $("#bienvenidaRegistro").show();
-        $("#botInicSes").hide();
-        $("#FormRegistro").hide();
-
-        $(".register-form").css("padding", "3%");
-        $(".register-form").css("margin-top", "0%");
-
-
-    });
-
-
-    $("#atras").click(function() {
-
-        $("#bienvenidaRegistro").show();
-        $("#botInicSes").hide();
-        $("#FormRegistro").hide();
-
-        $(".register-form").css("padding", "3%");
-        $(".register-form").css("margin-top", "0%");
-
-
-    });
-
 
     //VALIDACION FORMULARIO REGISTRO
 

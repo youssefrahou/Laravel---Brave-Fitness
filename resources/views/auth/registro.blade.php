@@ -72,7 +72,7 @@ Entrar - Blave Fitness
     }
 
     .register .register-form {
-        padding: 10%;
+        padding: 14%;
         margin-top: 10%;
         /*ESTABAN EN 10 LOS DOS*/
     }
