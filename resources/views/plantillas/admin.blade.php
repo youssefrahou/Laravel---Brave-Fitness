@@ -16,13 +16,15 @@
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
     <!-- jQuery  -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
     </script>
     <!-- JQuery para botones -->
     <script src="{{ asset('js/admin.js') }}"></script>
     <script src="{{ asset('js/articulo.js') }}"></script>
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
+    @yield('head')
 
 </head>
 
@@ -46,12 +48,13 @@
             <ul class="navbar-nav ml-auto">
 
                 <li class="nav-item dropdown">
-                    <a id="navbarDropdown" class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                        <i class="far fa-comment-alt"></i> 
+                    <a id="navbarDropdown" class="nav-link dropdown-toggle" role="button" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false" v-pre>
+                        <i class="far fa-comment-alt"></i>
                     </a>
 
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                        
+
                         <a class="dropdown-item">
                             Mensajes sin leer
                         </a>
@@ -72,32 +75,32 @@
                 </li>
 
                 <li class="nav-item dropdown">
-                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                         {{ Auth::user()->name }} <span class="caret"></span>
                     </a>
 
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                        
-                        <a class="dropdown-item">
+
+                        <a class="dropdown-item" id="actualizarPerfil">
                             Actualizar perfil
                         </a>
 
                         <a class="dropdown-item">
                             Configuración
                         </a>
-                        
-                        
-                        <a class="dropdown-item" href="{{ route('logout') }}"
-                           onclick="event.preventDefault();
+
+
+                        <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                          document.getElementById('logout-form').submit();">
                             {{ __('Cerrar sesión') }}
                         </a>
 
 
-                        
 
 
-                        
+
+
 
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                             @csrf
@@ -114,12 +117,12 @@
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
             @if (!Auth::guest() && Auth::user()->hasRole('user'))
-            
+
             <a href="{{ url('/areaPersonal') }}" class="brand-link">
                 <img src="dist/img/logo.png" alt="Logo Brave Fitness" class="brand-image img-circle elevation-3">
                 <span class="brand-text font-weight-light"><b>BRAVE</b> <i>FITNESS</i></span>
             </a>
-            
+
             @else
 
             <a href="{{ url('/admin') }}" class="brand-link">
@@ -134,7 +137,15 @@
                 <!-- Sidebar user panel (optional) -->
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                     <div class="image">
-                        <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+                        @if (auth()->user()->fotoPerfil == null)
+
+                        <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="img-circle elevation-2" alt="avatar">
+
+                        @else
+
+                        <img src="images/{{ auth()->user()->fotoPerfil }}" class="img-circle elevation-2" alt="avatar">
+
+                        @endif
                     </div>
                     <div class="info">
 
@@ -142,7 +153,7 @@
 
                         <a href="{{ url('/admin') }}" class="d-block">{{ Auth::user()->name }}</a>
 
-                        @else 
+                        @else
 
                         <a href="{{ url('/areaPersonal') }}" class="d-block">{{ Auth::user()->name }}</a>
 
@@ -208,7 +219,7 @@
                             <h1 class="m-0 text-info text-center">ÁREA PERSONAL</h1>
                             @endif
 
-                            
+
                         </div><!-- /.col -->
 
                     </div><!-- /.row -->
