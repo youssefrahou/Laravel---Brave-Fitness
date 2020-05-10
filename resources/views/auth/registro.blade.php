@@ -265,7 +265,7 @@ Entrar - Blave Fitness
                                                     <label for="name">Nombre *</label>
                                                     <input type="text"
                                                         class="form-control  @error('name') is-invalid @enderror"
-                                                        id="nom" name="name" value="{{ old('name') }}" required
+                                                        id="nom" name="name" value="{{ old('name') }}"
                                                         autocomplete="name" autofocus placeholder="Nombre" required>
 
                                                     @error('name')
@@ -273,11 +273,20 @@ Entrar - Blave Fitness
                                                         <strong>{{ $message }}</strong>
                                                     </span>
                                                     @enderror
+
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="password">Segundo apellido</label>
-                                                    <input type="text" class="form-control" name="apellido2"
-                                                        id="password" placeholder="Segundo apellido">
+                                                    <input type="text"
+                                                        class="form-control  @error('apellido2') is-invalid @enderror"
+                                                        name="apellido2" id="password" value="{{ old('apellido2') }}"
+                                                        placeholder="Segundo apellido">
+
+                                                    @error('apellido2')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                    @enderror
                                                 </div>
 
                                             </div>
@@ -285,33 +294,51 @@ Entrar - Blave Fitness
 
                                                 <div class="form-group">
                                                     <label for="email">Primer apellido *</label>
-                                                    <input type="text" class="form-control @error('apellido1') is-invalid @enderror" required id="ap"
-                                                        name="apellido1" placeholder="Primer apellido">
-                                                        @error('apellido1')
-                                                        <span class="invalid-feedback" role="alert">
-                                                            <strong>{{ $message }}</strong>
-                                                        </span>
-                                                        @enderror
+                                                    <input type="text"
+                                                        class="form-control @error('apellido1') is-invalid @enderror"
+                                                        required id="ap" name="apellido1" value="{{ old('apellido1') }}"
+                                                        placeholder="Primer apellido">
+
+                                                    @error('apellido1')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                    @enderror
                                                 </div>
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label for="password">Objetivo</label>
-                                                            <input type="text" class="form-control" name="objetivo"
-                                                                id="password" value="adelgazar" placeholder="Edad"
-                                                                min="7" max="110">
+                                                            <input type="text"
+                                                                class="form-control  @error('objetivo') is-invalid @enderror"
+                                                                name="objetivo" id="password" value="adelgazar"
+                                                                value="{{ old('objetivo') }}">
+
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label for="password">Sexo</label>
                                                             <br />
-                                                            <select class="form-control" name="sexo">
+                                                            <select
+                                                                class="form-control  @error('sexo') is-invalid @enderror"
+                                                                name="sexo">
+
                                                                 <option value="">Selecciona sexo</option>
-                                                                <option value="hombre">Hombre</option>
-                                                                <option value="mujer">Mujer</option>
-                                                                <option value="otro">Otro</option>
+                                                                <option value="hombre" @if (old('sexo')=="hombre" )
+                                                                    {{ 'selected' }} @endif>Hombre</option>
+                                                                <option value="mujer" @if (old('sexo')=="mujer" )
+                                                                    {{ 'selected' }} @endif>Mujer</option>
+                                                                <option value="otro" @if (old('sexo')=="otro" )
+                                                                    {{ 'selected' }} @endif>Otro</option>
+
                                                             </select>
+
+                                                            @error('sexo')
+                                                            <span class="invalid-feedback" role="alert">
+                                                                <strong>{{ $message }}</strong>
+                                                            </span>
+                                                            @enderror
                                                         </div>
                                                     </div>
 
@@ -334,15 +361,29 @@ Entrar - Blave Fitness
                                                     <div class="col-6">
                                                         <div class="form-group">
                                                             <label for="password">Peso</label>
-                                                            <input type="number" class="form-control" name="peso"
-                                                                id="password" placeholder="Peso">
+                                                            <input type="number"
+                                                                class="form-control  @error('peso') is-invalid @enderror"
+                                                                name="peso" id="password" placeholder="Peso"
+                                                                value="{{ old('peso') }}">
+                                                            @error('peso')
+                                                            <span class="invalid-feedback" role="alert">
+                                                                <strong>{{ $message }}</strong>
+                                                            </span>
+                                                            @enderror
                                                         </div>
                                                     </div>
                                                     <div class="col-6">
                                                         <div class="form-group">
                                                             <label for="password">Altura (en cm)</label>
-                                                            <input type="number" class="form-control" name="altura"
-                                                                id="password" placeholder="Altura (en cm)">
+                                                            <input type="number"
+                                                                class="form-control  @error('altura') is-invalid @enderror"
+                                                                name="altura" id="password" placeholder="Altura (en cm)"
+                                                                value="{{ old('altura') }}">
+                                                            @error('altura')
+                                                            <span class="invalid-feedback" role="alert">
+                                                                <strong>{{ $message }}</strong>
+                                                            </span>
+                                                            @enderror
                                                         </div>
                                                     </div>
                                                 </div>
@@ -351,9 +392,17 @@ Entrar - Blave Fitness
                                                     <div class="col-6">
                                                         <div class="form-group">
                                                             <label for="password">Fecha de nacimiento:</label>
-                                                            <input type="date" class="form-control"
-                                                                name="fechaNacimiento" id="password"
-                                                                placeholder="Altura (en cm)">
+                                                            <input type="date"
+                                                                class="form-control  @error('fechaNacimiento') is-invalid @enderror"
+                                                                name="fechaNacimiento"
+                                                                value="{{ old('fechaNacimiento') }}">
+
+                                                            @error('fechaNacimiento')
+                                                            <span class="invalid-feedback" role="alert">
+                                                                <strong>{{ $message }}</strong>
+                                                            </span>
+                                                            @enderror
+
                                                         </div>
                                                     </div>
                                                 </div>
@@ -384,13 +433,14 @@ Entrar - Blave Fitness
                                                         class="form-control @error('email') is-invalid @enderror"
                                                         name="email" value="{{ old('email') }}" required
                                                         autocomplete="email" placeholder="Correo electrónico">
-                                                    <small id="emailHelp" class="form-text text-muted">Lo usarás para
-                                                        acceder a Brave Fitness.</small>
+
                                                     @error('email')
                                                     <span class="invalid-feedback" role="alert">
                                                         <strong>{{ $message }}</strong>
                                                     </span>
                                                     @enderror
+                                                    <small id="emailHelp" class="form-text text-muted">Lo usarás para
+                                                        acceder a Brave Fitness.</small>
 
                                                 </div>
                                             </div>
@@ -417,7 +467,7 @@ Entrar - Blave Fitness
                                             <div class="col-6">
                                                 <div class="form-group">
                                                     <label for="last_name">Vuelve a escribir tu contraseña:</label>
-                                                    <input type="password" class="form-control"
+                                                    <input type="password" class="form-control "
                                                         name="password_confirmation" id="last_name"
                                                         placeholder="Vuelve a escribir tu contraseña" required
                                                         autocomplete="new-password">

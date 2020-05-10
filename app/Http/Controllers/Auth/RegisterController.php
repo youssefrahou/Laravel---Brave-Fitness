@@ -10,6 +10,7 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Requests\ValidarRegistroRequest;
+use Illuminate\Support\Facades\Auth;
 
 class RegisterController extends Controller
 {
@@ -52,11 +53,13 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
 
+        /*
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
+        */
     }
 
 
@@ -88,7 +91,14 @@ class RegisterController extends Controller
         ]);
 
         $user->roles()->attach(Role::where('nombre', 'user')->first());
-        return $user;
+        Auth::login($user);
+        //return $this->registered($request, $user) ?: redirect($this->redirectPath());
+
+        if ($user->hasRole('user')){
+            return redirect("areaPersonal");
+        }else{
+            return redirect("admin");
+        }
     }
 
 

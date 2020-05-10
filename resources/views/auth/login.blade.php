@@ -208,6 +208,16 @@ Entrar - Blave Fitness
     }
 </style>
 
+<!--al registrarse-->
+@if (\Session::has('correcto'))
+    <div class="alert alert-success">
+        <ul>
+            <li>{!! \Session::get('correcto') !!}</li>
+        </ul>
+    </div>
+    @endif
+
+
 <!-- AVISO COOKIES -->
 <div class="alert alert-primary alert-dismissible mb-0">
     <button type="button" class="close" data-dismiss="alert">&times;</button>

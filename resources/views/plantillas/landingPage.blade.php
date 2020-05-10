@@ -46,9 +46,7 @@
 </head>
 
 <body>
-
-
-
+    
     @yield('body')
 
 
