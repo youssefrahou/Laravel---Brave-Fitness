@@ -210,18 +210,21 @@ Entrar - Blave Fitness
 
 
 <!-- AVISO COOKIES -->
+<!--
 <div class="alert alert-primary alert-dismissible mb-0">
     <button type="button" class="close" data-dismiss="alert">&times;</button>
     Utilizamos las cookies para ayudar a personalizar contenido, adaptar y medir los anuncios, y facilitar una
     experiencia más segura. Al hacer clic o navegar en el sitio, aceptas que recopilemos información dentro y fuera de
     Brave Fitness mediante las cookies. Consulta aquí más información, incluida la relativa a los controles disponibles:
     <a href="#">Política de cookies</a>
-</div>
+</div>-->
 
 
-<div class="container-fluid register">
-    <div class="row">
-        <div class="col-md-3 register-left">
+<div class="container-fluid register"  style="height: 812px">
+    <div class="row h-100 d-inline-block">
+
+
+        <div class="d-none d-sm-none d-md-block col-md-3 register-left">
             <img src="https://image.ibb.co/n7oTvU/logo_white.png" alt="" />
             <h3>Bienvenida a <br /><b>Brave Fitness</b></h3>
             <p>Inicia sesión o regístrate para acceder a todas las ventajas que te ofrece Brave Fitness.
@@ -231,6 +234,7 @@ Entrar - Blave Fitness
             <span class="btn btn-primary" id="botInicSes" style="display: none">Iniciar sesión</span><br />
             <br />
         </div>
+
         <div class="col-md-9 register-right">
 
             <div class="tab-content" id="myTabContent">
@@ -247,10 +251,18 @@ Entrar - Blave Fitness
 
                                     </div>
 
-                                    <div class="row col-md-6 p-5 justify-content-center">
+                                    <div class="row col-md-6 p-4 pl-5 p-md-5 justify-content-center">
+
+                                        <div class="row col-12 p-3 d-block d-sm-block d-md-none">
 
 
-                                        <div class="row col-12 p-3" style="background-color: #EDECEC">
+                                        </div>
+
+
+
+                                        <!-- PC -->
+                                        <div class="row col-12 p-3 d-none d-sm-none d-md-block"
+                                            style="background-color: #EDECEC">
 
                                             <form method="POST" action="{{ route('login') }}">
                                                 @csrf
@@ -320,11 +332,87 @@ Entrar - Blave Fitness
 
 
                                         </div>
+                                        <!-- PC -->
+
+                                        <!-- MOVIL -->
+                                        <div class="row col-12 p-3 d-block d-sm-block d-md-none"
+                                            style="background-color: #EDECEC">
+
+                                            <form method="POST" action="{{ route('login') }}">
+                                                @csrf
+
+                                                <h3 class="text-center">Brave Fitness</h3>
+                                                <div class="form-group row justify-content-center">
+
+
+                                                    <div class="col-md-8">
+                                                        <input id="email" type="email"
+                                                            class="form-control @error('email') is-invalid @enderror"
+                                                            name="email" value="{{ old('email') }}" required
+                                                            autocomplete="email" autofocus placeholder="Email">
+
+                                                        @error('email')
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                        @enderror
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group row justify-content-center">
+
+                                                    <div class="col-md-8">
+                                                        <input id="password" type="password"
+                                                            class="form-control @error('password') is-invalid @enderror"
+                                                            name="password" required autocomplete="current-password"
+                                                            placeholder="Contraseña">
+
+                                                        @error('password')
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                        @enderror
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group row justify-content-center">
+                                                    <div class="col-md-8">
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="checkbox"
+                                                                name="remember" id="remember"
+                                                                {{ old('remember') ? 'checked' : '' }}>
+
+                                                            <label class="form-check-label" for="remember">
+                                                                {{ __('Recuérdame') }}
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group row mb-0 justify-content-center">
+                                                    <div class="col-md-8">
+                                                        <button type="submit" class="btn btn-primary col-md-12">
+                                                            {{ __('Iniciar sesión') }}
+                                                        </button>
+
+                                                        @if (Route::has('password.request'))
+                                                        <a class="btn btn-link" href="{{ route('password.request') }}">
+                                                            {{ __('¿Te has olvidado de la contraseña?') }}
+                                                        </a>
+                                                        @endif
+                                                    </div>
+                                                </div>
+                                            </form>
+
+
+                                        </div>
+                                        <!-- MOVIL -->
                                         <div class="row col-12 p-3 mt-5 justify-content-center"
                                             style="background-color: #EDECEC">
                                             <div class="row">
-                                            <p class="row text-center">¿No tienes una cuenta? <a href="{{ route('register') }}"
-                                                        id="botonRegistro">Regístrate</a></p>
+                                                <p class="row text-center">¿No tienes una cuenta? <a
+                                                        href="{{ route('register') }}" id="botonRegistro">Regístrate</a>
+                                                </p>
                                             </div>
 
                                         </div>
@@ -388,5 +476,6 @@ Entrar - Blave Fitness
     </div>
 
 </div>
+
 
 @stop

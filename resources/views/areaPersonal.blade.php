@@ -227,13 +227,13 @@ $(".file-upload").on('change', function(){
                     <div class="text-center">
                         @if (auth()->user()->fotoPerfil == null)
 
-                        <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar img-circle elevation-2" alt="avatar"
-                        style="width: 300px; height: 300px">
+                        <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png"
+                            class="avatar img-circle elevation-2" alt="avatar" style="width: 300px; height: 300px">
 
                         @else
 
-                        <img src="images/{{ auth()->user()->fotoPerfil }}" class="avatar img-circle elevation-2" alt="avatar"
-                            style="width: 300px; height: 300px">
+                        <img src="images/{{ auth()->user()->fotoPerfil }}" class="avatar img-circle elevation-2"
+                            alt="avatar" style="width: 300px; height: 300px">
 
                         @endif
 
