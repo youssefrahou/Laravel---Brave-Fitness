@@ -232,20 +232,20 @@ $(".file-upload").on('change', function(){
 
                         @else
 
-                        <img src="images/{{ auth()->user()->fotoPerfil }}" class="avatar img-circle elevation-2"
+                        <img src="images/users/{{ auth()->user()->fotoPerfil }}" class="avatar img-circle elevation-2"
                             alt="avatar" style="width: 300px; height: 300px">
 
                         @endif
 
                         <!-- FORMULARIO -->
-                        <form class="form" action="{{ url('user') }}/{{ auth()->user()->id }}" method="post" id="registrationForm">
+                        <form class="form" action="{{ url('user') }}/{{ auth()->user()->id }}" enctype="multipart/form-data" method="post" id="registrationForm">
 
                             <div class="custom-file-upload mt-2">
 
                                 <label for="file-upload" class="custom-file-upload1">
                                     <i class="fas fa-camera"></i> Subir imagen
                                 </label>
-                                <input type="file" id="file-upload" class="text-center center-block file-upload" />
+                                <input type="file" id="file-upload" name="fotoPerfil" class="text-center center-block file-upload" />
 
                             </div>
 

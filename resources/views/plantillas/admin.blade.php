@@ -143,7 +143,7 @@
 
                         @else
 
-                        <img src="images/{{ auth()->user()->fotoPerfil }}" class="img-circle elevation-2" alt="avatar">
+                        <img src="images/users/{{ auth()->user()->fotoPerfil }}" class="img-circle elevation-2" alt="avatar">
 
                         @endif
                     </div>
