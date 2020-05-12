@@ -72,25 +72,25 @@ class UsersController extends Controller
         $user = request()->except(['_token', '_method']);
         $data = request()->all();
 
+        if ($request->file('fotoPerfil')) {
 
-        //obtenemos el campo file definido en el formulario
-        $archivo = $request->file('fotoPerfil');
+            //obtenemos el campo file definido en el formulario
+            $archivo = $request->file('fotoPerfil');
 
-        $path = public_path() . '/images/users';
+            $path = public_path() . '/images/users';
 
-        //obtenemos el nombre del archivo
-        $nombre = $archivo->getClientOriginalName();
+            //obtenemos el nombre del archivo
+            $nombre = $archivo->getClientOriginalName();
 
-        $archivo->move($path, $nombre);
+            $archivo->move($path, $nombre);
 
-        $user['fotoPerfil'] = $nombre;
-
-
+            $user['fotoPerfil'] = $nombre;
+        }
 
 
         User::where('id', '=', $id)->update($user);
 
-        return redirect()->back()->with('mensaje', '¡El comentario se ha marcado como leído correctamente!');
+        return redirect()->back()->with('mensaje', '¡Tu perfil se ha actualizado correctamente!');
     }
 
     /**
