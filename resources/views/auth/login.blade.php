@@ -221,15 +221,14 @@ Entrar - Blave Fitness
 
 
 <div class="container-fluid register"  style="height: 812px">
-    <div class="row h-100 d-inline-block">
+    <div class="row">
 
 
         <div class="d-none d-sm-none d-md-block col-md-3 register-left">
             <img src="https://image.ibb.co/n7oTvU/logo_white.png" alt="" />
             <h3>Bienvenida a <br /><b>Brave Fitness</b></h3>
             <p>Inicia sesión o regístrate para acceder a todas las ventajas que te ofrece Brave Fitness.
-                <br /><br /><br />Si ya estás
-                registrado, inicia sesión</p>
+                <br /><br /><br />Si ya estás registrado, inicia sesión</p>
 
             <span class="btn btn-primary" id="botInicSes" style="display: none">Iniciar sesión</span><br />
             <br />
