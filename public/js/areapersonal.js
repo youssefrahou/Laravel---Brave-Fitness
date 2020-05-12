@@ -8,6 +8,12 @@ $(document).ready(function() {
 
     });
 
+    $("#cancelarAct").click(function() {
+        ocultarTodo();
+
+    });
+
+
 
 
 
