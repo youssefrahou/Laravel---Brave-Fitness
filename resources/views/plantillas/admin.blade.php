@@ -21,6 +21,7 @@
     </script>
     <!-- JQuery para botones -->
     <script src="{{ asset('js/admin.js') }}"></script>
+    <script src="{{ asset('js/js.js') }}"></script>
     <script src="{{ asset('js/articulo.js') }}"></script>
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
