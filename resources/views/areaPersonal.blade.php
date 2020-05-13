@@ -217,7 +217,7 @@ $(".file-upload").on('change', function(){
         </div>
 
         <div class="row col-md-3 m-1 p-3" style="background-color: gray">
-            botones<br/>
+            botones<br />
             <button class="btn btn-primary col-12" id="anadirMedicion">Añadir medición</button>
 
             <!-- Modal para AÑADIR MEDICION -->
@@ -234,42 +234,71 @@ $(".file-upload").on('change', function(){
                         </div>
                         <div class="modal-body">
 
-                            <form id="formAnadirMedicion" action="{{ url('medicion') }}" method="POST" accept-charset="UTF-8" enctype="multipart/form-data">
+                            <form id="formAnadirMedicion" action="{{ url('medicion') }}" method="POST"
+                                accept-charset="UTF-8" enctype="multipart/form-data">
                                 @csrf
 
                                 <div class="form-group">
                                     <label for="">Peso:</label>
-                                    <small id="emailHelp" class="form-text text-muted">El peso en kilógramos, por favor</small>
+                                    <small id="emailHelp" class="form-text text-muted">El peso en kilógramos, por
+                                        favor</small>
                                     <input type="text" class="form-control" id="tit" value="{{ old('peso') }}"
                                         placeholder="Peso" name="peso">
                                 </div>
-                                
+
                                 <div class="form-group">
                                     <label for="">Altura:</label>
-                                    <small id="emailHelp" class="form-text text-muted">La altura en cms, por favor. Si no ha variado, no toques nada.</small>
+                                    <small id="emailHelp" class="form-text text-muted">La altura en cms, por favor. Si
+                                        no ha variado, no toques nada.</small>
                                     <input type="text" class="form-control" id="tit" value="{{ Auth::user()->altura }}"
                                         placeholder="Altura" name="altura">
                                 </div>
 
                                 <div class="form-group">
 
-                                    <label for="foto_delante">Foto por delante:</label>
-                                    <input type="file" class="form-control-file" id="foto_delante" name="foto_delante">
-                                    
+
+                                    <div class="custom-file-upload mt-2">
+
+                                        <small id="emailHelp" class="form-text text-muted">Añade una foto por delante, por favor</small>
+                                        <label for="file-upload" class="custom-file-upload1">
+                                            <i class="fas fa-camera"></i> Foto por delante
+                                        </label>
+                                        <input type="file" id="file-upload" name="foto_delante"
+                                            class="text-center center-block file-upload" />
+
+                                    </div>
+
+                                </div>
+
+
+                                <div class="form-group">
+
+                                    <div class="custom-file-upload mt-2">
+                                        
+                                        <small id="emailHelp" class="form-text text-muted">Añade una foto de lado, por favor</small>
+                                        <label for="file-upload" class="custom-file-upload1">
+                                            <i class="fas fa-camera"></i> Foto de lado
+                                        </label>
+                                        <input type="file" id="file-upload" name="foto_lado"
+                                            class="text-center center-block file-upload" />
+
+                                    </div>
+
                                 </div>
 
                                 <div class="form-group">
 
-                                    <label for="foto_lado">Foto de lado:</label>
-                                    <input type="file" class="form-control-file" id="foto_lado" name="foto_lado">
-                                    
-                                </div>
+                                    <div class="custom-file-upload mt-2">
+                                        
+                                        <small id="emailHelp" class="form-text text-muted">Añade una foto por detrás, por favor</small>
+                                        <label for="file-upload" class="custom-file-upload1">
+                                            <i class="fas fa-camera"></i> Foto por detrás
+                                        </label>
+                                        <input type="file" id="file-upload" name="foto_atras"
+                                            class="text-center center-block file-upload" />
 
-                                <div class="form-group">
+                                    </div>
 
-                                    <label for="foto_atras">Foto por detrás:</label>
-                                    <input type="file" class="form-control-file" id="foto_atras" name="foto_atras">
-                                    
                                 </div>
 
 
