@@ -14,6 +14,12 @@ $(document).ready(function() {
     });
 
 
+    $('#anadirMedicion').click(function() {
+
+        $("#modalAnadirMedicion").modal("show");
+
+    });
+
 
 
 

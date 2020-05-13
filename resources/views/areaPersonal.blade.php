@@ -208,6 +208,94 @@ $(".file-upload").on('change', function(){
         <p class="h5 text-center">Bienvenido a Brave Fitness. Elige una opción en el menú lateral. </p>
     </div>
     <!-- Mensaje de bienvenida -->
+    <!-- Pantalla principal -->
+
+    <div class="row col-12">
+
+        <div class="row col-md-8 m-1 p-3" style="background-color: red">
+            grafiko
+        </div>
+
+        <div class="row col-md-3 m-1 p-3" style="background-color: gray">
+            botones
+            <button class="btn btn-primary" id="anadirMedicion">Añadir medición</button>
+
+            <!-- Modal para AÑADIR MEDICION -->
+            <div class="modal fade" id="modalAnadirMedicion" tabindex="-1" role="dialog"
+                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Añadir medición
+                            </h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+
+                            <form id="formAnadirMedicion" action="{{ url('medicion') }}" method="POST" accept-charset="UTF-8" enctype="multipart/form-data">
+                                @csrf
+
+                                <div class="form-group">
+                                    <label for="">Peso:</label>
+                                    <small id="emailHelp" class="form-text text-muted">El peso en kilógramos, por favor</small>
+                                    <input type="text" class="form-control" id="tit" value="{{ old('peso') }}"
+                                        placeholder="Peso" name="peso">
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="">Altura:</label>
+                                    <small id="emailHelp" class="form-text text-muted">La altura en cms, por favor. Si no ha variado, no toques nada.</small>
+                                    <input type="text" class="form-control" id="tit" value="{{ Auth::user()->altura }}"
+                                        placeholder="Altura" name="altura">
+                                </div>
+
+
+
+                                <input type="hidden" name="users_id" value="{{ Auth::user()->id }}">
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                            <button type="submit" class="btn btn-success">Añadir</button>
+                        </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!-- Modal para AÑADIR MEDICION -->
+
+
+
+
+
+
+
+
+
+
+
+            <form id="formLeido" action="{{ url('medicion')}}" method="POST" class="col-md-12" accept-charset="UTF-8">
+
+                <input type="hidden" name="_token" id="token" value="{{ csrf_token() }}">
+
+                <input type="hidden" value="1" name="leido">
+                <input type="submit" class="btn btn-success col-md-12" value="Marcar leído">
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+
+
+
+
+
+    <!-- Pantalla principal -->
 
     <!-- Ajustes de perfil -->
     <div class="row col-12 p-2" id="editarPerfil" style="display: none">
@@ -238,14 +326,16 @@ $(".file-upload").on('change', function(){
                         @endif
 
                         <!-- FORMULARIO -->
-                        <form class="form" action="{{ url('user') }}/{{ auth()->user()->id }}" enctype="multipart/form-data" method="post" id="registrationForm">
+                        <form class="form" action="{{ url('user') }}/{{ auth()->user()->id }}"
+                            enctype="multipart/form-data" method="post" id="registrationForm">
 
                             <div class="custom-file-upload mt-2">
 
                                 <label for="file-upload" class="custom-file-upload1">
                                     <i class="fas fa-camera"></i> Subir imagen
                                 </label>
-                                <input type="file" id="file-upload" name="fotoPerfil" class="text-center center-block file-upload" />
+                                <input type="file" id="file-upload" name="fotoPerfil"
+                                    class="text-center center-block file-upload" />
 
                             </div>
 
