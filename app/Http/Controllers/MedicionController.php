@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Medicion;
 
 class MedicionController extends Controller
 {
@@ -34,7 +35,65 @@ class MedicionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $medicion = new Medicion();
+        $medicion = request()->all();
+        
+        $medicion['fecha'] = now();
+
+        
+
+        if ($request->file('foto_delante')) {
+
+            //obtenemos el campo file definido en el formulario
+            $archivo = $request->file('foto_delante');
+
+            $path = public_path() . '/images/mediciones' . $request->users_id;
+
+            //obtenemos el nombre del archivo
+            $nombre = $archivo->getClientOriginalName();
+
+            $archivo->move($path, $nombre);
+
+            $medicion['foto_delante'] = $nombre;
+        }
+
+        if ($request->file('foto_lado')) {
+
+            //obtenemos el campo file definido en el formulario
+            $archivo = $request->file('foto_lado');
+
+            $path = public_path() . '/images/mediciones/' . $request->users_id;
+
+            //obtenemos el nombre del archivo
+            $nombre = $archivo->getClientOriginalName();
+
+            $archivo->move($path, $nombre);
+
+            $medicion['foto_lado'] = $nombre;
+        }
+
+        if ($request->file('foto_atras')) {
+
+            //obtenemos el campo file definido en el formulario
+            $archivo = $request->file('foto_atras');
+
+            $path = public_path() . '/images/mediciones' . $request->users_id;
+
+            //obtenemos el nombre del archivo
+            $nombre = $archivo->getClientOriginalName();
+
+            $archivo->move($path, $nombre);
+
+            $medicion['foto_atras'] = $nombre;
+        }
+
+
+
+        Medicion::create($medicion);
+
+
+
+        return redirect()->back()->with('mensaje', '¡Tu medición se ha añadido correctamente!');
     }
 
     /**

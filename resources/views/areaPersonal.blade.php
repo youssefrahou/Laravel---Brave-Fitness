@@ -217,8 +217,8 @@ $(".file-upload").on('change', function(){
         </div>
 
         <div class="row col-md-3 m-1 p-3" style="background-color: gray">
-            botones
-            <button class="btn btn-primary" id="anadirMedicion">Añadir medición</button>
+            botones<br/>
+            <button class="btn btn-primary col-12" id="anadirMedicion">Añadir medición</button>
 
             <!-- Modal para AÑADIR MEDICION -->
             <div class="modal fade" id="modalAnadirMedicion" tabindex="-1" role="dialog"
@@ -251,6 +251,28 @@ $(".file-upload").on('change', function(){
                                         placeholder="Altura" name="altura">
                                 </div>
 
+                                <div class="form-group">
+
+                                    <label for="foto_delante">Foto por delante:</label>
+                                    <input type="file" class="form-control-file" id="foto_delante" name="foto_delante">
+                                    
+                                </div>
+
+                                <div class="form-group">
+
+                                    <label for="foto_lado">Foto de lado:</label>
+                                    <input type="file" class="form-control-file" id="foto_lado" name="foto_lado">
+                                    
+                                </div>
+
+                                <div class="form-group">
+
+                                    <label for="foto_atras">Foto por detrás:</label>
+                                    <input type="file" class="form-control-file" id="foto_atras" name="foto_atras">
+                                    
+                                </div>
+
+
 
 
                                 <input type="hidden" name="users_id" value="{{ Auth::user()->id }}">
@@ -276,14 +298,7 @@ $(".file-upload").on('change', function(){
 
 
 
-            <form id="formLeido" action="{{ url('medicion')}}" method="POST" class="col-md-12" accept-charset="UTF-8">
 
-                <input type="hidden" name="_token" id="token" value="{{ csrf_token() }}">
-
-                <input type="hidden" value="1" name="leido">
-                <input type="submit" class="btn btn-success col-md-12" value="Marcar leído">
-
-            </form>
 
         </div>
 
