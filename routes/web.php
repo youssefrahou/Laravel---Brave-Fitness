@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\User;
 use App\Comentario;
 use App\Charts\pesoUsuario;
+use App\Medicion;
 
 /*
 |--------------------------------------------------------------------------
@@ -51,16 +52,45 @@ Route::get('prueba2', function () {
 Route::get('areaPersonal', function () {
 
 
+    $medFechas = Medicion::select('fecha')->get();
+    $medPeso = Medicion::select('peso')->get();
 
-    // ...
+    $fechas = array();
+    foreach($medFechas as $medicion){
+
+            array_push($fechas, $medicion['fecha']);
+        
+    }
+
+    $pesos = array();
+    foreach($medPeso as $peso){
+
+            array_push($pesos, $peso['peso']);
+        
+    }
+    
+
+    
 
     // Instanciamos el objeto gráfico 
     $chart = new pesoUsuario();
 
+    $chart->title('Progreso', 30, "rgb(255, 99, 132)", true, 'Helvetica Neue');
+
+    $chart->barwidth(0.0);
+    $chart->displaylegend(false);
+
+
+
     // Añadimos las etiquetas del eje X
-    $chart->labels(['One', 'Two', 'Three']);
-    $chart->dataset('My dataset 1', 'line', [1, 2, 3, 4]);
-    $chart->dataset('My dataset 2', 'line', collect([3, 4, 5, 6]));
+    $chart->labels($fechas);
+
+    $chart->dataset('Peso de tu puta madre', 'line', $pesos)
+        ->color("rgb(255, 99, 132)")
+        ->backgroundcolor("rgb(255, 99, 132)")
+        ->fill(false)
+        ->linetension(0.1)
+        ->dashed([5]);
 
 
     return view('areaPersonal', compact('chart'));
