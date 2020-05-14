@@ -73,7 +73,7 @@ Route::get('areaPersonal', function () {
     // Instanciamos el objeto gráfico 
     $chart = new pesoUsuario();
 
-    $chart->title('Progreso', 30, "rgb(255, 99, 132)", true, 'Helvetica Neue');
+    $chart->title('Progreso', 30, "rgb(0, 0, 0)", true, 'Helvetica Neue');
 
     $chart->barwidth(0.0);
     $chart->displaylegend(false);
@@ -83,12 +83,12 @@ Route::get('areaPersonal', function () {
     // Añadimos las etiquetas del eje X
     $chart->labels($fechas);
 
-    $chart->dataset('Peso de tu puta madre', 'line', $pesos)
-        ->color("rgb(255, 99, 132)")
-        ->backgroundcolor("rgb(255, 99, 132)")
+    $chart->dataset('Peso', 'line', $pesos)
+        ->color("rgb(20, 166, 192)")
+        ->backgroundcolor("rgb(255, 255, 255)")
         ->fill(false)
         ->linetension(0.1)
-        ->dashed([5]);
+        ->dashed([0]);
 
 
     return view('areaPersonal', compact('chart'));
