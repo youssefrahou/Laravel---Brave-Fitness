@@ -257,47 +257,45 @@ $(".file-upload").on('change', function(){
                                 <div class="form-group">
 
 
-                                    <div class="custom-file-upload mt-2">
+                                    <div id="previewDelante"></div>
 
-                                        <small id="emailHelp" class="form-text text-muted">Añade una foto por delante, por favor</small>
-                                        <label for="file-upload" class="custom-file-upload1">
-                                            <i class="fas fa-camera"></i> Foto por delante
-                                        </label>
-                                        <input type="file" id="file-upload" name="foto_delante"
-                                            class="text-center center-block file-upload" />
+                                    <small id="emailHelp" class="form-text text-muted">Añade una foto por delante,
+                                        por favor</small>
+                                    <label for="file-upload" class="custom-file-upload1">
+                                        <i class="fas fa-camera"></i> Foto por delante
+                                    </label>
+                                    <input type="file" id="delante" accept="image/*" name="foto_delante"/>
 
-                                    </div>
 
                                 </div>
 
 
                                 <div class="form-group">
 
-                                    <div class="custom-file-upload mt-2">
-                                        
-                                        <small id="emailHelp" class="form-text text-muted">Añade una foto de lado, por favor</small>
+
+                                    <div id="previewLado"></div>
+
+                                        <small id="emailHelp" class="form-text text-muted">Añade una foto de lado, por
+                                            favor</small>
                                         <label for="file-upload" class="custom-file-upload1">
                                             <i class="fas fa-camera"></i> Foto de lado
                                         </label>
-                                        <input type="file" id="file-upload" name="foto_lado"
-                                            class="text-center center-block file-upload" />
+                                        <input type="file" id="lado" name="foto_lado"/>
 
-                                    </div>
 
                                 </div>
 
                                 <div class="form-group">
 
-                                    <div class="custom-file-upload mt-2">
-                                        
-                                        <small id="emailHelp" class="form-text text-muted">Añade una foto por detrás, por favor</small>
+                                    <div id="previewAtras"></div>
+
+                                        <small id="emailHelp" class="form-text text-muted">Añade una foto por detrás,
+                                            por favor</small>
                                         <label for="file-upload" class="custom-file-upload1">
                                             <i class="fas fa-camera"></i> Foto por detrás
                                         </label>
-                                        <input type="file" id="file-upload" name="foto_atras"
-                                            class="text-center center-block file-upload" />
+                                        <input type="file" id="atras" name="foto_atras"/>
 
-                                    </div>
 
                                 </div>
 
