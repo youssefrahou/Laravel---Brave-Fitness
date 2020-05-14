@@ -56,21 +56,19 @@ Route::get('areaPersonal', function () {
     $medPeso = Medicion::select('peso')->where('users_id', auth()->user()->id)->get();
 
     $fechas = array();
-    foreach($medFechas as $medicion){
+    foreach ($medFechas as $medicion) {
 
-            array_push($fechas, $medicion['fecha']);
-        
+        array_push($fechas, $medicion['fecha']);
     }
 
     $pesos = array();
-    foreach($medPeso as $peso){
+    foreach ($medPeso as $peso) {
 
-            array_push($pesos, $peso['peso']);
-        
+        array_push($pesos, $peso['peso']);
     }
-    
 
-    
+
+
 
     // Instanciamos el objeto gráfico 
     $chart = new pesoUsuario();
