@@ -203,146 +203,134 @@ $(".file-upload").on('change', function(){
 
 <div class="row">
 
-
-
     <!-- Mensaje de bienvenida -->
     <div class="table-responsive justify-content-center" id="bienvenida">
         <p class="h5 text-center">Bienvenido a Brave Fitness. Elige una opción en el menú lateral. </p>
-   
+
     </div>
     <!-- Mensaje de bienvenida -->
+
     <!-- Pantalla principal -->
+    <div class="row col-12" id="progreso">
 
-    <div class="row col-12">
-
-        <div class="row col-md-8 m-1 p-3" style="">
+        <div class="row col-md-8 m-1 p-3">
             {{ $chart->container() }}
-        
-        {{ $chart->script() }}
+
+            {{ $chart->script() }}
         </div>
 
-        <div class="row col-md-3 m-1 p-3" style="background-color: gray">
-            botones<br />
-            <button class="btn btn-primary col-12" id="anadirMedicion">Añadir medición</button>
+        <div>
 
-            <!-- Modal para AÑADIR MEDICION -->
-            <div class="modal fade" id="modalAnadirMedicion" tabindex="-1" role="dialog"
-                aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Añadir medición
-                            </h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
+            <button type="button" class="btn btn-primary col-12 mt-5" id="anadirMedicion" style="height: 50px">Añadir
+                medición</button>
 
-                            <form id="formAnadirMedicion" action="{{ url('medicion') }}" method="POST"
-                                accept-charset="UTF-8" enctype="multipart/form-data">
-                                @csrf
-
-                                <div class="form-group">
-                                    <label for="">Peso:</label>
-                                    <small id="emailHelp" class="form-text text-muted">El peso en kilógramos, por
-                                        favor</small>
-                                    <input type="text" class="form-control" id="tit" value="{{ old('peso') }}"
-                                        placeholder="Peso" name="peso">
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="">Altura:</label>
-                                    <small id="emailHelp" class="form-text text-muted">La altura en cms, por favor. Si
-                                        no ha variado, no toques nada.</small>
-                                    <input type="text" class="form-control" id="tit" value="{{ Auth::user()->altura }}"
-                                        placeholder="Altura" name="altura">
-                                </div>
-
-                                <div class="form-group">
-
-
-                                    <div id="previewDelante"></div>
-
-                                    <small id="emailHelp" class="form-text text-muted">Añade una foto por delante,
-                                        por favor</small>
-                                    <label for="file-upload" class="custom-file-upload1">
-                                        <i class="fas fa-camera"></i> Foto por delante
-                                    </label>
-                                    <input type="file" id="delante" accept="image/*" name="foto_delante"/>
-
-
-                                </div>
-
-
-                                <div class="form-group">
-
-
-                                    <div id="previewLado"></div>
-
-                                        <small id="emailHelp" class="form-text text-muted">Añade una foto de lado, por
-                                            favor</small>
-                                        <label for="file-upload" class="custom-file-upload1">
-                                            <i class="fas fa-camera"></i> Foto de lado
-                                        </label>
-                                        <input type="file" id="lado" name="foto_lado"/>
-
-
-                                </div>
-
-                                <div class="form-group">
-
-                                    <div id="previewAtras"></div>
-
-                                        <small id="emailHelp" class="form-text text-muted">Añade una foto por detrás,
-                                            por favor</small>
-                                        <label for="file-upload" class="custom-file-upload1">
-                                            <i class="fas fa-camera"></i> Foto por detrás
-                                        </label>
-                                        <input type="file" id="atras" name="foto_atras"/>
-
-
-                                </div>
+            <button type="button" class="btn btn-primary col-12 mt-3" id="compararMedicion"
+                style="height: 50px">Comparar</button>
+        </div>
 
 
 
-
-                                <input type="hidden" name="users_id" value="{{ Auth::user()->id }}">
-
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-                            <button type="submit" class="btn btn-success">Añadir</button>
-                        </div>
-                        </form>
+        <!-- Modal para AÑADIR MEDICION -->
+        <div class="modal fade" id="modalAnadirMedicion" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Añadir medición
+                        </h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
                     </div>
+                    <div class="modal-body">
+
+                        <form id="formAnadirMedicion" action="{{ url('medicion') }}" method="POST"
+                            accept-charset="UTF-8" enctype="multipart/form-data">
+                            @csrf
+
+                            <div class="form-group">
+                                <label for="">Peso:</label>
+                                <small id="emailHelp" class="form-text text-muted">El peso en kilógramos, por
+                                    favor</small>
+                                <input type="text" class="form-control" id="tit" value="{{ old('peso') }}"
+                                    placeholder="Peso" name="peso">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="">Altura:</label>
+                                <small id="emailHelp" class="form-text text-muted">La altura en cms, por favor. Si
+                                    no ha variado, no toques nada.</small>
+                                <input type="text" class="form-control" id="tit" value="{{ Auth::user()->altura }}"
+                                    placeholder="Altura" name="altura">
+                            </div>
+
+                            <div class="form-group">
+
+
+                                <div id="previewDelante"></div>
+
+                                <small id="emailHelp" class="form-text text-muted">Añade una foto por delante,
+                                    por favor</small>
+                                <label for="file-upload" class="custom-file-upload1">
+                                    <i class="fas fa-camera"></i> Foto por delante
+                                </label>
+                                <input type="file" id="delante" accept="image/*" name="foto_delante" />
+
+
+                            </div>
+
+
+                            <div class="form-group">
+
+
+                                <div id="previewLado"></div>
+
+                                <small id="emailHelp" class="form-text text-muted">Añade una foto de lado, por
+                                    favor</small>
+                                <label for="file-upload" class="custom-file-upload1">
+                                    <i class="fas fa-camera"></i> Foto de lado
+                                </label>
+                                <input type="file" id="lado" name="foto_lado" />
+
+
+                            </div>
+
+                            <div class="form-group">
+
+                                <div id="previewAtras"></div>
+
+                                <small id="emailHelp" class="form-text text-muted">Añade una foto por detrás,
+                                    por favor</small>
+                                <label for="file-upload" class="custom-file-upload1">
+                                    <i class="fas fa-camera"></i> Foto por detrás
+                                </label>
+                                <input type="file" id="atras" name="foto_atras" />
+
+
+                            </div>
+
+
+
+
+                            <input type="hidden" name="users_id" value="{{ Auth::user()->id }}">
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-success">Añadir</button>
+                    </div>
+                    </form>
                 </div>
             </div>
-            <!-- Modal para AÑADIR MEDICION -->
-
-
-
-
-
-
-
-
-
-
-
-
-
         </div>
+        <!-- Modal para AÑADIR MEDICION -->
+
+
 
     </div>
-
-
-
-
-
-
-
     <!-- Pantalla principal -->
+
+
 
     <!-- Ajustes de perfil -->
     <div class="row col-12 p-2" id="editarPerfil" style="display: none">
@@ -478,11 +466,11 @@ $(".file-upload").on('change', function(){
                                 <div class="col-6">
                                     <div class="form-group">
                                         <label for="password">
-                                            <h4>Peso</h4>
+                                            <h4>Peso inicial</h4>
                                         </label>
                                         <input type="number" class="form-control  @error('peso') is-invalid @enderror"
                                             name="peso" id="password" placeholder="Peso"
-                                            value="{{ auth()->user()->peso }}">
+                                            value="{{ auth()->user()->peso }}" disabled>
                                         @error('peso')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -494,12 +482,12 @@ $(".file-upload").on('change', function(){
                                 <div class="col-6">
                                     <div class="form-group">
                                         <label for="password">
-                                            <h4>Altura (en cm)</h4>
+                                            <h4>Altura inicial</h4>
 
                                         </label>
                                         <input type="number" class="form-control  @error('altura') is-invalid @enderror"
                                             name="altura" id="password" placeholder="Altura (en cm)"
-                                            value="{{ auth()->user()->peso }}">
+                                            value="{{ auth()->user()->peso }}" disabled>
                                         @error('altura')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -528,8 +516,8 @@ $(".file-upload").on('change', function(){
                                     <div class="form-group">
                                         <label for="first_name">Correo electrónico:</label>
                                         <input type="text" class="form-control @error('email') is-invalid @enderror"
-                                            name="email" value="{{ auth()->user()->email }}" required
-                                            autocomplete="email" placeholder="Correo electrónico">
+                                            name="email" value="{{ auth()->user()->email }}"
+                                            autocomplete="email" placeholder="Correo electrónico" disabled>
 
                                         @error('email')
                                         <span class="invalid-feedback" role="alert">
@@ -628,5 +616,5 @@ $(".file-upload").on('change', function(){
 
 
     </div>
-
-    @stop
+</div>
+@stop

@@ -85,5 +85,8 @@ $(document).ready(function() {
 function ocultarTodo() {
     $("#bienvenida").hide();
     $("#editarPerfil").hide();
+    $("#progreso").hide();
+
+
 
 }
