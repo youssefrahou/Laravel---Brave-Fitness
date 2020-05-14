@@ -1,6 +1,8 @@
 @extends('plantillas.admin')
 
 @section('head')
+<!-- GRÁFICOS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js" charset="utf-8"></script>
 
 <!-- JS -->
 <script src="{{ asset('js/areapersonal.js') }}"></script>
@@ -212,8 +214,10 @@ $(".file-upload").on('change', function(){
 
     <div class="row col-12">
 
-        <div class="row col-md-8 m-1 p-3" style="background-color: red">
-            grafiko
+        <div class="row col-md-8 m-1 p-3" style="">
+            {{ $chart->container() }}
+        
+        {{ $chart->script() }}
         </div>
 
         <div class="row col-md-3 m-1 p-3" style="background-color: gray">

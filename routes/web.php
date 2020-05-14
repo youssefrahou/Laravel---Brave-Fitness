@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\User;
 use App\Comentario;
+use App\Charts\pesoUsuario;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,36 +24,46 @@ Route::get('sobreNosotros', 'PaginasController@sobreNosotros');
 Route::get('admin', 'AdminController@inicio');
 Route::get('/login2', 'PaginasController@login');
 Route::get('/articulos', 'PaginasController@articulos');
-Route::get('/usuarios', function(){
+Route::get('/usuarios', function () {
 
-    $articulo= App\Articulo::find(1);
+    $articulo = App\Articulo::find(1);
 
     return $articulo;
-/*
+    /*
     foreach($articulo->tags as $tag){
         echo $tag->nombre . '<br/>';
     }*/
-    
 });
 
-Route::get('articulo/{id}', function($id){
+Route::get('articulo/{id}', function ($id) {
 
     $articulo = App\Articulo::find($id);
     $comentarios = App\Comentario::where('articulo_id', $id)->get();
 
     return view('articulo', compact('articulo', 'comentarios'));
-    
 });
 
-Route::get('prueba2', function(){
+Route::get('prueba2', function () {
     return view('prueba');
 });
 
 
-Route::get('areaPersonal', function(){
+Route::get('areaPersonal', function () {
 
-    return view('areaPersonal');
-    
+
+
+    // ...
+
+    // Instanciamos el objeto gráfico 
+    $chart = new pesoUsuario();
+
+    // Añadimos las etiquetas del eje X
+    $chart->labels(['One', 'Two', 'Three']);
+    $chart->dataset('My dataset 1', 'line', [1, 2, 3, 4]);
+    $chart->dataset('My dataset 2', 'line', collect([3, 4, 5, 6]));
+
+
+    return view('areaPersonal', compact('chart'));
 });
 
 /**
