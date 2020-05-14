@@ -52,8 +52,8 @@ Route::get('prueba2', function () {
 Route::get('areaPersonal', function () {
 
 
-    $medFechas = Medicion::select('fecha')->get();
-    $medPeso = Medicion::select('peso')->get();
+    $medFechas = Medicion::select('fecha')->where('users_id', auth()->user()->id)->get();
+    $medPeso = Medicion::select('peso')->where('users_id', auth()->user()->id)->get();
 
     $fechas = array();
     foreach($medFechas as $medicion){
