@@ -140,11 +140,13 @@
                     <div class="image">
                         @if (auth()->user()->fotoPerfil == null)
 
-                        <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="img-circle elevation-2" alt="avatar">
+                        <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="img-circle elevation-2" alt="avatar"
+                        style="width: 50px; height: 50px;">
 
                         @else
 
-                        <img src="images/users/{{ auth()->user()->fotoPerfil }}" class="img-circle elevation-2" alt="avatar">
+                        <img src="images/users/{{ auth()->user()->fotoPerfil }}" class="img-circle elevation-2" alt="avatar"
+                        style="width: 50px; height: 50px;">
 
                         @endif
                     </div>
@@ -152,11 +154,11 @@
 
                         @if (!Auth::guest() && Auth::user()->hasRole('admin'))
 
-                        <a href="{{ url('/admin') }}" class="d-block">{{ Auth::user()->name }}</a>
+                        <a style="font-size: 25px" href="{{ url('/admin') }}" class="d-block">{{ Auth::user()->name }}</a>
 
                         @else
 
-                        <a href="{{ url('/areaPersonal') }}" class="d-block">{{ Auth::user()->name }}</a>
+                        <a style="font-size: 25px" href="{{ url('/areaPersonal') }}" class="d-block">{{ Auth::user()->name }}</a>
 
                         @endif
 
@@ -210,7 +212,8 @@
 
                         </div>
 
-                        <div class="col-12">
+                        <!-- OCULTADO POR AHORA -->
+                        <div class="col-12" style="display: none">
 
                             @if (!Auth::guest() && Auth::user()->hasRole('admin'))
                             <h1 class="m-0 text-info text-center">ZONA ADMINISTRADOR</h1>

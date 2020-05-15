@@ -51,6 +51,7 @@ Route::get('prueba2', function () {
 
 Route::get('areaPersonal', function () {
 
+    $mediciones = Medicion::all();
 
     $medFechas = Medicion::select('fecha')->where('users_id', auth()->user()->id)->get();
     $medPeso = Medicion::select('peso')->where('users_id', auth()->user()->id)->get();
@@ -91,7 +92,7 @@ Route::get('areaPersonal', function () {
         ->dashed([0]);
 
 
-    return view('areaPersonal', compact('chart'));
+    return view('areaPersonal', compact('chart'), compact('mediciones'));
 });
 
 /**

@@ -75,6 +75,22 @@ $(document).ready(function() {
 
     });
 
+    $('#lateralMiProgreso').click(function() {
+
+        ocultarTodo();
+        $("#progreso").show();
+
+    });
+
+
+    $('#compararMedicion').click(function() {
+
+        ocultarTodo();
+        $("#compararFecha").show();
+
+    });
+
+
 
 
 
@@ -86,6 +102,9 @@ function ocultarTodo() {
     $("#bienvenida").hide();
     $("#editarPerfil").hide();
     $("#progreso").hide();
+    $("#compararFecha").hide();
+
+
 
 
 

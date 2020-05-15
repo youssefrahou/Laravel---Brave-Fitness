@@ -49,43 +49,14 @@ $(".file-upload").on('change', function(){
     <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
 
-    <li class="nav-item has-treeview">
-        <a href="#" class="nav-link">
-            <i class="nav-icon fas fa-copy"></i>
-            <p>
-                Inicio
-            </p>
-        </a>
-    </li>
-    <li class="nav-item has-treeview">
+
+    <li class="nav-item has-treeview" id="lateralMiProgreso">
         <a href="#" class="nav-link">
             <i class="nav-icon fas fa-chart-pie"></i>
             <p>
-                Progreso
-                <i class="fas fa-angle-left right"></i>
-                <span class="badge badge-info right"></span>
+                Mi progreso
             </p>
         </a>
-        <ul class="nav nav-treeview">
-            <li class="nav-item" id="verArticulos">
-                <span class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Mi progreso</p>
-                </span>
-            </li>
-            <li class="nav-item" id="escribirArticulo">
-                <span class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Comparación</p>
-                </span>
-            </li>
-            <li class="nav-item" id="escribirArticulo">
-                <span class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Añadir medición</p>
-                </span>
-            </li>
-        </ul>
     </li>
 
     <li class="nav-item has-treeview">
@@ -203,12 +174,11 @@ $(".file-upload").on('change', function(){
 
 <div class="row">
 
-    <!-- Mensaje de bienvenida -->
+    <!-- Mensaje de bienvenida 
     <div class="table-responsive justify-content-center" id="bienvenida">
         <p class="h5 text-center">Bienvenido a Brave Fitness. Elige una opción en el menú lateral. </p>
-
     </div>
-    <!-- Mensaje de bienvenida -->
+    Mensaje de bienvenida -->
 
     <!-- Pantalla principal -->
     <div class="row col-12" id="progreso">
@@ -289,7 +259,7 @@ $(".file-upload").on('change', function(){
                                     favor</small>
                                 <label for="file-upload" class="custom-file-upload1">
                                     <i class="fas fa-camera"></i> Foto de lado
-                                </label>
+                                </label><br/>
                                 <input type="file" id="lado" name="foto_lado" />
 
 
@@ -330,7 +300,59 @@ $(".file-upload").on('change', function(){
     </div>
     <!-- Pantalla principal -->
 
+    <!-- COMPARAR PESOS por fecha -->
 
+    <div class="row col-12" id="compararFecha" style="display: none">
+
+        <div class="row col-12 justify-content-center">
+            <h4 class="text-center col-12">Comparación progreso por fechas</h4>
+
+            <div class="row col-12">
+                <label>Día: </label>
+                <select>
+                    @php
+                    foreach ($mediciones as $medicion) {
+                    echo "<option>" . $medicion['fecha'] . " " . $medicion['peso'] . "kg</option>";
+                    }
+                    @endphp
+
+                </select>
+            </div>
+
+
+            <div class="row col-12 mt-3">
+                <label>Día: </label>
+                <select>
+                    @php
+                    foreach ($mediciones as $medicion) {
+                    echo "<option>" . $medicion['fecha'] . " " . $medicion['peso'] . "kg</option>";
+                    }
+                    @endphp
+
+                </select>
+            </div>
+
+
+
+
+
+        </div>
+
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- COMPARAR PESOS por fecha -->
 
     <!-- Ajustes de perfil -->
     <div class="row col-12 p-2" id="editarPerfil" style="display: none">
@@ -516,8 +538,8 @@ $(".file-upload").on('change', function(){
                                     <div class="form-group">
                                         <label for="first_name">Correo electrónico:</label>
                                         <input type="text" class="form-control @error('email') is-invalid @enderror"
-                                            name="email" value="{{ auth()->user()->email }}"
-                                            autocomplete="email" placeholder="Correo electrónico" disabled>
+                                            name="email" value="{{ auth()->user()->email }}" autocomplete="email"
+                                            placeholder="Correo electrónico" disabled>
 
                                         @error('email')
                                         <span class="invalid-feedback" role="alert">
