@@ -84,6 +84,14 @@ $(".file-upload").on('change', function(){
         </ul>
     </li>
 
+    <li class="nav-item has-treeview" id="lateralChat">
+        <a href="#" class="nav-link">
+            <i class="nav-icon fas fa-chart-pie"></i>
+            <p>
+                Chat
+            </p>
+        </a>
+    </li>
 
 
 
@@ -259,7 +267,7 @@ $(".file-upload").on('change', function(){
                                     favor</small>
                                 <label for="file-upload" class="custom-file-upload1">
                                     <i class="fas fa-camera"></i> Foto de lado
-                                </label><br/>
+                                </label><br />
                                 <input type="file" id="lado" name="foto_lado" />
 
 
@@ -340,18 +348,6 @@ $(".file-upload").on('change', function(){
 
 
     </div>
-
-
-
-
-
-
-
-
-
-
-
-
     <!-- COMPARAR PESOS por fecha -->
 
     <!-- Ajustes de perfil -->
@@ -574,69 +570,74 @@ $(".file-upload").on('change', function(){
             </div>
             <!--/row-->
         </div>
-        <!-- Ajustes de perfil -->
+    </div>
+    <!-- fin AJUSTES DE PERFIL -->
 
 
+    <!-- CHAT -->
 
+    <div class="row col-12" id="chat" style="display: none">
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        <!-- Tabla usuarios -->
-
-        <!-- Tabla usuarios -->
-
-
-        <!-- Escribir articulo -->
-
-        <!-- Escribir articulo -->
-
-
-        <!-- Modal para añadir categoria -->
-
-        <!-- Modal para añadir categoria -->
-
-        <!-- Escribir articulo -->
-
-
-
-        <!-- Ver articulos -->
-
-        <!-- Ver articulos -->
-
-        <!-- Ver consejos -->
-
-        <!-- Ver consejos -->
-
-        <!-- Modal para añadir CONSEJO -->
-
-        <!-- Modal para añadir CONSEJO -->
-
-        <!-- Ver todos comentarios -->
-
-        <!-- Ver todos comentarios -->
-
-        <!-- Ver comentarios SIN LEER -->
-
-        <!-- Ver comentarios SIN LEER-->
-
+        chattyguhijokpl
 
     </div>
+    <!-- CHAT -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Tabla usuarios -->
+
+    <!-- Tabla usuarios -->
+
+
+    <!-- Escribir articulo -->
+
+    <!-- Escribir articulo -->
+
+
+    <!-- Modal para añadir categoria -->
+
+    <!-- Modal para añadir categoria -->
+
+    <!-- Escribir articulo -->
+
+
+
+    <!-- Ver articulos -->
+
+    <!-- Ver articulos -->
+
+    <!-- Ver consejos -->
+
+    <!-- Ver consejos -->
+
+    <!-- Modal para añadir CONSEJO -->
+
+    <!-- Modal para añadir CONSEJO -->
+
+    <!-- Ver todos comentarios -->
+
+    <!-- Ver todos comentarios -->
+
+    <!-- Ver comentarios SIN LEER -->
+
+    <!-- Ver comentarios SIN LEER-->
+
+
+
 </div>
 @stop

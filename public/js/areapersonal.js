@@ -90,6 +90,15 @@ $(document).ready(function() {
 
     });
 
+    $('#lateralChat').click(function() {
+
+        ocultarTodo();
+        $("#chat").show();
+
+    });
+
+
+
 
 
 
@@ -103,6 +112,7 @@ function ocultarTodo() {
     $("#editarPerfil").hide();
     $("#progreso").hide();
     $("#compararFecha").hide();
+    $("#chat").hide();
 
 
 
