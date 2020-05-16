@@ -15,19 +15,24 @@ class CreateMensajeTable extends Migration
     {
         Schema::create('mensaje', function (Blueprint $table) {
             $table->id();
-            $table->string('mensaje');
+            $table->string('texto');
             $table->dateTime('fecha');
-            
-            $table->bigInteger('users_id')->unsigned();
-            $table->foreign('users_id')
+            $table->boolean('leido');
+
+            $table->bigInteger('de')->unsigned();
+            $table->foreign('de')
+                ->references('id')->on('users')
+                ->onDelete("cascade")
+                ->onUpdate("cascade");
+
+            $table->bigInteger('para')->unsigned();
+            $table->foreign('para')
                 ->references('id')->on('users')
                 ->onDelete("cascade")
                 ->onUpdate("cascade");
 
             $table->timestamps();
         });
-
-        
     }
 
     /**

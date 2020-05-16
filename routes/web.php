@@ -74,7 +74,10 @@ Route::get('areaPersonal', function () {
     // Instanciamos el objeto gráfico 
     $chart = new pesoUsuario();
 
-    $chart->title('Progreso', 30, "rgb(0, 0, 0)", true, 'Helvetica Neue');
+    $chart->title('Progreso', 30, "rgb(0, 0, 0)", 'Helvetica Neue');
+
+    //quito el true arriba para q no me moleste esta mierda de IDE, puede q falle algo xd
+    // $chart->title('Progreso', 30, "rgb(0, 0, 0)", true, 'Helvetica Neue');
 
     $chart->barwidth(0.0);
     $chart->displaylegend(false);
@@ -116,6 +119,16 @@ Route::resource('comentario', 'ComentarioController');
 Route::resource('respuesta', 'Respuesta_comentarioController');
 /**
  * fin RUTAS CRUD
+ */
+
+/**
+ * Rutas para chat
+ */
+Route::get('/', 'ChatController@index');
+Route::get('messages', 'ChatController@fetchMessages');
+Route::post('messages', 'ChatController@sendMessage');
+/**
+ * Rutas para chat
  */
 
 
