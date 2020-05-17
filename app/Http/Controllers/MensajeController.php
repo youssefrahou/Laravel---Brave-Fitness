@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Events\EnviarMensaje;
+use App\Mensaje;
 class MensajeController extends Controller
 {
     /**
@@ -34,7 +35,17 @@ class MensajeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $mensaje = new Mensaje;
+        $mensaje->texto = $request->texto;
+        $mensaje->leido = 0;
+        $mensaje->de = $request->de;
+        $mensaje->para = $request->para;
+        $mensaje->fecha = now();
+        $mensaje->save();
+
+        event(new EnviarMensaje($this->texto, $this->de, $this->para));
+
+        return Mensaje::all();
     }
 
     /**

@@ -21,8 +21,48 @@ class FormularioChat extends Component
 
 
     public function  mensajeRecibido($data)
-    {        
+    {
         $mensajes = Mensaje::all();
+    }
+
+    public function enviarMensaje()
+    {
+        /* $validatedData = $this->validate([
+            'usuario' => 'required',
+            'mensaje' => 'required',    
+        ]);*/
+
+        // Guardamos el mensaje en la BBDD
+        if (aut()->user()->id == 1) { //si soy admin
+            $paraQuien = $this->para;
+        }else{
+            $paraQuien = 1;
+        }
+
+        Mensaje::create([
+            "texto" => $this->texto,
+            "leido" => 0,
+            "de" => aut()->user()->id,
+            "para" => $paraQuien,
+            "fecha" => now()
+        ]);
+
+        // Generamos el evento para Pusher
+        // Enviamos en la "push" el usuario y mensaje (aunque en este ejemplo no lo utilizamos)
+        // pero nos vale para comprobar en PusherDebug (y por consola) lo que llega...
+        event(new \App\Events\EnviarMensaje($this->texto, $this->de, $this->para));
+
+        // Este evento es para que lo reciba el componente
+        // por Javascript y muestre el ALERT BOOSTRAP de "enviado"
+        //     $this->emit('enviadoOK', $this->mensaje);
+
+    }
+
+
+    public function render()
+    {
+        $this->mensajes = Mensaje::all();
+        return view('livewire.formulario-chat');
     }
 
     /*public function actualizarMensajes($data)
@@ -62,41 +102,4 @@ class FormularioChat extends Component
         }
     }
     */
-
-
-
-
-    public function enviarMensaje()
-    {
-        /* $validatedData = $this->validate([
-            'usuario' => 'required',
-            'mensaje' => 'required',    
-        ]);*/
-
-        // Guardamos el mensaje en la BBDD
-        Mensaje::create([
-            "texto" => $this->texto,
-            "leido" => 0,
-            "de" => auth()->user()->id,
-            "para" => 3,
-            "fecha" => now()
-        ]);
-
-        // Generamos el evento para Pusher
-        // Enviamos en la "push" el usuario y mensaje (aunque en este ejemplo no lo utilizamos)
-        // pero nos vale para comprobar en PusherDebug (y por consola) lo que llega...
-        event(new \App\Events\EnviarMensaje($this->texto, $this->de, $this->para));
-
-        // Este evento es para que lo reciba el componente
-        // por Javascript y muestre el ALERT BOOSTRAP de "enviado"
-        //     $this->emit('enviadoOK', $this->mensaje);
-
-    }
-
-
-    public function render()
-    {
-        $this->mensajes = Mensaje::all();
-        return view('livewire.formulario-chat');
-    }
 }
