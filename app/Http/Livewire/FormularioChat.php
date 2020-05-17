@@ -5,6 +5,7 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 use App\Mensaje;
 use DB;
+use Illuminate\Support\Facades\Auth;
 
 class FormularioChat extends Component
 {
@@ -33,7 +34,7 @@ class FormularioChat extends Component
         ]);*/
 
         // Guardamos el mensaje en la BBDD
-        if (aut()->user()->id == 1) { //si soy admin
+        if (1 == Auth::user()->id) { //si soy admin
             $paraQuien = $this->para;
         }else{
             $paraQuien = 1;
@@ -42,7 +43,7 @@ class FormularioChat extends Component
         Mensaje::create([
             "texto" => $this->texto,
             "leido" => 0,
-            "de" => aut()->user()->id,
+            "de" => Auth::user()->id,
             "para" => $paraQuien,
             "fecha" => now()
         ]);
