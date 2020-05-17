@@ -17,12 +17,12 @@ class FormularioChat extends Component
     public $para;
     public $mensajes;
 
-  
-    
+
+
 
     public function enviarMensaje()
-    {                
-       /* $validatedData = $this->validate([
+    {
+        /* $validatedData = $this->validate([
             'usuario' => 'required',
             'mensaje' => 'required',    
         ]);*/
@@ -35,17 +35,17 @@ class FormularioChat extends Component
             "para" => 3,
             "fecha" => now()
         ]);
-        
+
         // Generamos el evento para Pusher
         // Enviamos en la "push" el usuario y mensaje (aunque en este ejemplo no lo utilizamos)
         // pero nos vale para comprobar en PusherDebug (y por consola) lo que llega...
-    //   event(new \App\Events\NuevoMensaje($this->usuario, $this->mensaje));
-        
+        event(new \App\Events\EnviarMensaje($this->texto, $this->de, $this->para));
+
         // Este evento es para que lo reciba el componente
         // por Javascript y muestre el ALERT BOOSTRAP de "enviado"
-    //     $this->emit('enviadoOK', $this->mensaje);
-    
-    }   
+        //     $this->emit('enviadoOK', $this->mensaje);
+
+    }
 
 
     public function render()
@@ -53,7 +53,4 @@ class FormularioChat extends Component
         $this->mensajes = Mensaje::all();
         return view('livewire.formulario-chat');
     }
-
-
-
 }
