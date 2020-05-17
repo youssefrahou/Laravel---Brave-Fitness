@@ -18,12 +18,12 @@ class FormularioChat extends Component
     public $mensajes;
 
     protected $listeners = ['mensajeRecibido'];
-    
-/*
+
+
     public function  mensajeRecibido($data)
     {        
-        $this->actualizarMensajes($data);
-    }*/
+        $mensajes = Mensaje::all();
+    }
 
     /*public function actualizarMensajes($data)
     {                

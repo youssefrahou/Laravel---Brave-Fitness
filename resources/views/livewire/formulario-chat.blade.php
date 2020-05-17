@@ -1,9 +1,9 @@
 <div class="container-fluid px-4">
     <!-- For demo purpose-->
-    <div class="row rounded-lg overflow-hidden shadow">
+    <div class="row rounded-lg overflow-hidden shadow" id="cajaMensajes">
 
 
-        <div class="col-12 px-0" id="messages">
+        <div class="col-12 px-0">
             <div class="px-4 py-5 chat-box bg-white">
 
                 @foreach ($mensajes as $mensaje)
@@ -81,8 +81,8 @@
         var channel = pusher.subscribe('chat-channel');
         channel.bind('chat-event', function(data) {
           //alert(JSON.stringify(data));
-          $("#divv").html(JSON.stringify(data));
-          //window.livewire.emit('mensajeRecibido', data);
+          //$("#divv").html(JSON.stringify(data));
+          window.livewire.emit('mensajeRecibido', data);
         });
     </script>
 
