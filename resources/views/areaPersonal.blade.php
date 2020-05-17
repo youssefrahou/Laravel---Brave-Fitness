@@ -78,6 +78,8 @@ $(".file-upload").on('change', function(){
         color: #999;
     }
 </style>
+
+
 @stop
 
 @section('lateral')

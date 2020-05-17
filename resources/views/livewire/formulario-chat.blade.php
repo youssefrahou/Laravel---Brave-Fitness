@@ -67,7 +67,22 @@
 
             </form>
 
-
         </div>
     </div>
+
+
+    <script>
+        // Enable pusher logging - don't include this in production
+        Pusher.logToConsole = true;
+    
+        var pusher = new Pusher('b7fd28c714585deddbc4', {
+          cluster: 'eu'
+        });
+    
+        var channel = pusher.subscribe('chat-channel');
+        channel.bind('chat-event', function(data) {
+          alert(JSON.stringify(data));
+        });
+    </script>
+
 </div>

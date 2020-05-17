@@ -20,8 +20,7 @@
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
     </script>
 
-    <!-- Pusher -->
-    <script src="https://js.pusher.com/6.0/pusher.min.js"></script>
+
 
     <!-- livewire -->
     @livewireStyles
@@ -304,8 +303,12 @@
     <!-- AdminLTE App -->
     <script src="dist/js/adminlte.js"></script>
 
+    <!-- Pusher -->
+    <script src="https://js.pusher.com/6.0/pusher.min.js"></script>
+
     <!-- script livewire -->
     @livewireScripts
 </body>
+
 
 </html>
