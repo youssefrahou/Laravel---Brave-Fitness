@@ -19,6 +19,13 @@
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
     </script>
+
+    <!-- Pusher -->
+    <script src="https://js.pusher.com/6.0/pusher.min.js"></script>
+
+    <!-- livewire -->
+    @livewireStyles
+
     <!-- JQuery para botones -->
     <script src="{{ asset('js/admin.js') }}"></script>
     <script src="{{ asset('js/js.js') }}"></script>
@@ -26,6 +33,22 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
     @yield('head')
+
+    <script>
+        $( document ).ready(function() {
+
+    $("#botonEnviarMensaje").click(function(){
+
+        
+            $('#messages').scrollTop(div.prop('scrollHeight'));
+        
+
+    });
+});
+
+        
+        
+    </script>
 
 </head>
 
@@ -140,13 +163,13 @@
                     <div class="image">
                         @if (auth()->user()->fotoPerfil == null)
 
-                        <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="img-circle elevation-2" alt="avatar"
-                        style="width: 50px; height: 50px;">
+                        <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="img-circle elevation-2"
+                            alt="avatar" style="width: 50px; height: 50px;">
 
                         @else
 
-                        <img src="images/users/{{ auth()->user()->fotoPerfil }}" class="img-circle elevation-2" alt="avatar"
-                        style="width: 50px; height: 50px;">
+                        <img src="images/users/{{ auth()->user()->fotoPerfil }}" class="img-circle elevation-2"
+                            alt="avatar" style="width: 50px; height: 50px;">
 
                         @endif
                     </div>
@@ -154,11 +177,13 @@
 
                         @if (!Auth::guest() && Auth::user()->hasRole('admin'))
 
-                        <a style="font-size: 25px" href="{{ url('/admin') }}" class="d-block">{{ Auth::user()->name }}</a>
+                        <a style="font-size: 25px" href="{{ url('/admin') }}"
+                            class="d-block">{{ Auth::user()->name }}</a>
 
                         @else
 
-                        <a style="font-size: 25px" href="{{ url('/areaPersonal') }}" class="d-block">{{ Auth::user()->name }}</a>
+                        <a style="font-size: 25px" href="{{ url('/areaPersonal') }}"
+                            class="d-block">{{ Auth::user()->name }}</a>
 
                         @endif
 
@@ -278,6 +303,9 @@
     <script src="plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
     <!-- AdminLTE App -->
     <script src="dist/js/adminlte.js"></script>
+
+    <!-- script livewire -->
+    @livewireScripts
 </body>
 
 </html>

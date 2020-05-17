@@ -124,7 +124,7 @@ Route::resource('respuesta', 'Respuesta_comentarioController');
 /**
  * Rutas para chat
  */
-Route::get('/', 'ChatController@index');
+//Route::get('/', 'ChatController@index');
 Route::get('messages', 'ChatController@fetchMessages');
 Route::post('messages', 'ChatController@sendMessage');
 /**

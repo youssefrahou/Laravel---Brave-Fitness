@@ -8,7 +8,7 @@ class Mensaje extends Model
 {
     protected $table = 'mensaje';
 
-    protected $filliable = ['texto', 'fecha', 'leido', 'de', 'para'];
+    protected $fillable = ['texto', 'fecha', 'leido', 'de', 'para'];
 
     public function user()
     {
