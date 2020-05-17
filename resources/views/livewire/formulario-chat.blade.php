@@ -23,7 +23,7 @@
                     </div>
                 </div>
 
-                @else
+                @elseif($mensaje->para == auth()->user()->id)
 
                 <!-- Reciever Message-->
                 <div class="media w-100 ml-auto mb-3">
@@ -43,7 +43,6 @@
             </div>
             
             <!-- Typing area -->
-            <form method="POST" class="bg-light">
                 @csrf
 
                 <div class="form-group">
@@ -52,7 +51,7 @@
 
 
                 <div class="input-group">
-                    <input type="text" placeholder="Escribe un mensaje" aria-describedby="button-addon2"
+                    <input type="text" id="textoEnviar" placeholder="Escribe un mensaje" aria-describedby="button-addon2"
                         class="form-control rounded-0 border-0 py-4 bg-light" wire:model="texto">
                     <div class="input-group-append">
                         <button id="button-addon2" type="button" id="botonEnviarMensaje" class="btn btn-link" wire:click="enviarMensaje"> <i
@@ -64,13 +63,16 @@
 
                 
 
-            </form>
 
         </div>
     </div>
 
 
     <script>
+
+        $("#botonEnviarMensaje").click(function() {
+            $("#textoEnviar").html();
+        });
         // Enable pusher logging - don't include this in production
         Pusher.logToConsole = true;
     
