@@ -36,22 +36,6 @@
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
     @yield('head')
 
-    <script>
-        $( document ).ready(function() {
-
-    $("#botonEnviarMensaje").click(function(){
-
-        
-            $('#messages').scrollTop(div.prop('scrollHeight'));
-        
-
-    });
-});
-
-        
-        
-    </script>
-
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -272,7 +256,9 @@
             </section>
             <!-- /.content -->
         </div>
-        <!-- /.content-wrapper -->
+
+        <!-- COPYRIGHT 
+         /.content-wrapper 
         <footer class="main-footer">
             <strong>Copyright &copy; 2021 <a href="http://youssefrahou.com">Youssef Rahou</a>.</strong>
             Todos los derechos reservados.
@@ -280,6 +266,8 @@
                 <b>Version</b> 1.0
             </div>
         </footer>
+
+         COPYRIGHT -->
 
         <!-- Control Sidebar -->
         <aside class="control-sidebar control-sidebar-dark">

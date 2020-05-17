@@ -617,6 +617,7 @@ $(".file-upload").on('change', function(){
 
     <div class="row col-12" id="chat" style="display: none">
 
+        <p id="divv"></p>
         @livewire('formulario-chat')
 
     </div>

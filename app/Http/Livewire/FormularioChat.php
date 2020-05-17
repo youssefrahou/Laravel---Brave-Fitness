@@ -17,6 +17,52 @@ class FormularioChat extends Component
     public $para;
     public $mensajes;
 
+    protected $listeners = ['mensajeRecibido'];
+    
+/*
+    public function  mensajeRecibido($data)
+    {        
+        $this->actualizarMensajes($data);
+    }*/
+
+    /*public function actualizarMensajes($data)
+    {                
+        if($this->usuario != "")
+        {
+            // El contenido de la Push
+            //$data = \json_decode(\json_encode($data));
+            
+            $mensajes = \App\Mensaje::orderBy("created_at", "desc")->take(20)->get();
+            //$this->mensajes = [];            
+
+            foreach($mensajes as $mensaje)
+            {
+                    $item = [
+                        "id" => $mensaje->id,
+                        "usuario" => $mensaje->usuario,
+                        "mensaje" => $mensaje->mensaje,
+                        "recibido" => ($mensaje->usuario != $this->usuario),
+                        "fecha" => $mensaje->created_at->diffForHumans()
+                    ];
+    
+                    array_unshift($this->mensajes, $item);                
+                    //array_push($this->mensajes, $item);                
+                
+                
+            }
+
+            if(count($this->mensajes) > 5)
+            {
+                array_pop($this->mensajes);
+            }
+        }
+        else
+        {            
+            $this->emit('solicitaUsuario');
+        }
+    }
+    */
+
 
 
 

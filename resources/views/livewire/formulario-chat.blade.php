@@ -1,6 +1,5 @@
 <div class="container-fluid px-4">
     <!-- For demo purpose-->
-
     <div class="row rounded-lg overflow-hidden shadow">
 
 
@@ -42,7 +41,7 @@
                 
 
             </div>
-
+            
             <!-- Typing area -->
             <form method="POST" class="bg-light">
                 @csrf
@@ -81,7 +80,9 @@
     
         var channel = pusher.subscribe('chat-channel');
         channel.bind('chat-event', function(data) {
-          alert(JSON.stringify(data));
+          //alert(JSON.stringify(data));
+          $("#divv").html(JSON.stringify(data));
+          //window.livewire.emit('mensajeRecibido', data);
         });
     </script>
 

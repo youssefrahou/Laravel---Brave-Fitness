@@ -920,14 +920,15 @@
 
 
 
-<!-- CHAT -->
+    <!-- CHAT -->
 
-<div class="row col-12" id="chat">
+    <div class="row col-12" id="chat">
 
-    @livewire('formulario-chat')
+        <p id="divv"></p>
+        @livewire('formulario-chat')
 
-</div>
-<!-- CHAT -->
+    </div>
+    <!-- CHAT -->
 
 
 
