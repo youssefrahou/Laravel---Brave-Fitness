@@ -38,13 +38,20 @@
             
             $("#zonaChat").append('<div class="media w-100 mb-3"><img src="https://res.cloudinary.com/mhmd/image/upload/v1564960395/avatar_usae7z.svg" alt="user" width="50" class="rounded-circle"><div class="media-body ml-3"><div class="bg-light rounded py-2 px-3 mb-2"><p class="text-small mb-0 text-muted">' + data.texto + '</p></div><p class="small text-muted">' + data.fecha + '</p></div></div>');
           }
+
+          if(data.para == {{ auth()->user()->id }}){
+            
+            $("#zonaChat").append('<div class="media w-100 ml-auto mb-3"><div class="media-body"><div class="bg-primary rounded py-2 px-3 mb-2"><p class="text-small mb-0 text-white">' + data.texto + '</p></div><p class="small text-muted">' + data.fecha + '</p></div></div>');
+          }
+
+          $("#zonaChat").animate({ scrollTop: $(document).height() }, 1000);
           //$("#divv").html(JSON.stringify(data));
           //window.livewire.emit('mensajeRecibido', data);
         });
     </script>
 
     <!-- livewire -->
-    @livewireStyles
+    <!-- livewireStyles -->
 
     <!-- JQuery para botones -->
     <script src="{{ asset('js/admin.js') }}"></script>
@@ -359,7 +366,7 @@
     <script src="dist/js/adminlte.js"></script>
 
     <!-- script livewire -->
-    @livewireScripts
+    <!-- livewireScripts -->
 </body>
 
 

@@ -588,7 +588,7 @@ $(".file-upload").on('change', function(){
         
         
                 <div class="col-12 px-0">
-                    <div class="px-4 py-5 chat-box bg-white">
+                    <div class="px-4 py-5 chat-box bg-white" id="zonaChat">
         
         
                         <!-- Sender Message
@@ -619,26 +619,32 @@ $(".file-upload").on('change', function(){
                     </div>
         
                     <!-- Typing area -->
-                    @csrf
-        
-                    @if(auth()->user()->id == 1)
-                    <input type="text" wire:model="para">
-                    @endif
-        
-                    <div class="input-group">
-        
-                        <input type="text" id="textoEnviar" placeholder="Escribe un mensaje" aria-describedby="button-addon2"
-                            class="form-control rounded-0 border-0 py-4 bg-light">
-                        <div class="input-group-append">
-                            <button id="button-addon2" type="button" id="botonEnviarMensaje" class="btn btn-link"
-                                wire:click="enviarMensaje"> <i class="fa fa-paper-plane"></i></button>
+                    <form id="formMensaje" action="#">
+
+                        <input type="hidden" name="para" value="1">
+                        <input type="hidden" name="de" value="{{ auth()->user()->id }}">
+                        <input type="hidden" name="leido" value="0">
+
+                        <div class="input-group">
+
+                            <input type="text" id="textoEnviar" placeholder="Escribe un mensaje"
+                                aria-describedby="button-addon2" class="form-control rounded-0 border-0 py-4 bg-light"
+                                name="texto">
+                            <div class="input-group-append">
+                                <button id="button-addon2" type="button" class="btn btn-link botonEnviarMensaje"> <i
+                                        class="fa fa-paper-plane"></i></button>
+                            </div>
                         </div>
-                    </div>
+
+
+
+
+                    </form>
         
                 </div>
             </div>
         
-        
+        <!--
             <script>
                 
                 // Enable pusher logging - don't include this in production
@@ -654,7 +660,7 @@ $(".file-upload").on('change', function(){
                   //$("#divv").html(JSON.stringify(data));
                   window.livewire.emit('mensajeRecibido', data);
                 });
-            </script>
+            </script>-->
         
         </div>
 
