@@ -5,6 +5,10 @@ use App\User;
 use App\Comentario;
 use App\Charts\pesoUsuario;
 use App\Medicion;
+use App\Consejo;
+use App\Categoria;
+use App\Articulo;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -45,7 +49,20 @@ Route::get('articulo/{id}', function ($id) {
 });
 
 Route::get('prueba2', function () {
-    return view('prueba');
+    $usuarios = User::all();
+        $totalUsuarios = DB::table('users')->count();
+        $totalArticulos = DB::table('articulo')->count();
+        $totalConsejos = DB::table('consejo')->count();
+        $totalComentarios = DB::table('comentario')->count();
+        $totalMensajes = DB::table('mensaje')->count();
+        $categorias = Categoria::all();
+        $articulos = Articulo::all();
+        $consejos = Consejo::all()->sortByDesc("created_at");
+        $comentarios = Comentario::all()->sortByDesc("created_at");
+
+        return view('prueba', compact('usuarios', 'totalUsuarios', 'totalArticulos', 'totalConsejos', 'totalComentarios', 
+        'totalMensajes', 'categorias', 'articulos', 'consejos', 'comentarios'));
+
 });
 
 

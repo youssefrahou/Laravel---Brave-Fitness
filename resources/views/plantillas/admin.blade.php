@@ -46,7 +46,7 @@
 
           $("#zonaChat").animate({ scrollTop: $(document).height() }, 1000);
           //$("#divv").html(JSON.stringify(data));
-          //window.livewire.emit('mensajeRecibido', data);
+          //window.yieldwire.emit('mensajeRecibido', data);
         });
     </script>
 

@@ -924,12 +924,15 @@
 
     <div class="row col-12" id="chat">
 
-        <p id="divv"></p>
-        <div class="container-fluid px-4">
-            <!-- For demo purpose-->
-            <div class="row rounded-lg overflow-hidden shadow" id="cajaMensajes">
+        <div class="row container-fluid px-4">
 
+            <div class="row rounded-lg overflow-hidden shadow col-md-4">
+                contactos
+            </div>
+            
+            <div class="row rounded-lg overflow-hidden shadow col-md-8" id="cajaMensajes">
 
+<h2>Cristina Alcaide</h2>
                 <div class="col-12 px-0">
                     <div class="px-4 py-5 chat-box bg-white" id="zonaChat">
 
