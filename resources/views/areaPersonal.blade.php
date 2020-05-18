@@ -582,7 +582,81 @@ $(".file-upload").on('change', function(){
     <div class="row col-12" id="chat" style="display: none">
 
         <p id="divv"></p>
-        @livewire('formulario-chat')
+        <div class="container-fluid px-4">
+            <!-- For demo purpose-->
+            <div class="row rounded-lg overflow-hidden shadow" id="cajaMensajes">
+        
+        
+                <div class="col-12 px-0">
+                    <div class="px-4 py-5 chat-box bg-white">
+        
+        
+                        <!-- Sender Message
+                        <div class="media w-100 mb-3"><img
+                                src="https://res.cloudinary.com/mhmd/image/upload/v1564960395/avatar_usae7z.svg" alt="user"
+                                width="50" class="rounded-circle">
+        
+                            <div class="media-body ml-3">
+                                <div class="bg-light rounded py-2 px-3 mb-2">
+                                    <p class="text-small mb-0 text-muted">nsaje->texto </p>
+                                </div>
+                                <p class="small text-muted">mensaje->fecha</p>
+                            </div>
+                        </div>
+        
+        
+                        <Reciever Message
+                        <div class="media w-100 ml-auto mb-3">
+                            <div class="media-body">
+                                <div class="bg-primary rounded py-2 px-3 mb-2">
+                                    <p class="text-small mb-0 text-white"> mensajetexto }}</p>
+                                </div>
+                                <p class="small text-muted">{ mensaje-echa }</p>
+                            </div>
+                        </div>
+                    -->
+        
+                    </div>
+        
+                    <!-- Typing area -->
+                    @csrf
+        
+                    @if(auth()->user()->id == 1)
+                    <input type="text" wire:model="para">
+                    @endif
+        
+                    <div class="input-group">
+        
+                        <input type="text" id="textoEnviar" placeholder="Escribe un mensaje" aria-describedby="button-addon2"
+                            class="form-control rounded-0 border-0 py-4 bg-light">
+                        <div class="input-group-append">
+                            <button id="button-addon2" type="button" id="botonEnviarMensaje" class="btn btn-link"
+                                wire:click="enviarMensaje"> <i class="fa fa-paper-plane"></i></button>
+                        </div>
+                    </div>
+        
+                </div>
+            </div>
+        
+        
+            <script>
+                
+                // Enable pusher logging - don't include this in production
+                Pusher.logToConsole = true;
+            
+                var pusher = new Pusher('b7fd28c714585deddbc4', {
+                  cluster: 'eu'
+                });
+            
+                var channel = pusher.subscribe('chat-channel');
+                channel.bind('chat-event', function(data) {
+                  //alert(JSON.stringify(data));
+                  //$("#divv").html(JSON.stringify(data));
+                  window.livewire.emit('mensajeRecibido', data);
+                });
+            </script>
+        
+        </div>
 
     </div>
     <!-- CHAT -->

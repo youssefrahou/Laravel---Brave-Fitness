@@ -17,12 +17,14 @@ class EnviarMensaje implements ShouldBroadcast
     public $texto;
     public $de;
     public $para;
+    public $fecha;
     
-    public function __construct($texto, $de, $para)
+    public function __construct($texto, $de, $para, $fecha)
     {
         $this->texto = $texto;
         $this->de = $de;
         $this->para = $para;
+        $this->fecha = $fecha;
     }
 
     public function broadcastOn()

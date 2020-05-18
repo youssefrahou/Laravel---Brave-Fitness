@@ -35,15 +35,17 @@ class MensajeController extends Controller
      */
     public function store(Request $request)
     {
-        $mensaje = new Mensaje;
-        $mensaje->texto = $request->texto;
-        $mensaje->leido = 0;
-        $mensaje->de = $request->de;
-        $mensaje->para = $request->para;
-        $mensaje->fecha = now();
-        $mensaje->save();
 
-        event(new EnviarMensaje($this->texto, $this->de, $this->para));
+        $mensaje = $request->all();
+        $mensaje['fecha'] = now();
+
+        Mensaje::create($mensaje);
+        $texto = $request->texto;
+        $de = $request->de;
+        $para = $request->para;
+        $fecha = now();
+
+        event(new EnviarMensaje($texto, $de, $para, $fecha));
 
         return Mensaje::all();
     }

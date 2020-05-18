@@ -16,14 +16,32 @@
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
     <!-- jQuery  -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js">
     </script>
 
     <!-- Pusher -->
     <script src="https://js.pusher.com/6.0/pusher.min.js"></script>
 
+    <script>
+        // Enable pusher logging - don't include this in production
+        Pusher.logToConsole = true;
+    
+        var pusher = new Pusher('b7fd28c714585deddbc4', {
+          cluster: 'eu'
+        });
+    
+        var channel = pusher.subscribe('chat-channel');
+        channel.bind('chat-event', function(data) {
+          //alert(JSON.stringify(data));
 
+          if(data.de == {{ auth()->user()->id }}){
+            
+            $("#zonaChat").append('<div class="media w-100 mb-3"><img src="https://res.cloudinary.com/mhmd/image/upload/v1564960395/avatar_usae7z.svg" alt="user" width="50" class="rounded-circle"><div class="media-body ml-3"><div class="bg-light rounded py-2 px-3 mb-2"><p class="text-small mb-0 text-muted">' + data.texto + '</p></div><p class="small text-muted">' + data.fecha + '</p></div></div>');
+          }
+          //$("#divv").html(JSON.stringify(data));
+          //window.livewire.emit('mensajeRecibido', data);
+        });
+    </script>
 
     <!-- livewire -->
     @livewireStyles
@@ -34,46 +52,53 @@
     <script src="{{ asset('js/articulo.js') }}"></script>
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     @yield('head')
 
 
     <!-- CHAT AQUI ABAJO -->
-<style>
-    ::-webkit-scrollbar {
-        width: 5px;
-    }
+    <style>
+        ::-webkit-scrollbar {
+            width: 5px;
+        }
 
-    ::-webkit-scrollbar-track {
-        width: 5px;
-        background: #f5f5f5;
-    }
+        ::-webkit-scrollbar-track {
+            width: 5px;
+            background: #f5f5f5;
+        }
 
-    ::-webkit-scrollbar-thumb {
-        width: 1em;
-        background-color: #ddd;
-        outline: 1px solid slategrey;
-        border-radius: 1rem;
-    }
+        ::-webkit-scrollbar-thumb {
+            width: 1em;
+            background-color: #ddd;
+            outline: 1px solid slategrey;
+            border-radius: 1rem;
+        }
 
-    .text-small {
-        font-size: 0.9rem;
-    }
+        .text-small {
+            font-size: 0.9rem;
+        }
 
-    .messages-box,
-    .chat-box {
-        height: 510px;
-        overflow-y: scroll;
-    }
+        .messages-box,
+        .chat-box {
+            height: 510px;
+            overflow-y: scroll;
+        }
 
-    .rounded-lg {
-        border-radius: 0.5rem;
-    }
+        .rounded-lg {
+            border-radius: 0.5rem;
+        }
 
-    input::placeholder {
-        font-size: 0.9rem;
-        color: #999;
-    }
-</style>
+        input::placeholder {
+            font-size: 0.9rem;
+            color: #999;
+        }
+    </style>
+    <!-- ENVIAR MENSAJES -->
+    <script>
+//
+
+    </script>
+
 
 </head>
 

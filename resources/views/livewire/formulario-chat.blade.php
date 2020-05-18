@@ -69,9 +69,7 @@
 
 
     <script>
-        $("#botonEnviarMensaje").click(function() {
-            $("#textoEnviar").html();
-        });
+        
         // Enable pusher logging - don't include this in production
         Pusher.logToConsole = true;
     

@@ -925,7 +925,47 @@
     <div class="row col-12" id="chat">
 
         <p id="divv"></p>
-        @livewire('formulario-chat')
+        <div class="container-fluid px-4">
+            <!-- For demo purpose-->
+            <div class="row rounded-lg overflow-hidden shadow" id="cajaMensajes">
+
+
+                <div class="col-12 px-0">
+                    <div class="px-4 py-5 chat-box bg-white" id="zonaChat">
+
+
+
+
+
+                    </div>
+
+                    <!-- Typing area -->
+                    <form id="formMensaje" action="#">
+
+                        <input type="hidden" name="para" value="2">
+                        <input type="hidden" name="de" value="{{ auth()->user()->id }}">
+                        <input type="hidden" name="leido" value="0">
+
+                        <div class="input-group">
+
+                            <input type="text" id="textoEnviar" placeholder="Escribe un mensaje"
+                                aria-describedby="button-addon2" class="form-control rounded-0 border-0 py-4 bg-light"
+                                name="texto">
+                            <div class="input-group-append">
+                                <button id="button-addon2" type="button" class="btn btn-link botonEnviarMensaje"> <i
+                                        class="fa fa-paper-plane"></i></button>
+                            </div>
+                        </div>
+
+
+
+
+                    </form>
+
+                </div>
+            </div>
+
+        </div>
 
     </div>
     <!-- CHAT -->
