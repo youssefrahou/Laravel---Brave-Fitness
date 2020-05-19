@@ -43,7 +43,7 @@ Route::get('/usuarios', function () {
 
 Route::get('mensajes/{id}', function ($id) {
 
-    $mensajes = DB::select("select * from mensaje where mensaje.de = ? or mensaje.para = ? order by mensaje.fecha desc", [$id, $id]);
+    $mensajes = DB::select("select * from mensaje where mensaje.de = ? or mensaje.para = ? order by mensaje.fecha asc", [$id, $id]);
     return json_encode($mensajes);
 });
 

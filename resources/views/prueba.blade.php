@@ -771,61 +771,6 @@
     }
 </style>
 
-<script>
-    /**
- * 
- * CHAT
- */
-
-function cargarMensajes(usuario) {
-    //alert(usuario.id);
-
-    $("#listaMensajes").html(""); //borro todos los anteriores mensajes
-    $.ajax({
-        url: 'mensajes' + "/" + usuario.id,
-        type: 'get',
-        success: function(response) {
-
-            let mensajes = JSON.parse(response);
-
-            for (var mensaje in mensajes) {
-
-                if (mensajes[mensaje].de == {{ auth()->user()->id}}){
-                    $("#listaMensajes").append('<li class="sent"><img src="http://emilcarlsson.se/assets/mikeross.png" alt="" /><p>' + mensajes[mensaje].texto + '</p></li >');
-                }
-
-                if (mensajes[mensaje].para == {{ auth()->user()->id}}){
-                    $("#listaMensajes").append('<li class="replies"><img src="http://emilcarlsson.se/assets/harveyspecter.png" alt="" /><p>' + mensajes[mensaje].texto + '</p></li>');
-                }
-
-                   
-                //alert(mensajes[mensaje].texto);
-
-
-            }
-
-        },
-        statusCode: {
-            404: function() {
-                alert('web not found');
-            }
-        },
-        error: function(x, xs, xt) {
-
-            //window.open(JSON.stringify(x));
-            alert('error: ' + JSON.stringify(x) + "\n error string: " + xs + "\n error throwed: " + xt);
-        }
-    });
-
-
-}
-
-/**
- * 
- * fin CHAT
- */
-
-</script>
 
 @stop
 
@@ -1889,8 +1834,11 @@ function cargarMensajes(usuario) {
                 </div>
                 <div class="message-input">
                     <div class="wrap">
-                        <input type="text" placeholder="Escribe tu mensaje..." />
+
+                        <input type="text" id="textoMensaje" placeholder="Escribe tu mensaje..." />
                         <button class="submit"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
+
+
                     </div>
                 </div>
             </div>
@@ -1899,6 +1847,62 @@ function cargarMensajes(usuario) {
             src='//production-assets.codepen.io/assets/common/stopExecutionOnTimeout-b2a7b3fe212eaa732349046d8416e00a9dec26eb7fd347590fbced3ab38af52e.js'>
         </script>
         <script>
+            /**
+ * 
+ * CHAT
+ */
+ var idUsuarioPulsado;
+function cargarMensajes(usuario) {
+    //alert(usuario.id);
+    idUsuarioPulsado = usuario.id;
+    $("#listaMensajes").html(""); //borro todos los anteriores mensajes
+    $.ajax({
+        url: 'mensajes' + "/" + usuario.id,
+        type: 'get',
+        success: function(response) {
+
+            let mensajes = JSON.parse(response);
+
+            for (var mensaje in mensajes) {
+
+                if (mensajes[mensaje].para == {{ auth()->user()->id}}){
+                    $("#listaMensajes").append('<li class="sent"><img src="http://emilcarlsson.se/assets/mikeross.png" alt="" /><p>' + mensajes[mensaje].texto + '</p></li >');
+                }
+
+                if (mensajes[mensaje].de == {{ auth()->user()->id}}){
+                    $("#listaMensajes").append('<li class="replies"><img src="http://emilcarlsson.se/assets/harveyspecter.png" alt="" /><p>' + mensajes[mensaje].texto + '</p></li>');
+                }
+
+                   
+                //alert(mensajes[mensaje].texto);
+
+
+            }
+
+        },
+        statusCode: {
+            404: function() {
+                alert('web not found');
+            }
+        },
+        error: function(x, xs, xt) {
+
+            //window.open(JSON.stringify(x));
+            alert('error: ' + JSON.stringify(x) + "\n error string: " + xs + "\n error throwed: " + xt);
+        }
+    });
+    $(".messages").animate({ scrollTop: $(document).height() }, "fast");
+
+
+}
+
+/**
+ * 
+ * fin CHAT
+ */
+
+
+ 
             $(".messages").animate({ scrollTop: $(document).height() }, "fast");
         
         $("#profile-img").click(function() {
@@ -1935,9 +1939,30 @@ function cargarMensajes(usuario) {
         
         function newMessage() {
             message = $(".message-input input").val();
+
             if($.trim(message) == '') {
                 return false;
             }
+            $.ajax({
+            url: 'mensaje',
+            method: 'post',
+            data: { de: {{ auth()->user()->id }}, para: idUsuarioPulsado, leido: 0, texto: $("#textoMensaje").val()},
+            type: 'post',
+            success: function(response) {
+
+            },
+            statusCode: {
+                404: function() {
+                    alert('web not found');
+                }
+            },
+            error: function(x, xs, xt) {
+
+                //window.open(JSON.stringify(x));
+                alert('error: ' + JSON.stringify(x) + "\n error string: " + xs + "\n error throwed: " + xt);
+            }
+        });
+        
             $('<li class="replies"><img src="http://emilcarlsson.se/assets/mikeross.png" alt="" /><p>' + message + '</p></li>').appendTo($('.messages ul'));
             $('.message-input input').val(null);
             $('.contact.active .preview').html('<span>You: </span>' + message);
