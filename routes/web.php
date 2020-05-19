@@ -8,7 +8,7 @@ use App\Medicion;
 use App\Consejo;
 use App\Categoria;
 use App\Articulo;
-
+use App\Mensaje;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,6 +40,13 @@ Route::get('/usuarios', function () {
     }*/
 });
 
+
+Route::get('mensajes/{id}', function ($id) {
+
+    $mensajes = DB::select("select * from mensaje where mensaje.de = ? or mensaje.para = ? order by mensaje.fecha desc", [$id, $id]);
+    return json_encode($mensajes);
+});
+
 Route::get('articulo/{id}', function ($id) {
 
     $articulo = App\Articulo::find($id);
@@ -50,19 +57,28 @@ Route::get('articulo/{id}', function ($id) {
 
 Route::get('prueba2', function () {
     $usuarios = User::all();
-        $totalUsuarios = DB::table('users')->count();
-        $totalArticulos = DB::table('articulo')->count();
-        $totalConsejos = DB::table('consejo')->count();
-        $totalComentarios = DB::table('comentario')->count();
-        $totalMensajes = DB::table('mensaje')->count();
-        $categorias = Categoria::all();
-        $articulos = Articulo::all();
-        $consejos = Consejo::all()->sortByDesc("created_at");
-        $comentarios = Comentario::all()->sortByDesc("created_at");
+    $totalUsuarios = DB::table('users')->count();
+    $totalArticulos = DB::table('articulo')->count();
+    $totalConsejos = DB::table('consejo')->count();
+    $totalComentarios = DB::table('comentario')->count();
+    $totalMensajes = DB::table('mensaje')->count();
+    $categorias = Categoria::all();
+    $articulos = Articulo::all();
+    $consejos = Consejo::all()->sortByDesc("created_at");
+    $comentarios = Comentario::all()->sortByDesc("created_at");
 
-        return view('prueba', compact('usuarios', 'totalUsuarios', 'totalArticulos', 'totalConsejos', 'totalComentarios', 
-        'totalMensajes', 'categorias', 'articulos', 'consejos', 'comentarios'));
-
+    return view('prueba', compact(
+        'usuarios',
+        'totalUsuarios',
+        'totalArticulos',
+        'totalConsejos',
+        'totalComentarios',
+        'totalMensajes',
+        'categorias',
+        'articulos',
+        'consejos',
+        'comentarios'
+    ));
 });
 
 

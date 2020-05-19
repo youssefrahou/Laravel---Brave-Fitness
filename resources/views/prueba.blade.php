@@ -771,6 +771,62 @@
     }
 </style>
 
+<script>
+    /**
+ * 
+ * CHAT
+ */
+
+function cargarMensajes(usuario) {
+    //alert(usuario.id);
+
+    $("#listaMensajes").html(""); //borro todos los anteriores mensajes
+    $.ajax({
+        url: 'mensajes' + "/" + usuario.id,
+        type: 'get',
+        success: function(response) {
+
+            let mensajes = JSON.parse(response);
+
+            for (var mensaje in mensajes) {
+
+                if (mensajes[mensaje].de == {{ auth()->user()->id}}){
+                    $("#listaMensajes").append('<li class="sent"><img src="http://emilcarlsson.se/assets/mikeross.png" alt="" /><p>' + mensajes[mensaje].texto + '</p></li >');
+                }
+
+                if (mensajes[mensaje].para == {{ auth()->user()->id}}){
+                    $("#listaMensajes").append('<li class="replies"><img src="http://emilcarlsson.se/assets/harveyspecter.png" alt="" /><p>' + mensajes[mensaje].texto + '</p></li>');
+                }
+
+                   
+                //alert(mensajes[mensaje].texto);
+
+
+            }
+
+        },
+        statusCode: {
+            404: function() {
+                alert('web not found');
+            }
+        },
+        error: function(x, xs, xt) {
+
+            //window.open(JSON.stringify(x));
+            alert('error: ' + JSON.stringify(x) + "\n error string: " + xs + "\n error throwed: " + xt);
+        }
+    });
+
+
+}
+
+/**
+ * 
+ * fin CHAT
+ */
+
+</script>
+
 @stop
 
 
@@ -1806,12 +1862,14 @@
                     </div>
                 </div>
                 <div class="messages">
-                    <ul>
+                    <ul id="listaMensajes">
 
                         <li class="sent">
                             <img src="http://emilcarlsson.se/assets/mikeross.png" alt="" />
                             <p>What are you talking about? You do what they say or they shoot you.</p>
                         </li>
+
+
                         <li class="replies">
                             @if(!auth()->user()->fotoPerfil)
 
