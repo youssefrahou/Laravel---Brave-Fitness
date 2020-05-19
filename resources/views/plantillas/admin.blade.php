@@ -46,7 +46,7 @@
 
           $("#zonaChat").animate({ scrollTop: $(document).height() }, 1000);
           //$("#divv").html(JSON.stringify(data));
-          //window.yieldwire.emit('mensajeRecibido', data);
+          //window.livewire.emit('mensajeRecibido', data);
         });
     </script>
 
@@ -102,7 +102,7 @@
     </style>
     <!-- ENVIAR MENSAJES -->
     <script>
-//
+        //
 
     </script>
 
@@ -263,7 +263,8 @@
             <!-- Content Header (Page header) -->
             <div class="content-header">
                 <div class="container-fluid">
-                    <div class="row mb-2">
+                    <div class="row">
+                        <!--había mb-2 -->
 
                         <div class="row col-12">
 

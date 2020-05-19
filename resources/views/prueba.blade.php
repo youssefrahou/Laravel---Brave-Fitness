@@ -1731,12 +1731,13 @@
                         ? order by mensaje.fecha desc limit 1", [$usuario->id, $usuario->id])
                         @endphp
 
-                    <li class="contact" id="{{ $usuario->id }}">
+                        <li class="contact" id="{{ $usuario->id }}" onclick="cargarMensajes(this)">
                             <div class="wrap">
                                 <span class="contact-status online"></span>
 
                                 @if(!$usuario->fotoPerfil)
-                                <img src="https://cdn.pixabay.com/photo/2012/04/26/19/43/profile-42914_1280.png" alt="" />
+                                <img src="https://cdn.pixabay.com/photo/2012/04/26/19/43/profile-42914_1280.png"
+                                    alt="" />
                                 @else
                                 <img src="images/users/{{ $usuario->fotoPerfil }}" alt="" />
                                 @endif
@@ -1745,7 +1746,7 @@
                                     <p class="name">{{ $usuario->name }}</p>
 
                                     @if($usuario->id == $ultimoMensaje[0]->de)
-                                    <p class="preview"><span>You:</span> {{ $ultimoMensaje[0]->texto }}</p>
+                                    <p class="preview"><span>Tú:</span> {{ $ultimoMensaje[0]->texto }}</p>
                                     @else
                                     <p class="preview">{{ $ultimoMensaje[0]->texto }}</p>
                                     @endif

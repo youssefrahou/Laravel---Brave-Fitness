@@ -48,9 +48,19 @@ $(document).ready(function() {
     });
 
 
+    /**
+     * 
+     * CHAT
+     */
 
+    function cargarMensajes(usuario) {
+        alert(usuario);
+    }
 
-
+    /**
+     * 
+     * fin CHAT
+     */
 
 
 
