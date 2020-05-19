@@ -592,7 +592,7 @@
     @media screen and (max-width: 735px) {
         #frame .content {
             width: calc(100% - 58px);
-            min-width: 300px !important;
+            min-width: 200px !important; /*minimo para que se vea en una pantalla de minimo eso. estaba en 300px*/
         }
     }
 
