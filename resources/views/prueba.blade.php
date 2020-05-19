@@ -10,8 +10,6 @@
 <link rel='stylesheet prefetch'
     href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.2/css/font-awesome.min.css'>
 <style class="cp-pen-styles">
-   
-
     #frame {
         width: 100%;
         height: 92vh;
@@ -745,7 +743,7 @@
         outline: none;
     }
 
-   
+
 
 
     #frame .content .message-input .wrap button {
@@ -1703,8 +1701,20 @@
             <div id="sidepanel">
                 <div id="profile">
                     <div class="wrap">
+
+                        @if(!auth()->user()->fotoPerfil)
+
                         <img id="profile-img" src="http://emilcarlsson.se/assets/mikeross.png" class="online" alt="" />
-                    <p>{{ auth()->user()->name }}</p>                        
+
+                        @else
+
+                        <img id="profile-img" src="images/users/{{ auth()->user()->fotoPerfil }}" class="online"
+                            alt="" />
+
+                        @endif
+
+                        <p>{{ auth()->user()->name }}</p>
+
                     </div>
                 </div>
                 <div id="search">
@@ -1713,6 +1723,40 @@
                 </div>
                 <div id="contacts">
                     <ul>
+
+                        @foreach($usuarios as $usuario)
+
+                        @php
+                        $ultimoMensaje = DB::select("select * from users, mensaje where mensaje.de = ? or mensaje.para =
+                        ? order by mensaje.fecha desc limit 1", [$usuario->id, $usuario->id])
+                        @endphp
+
+                    <li class="contact" id="{{ $usuario->id }}">
+                            <div class="wrap">
+                                <span class="contact-status online"></span>
+
+                                @if(!$usuario->fotoPerfil)
+                                <img src="https://cdn.pixabay.com/photo/2012/04/26/19/43/profile-42914_1280.png" alt="" />
+                                @else
+                                <img src="images/users/{{ $usuario->fotoPerfil }}" alt="" />
+                                @endif
+
+                                <div class="meta">
+                                    <p class="name">{{ $usuario->name }}</p>
+
+                                    @if($usuario->id == $ultimoMensaje[0]->de)
+                                    <p class="preview"><span>You:</span> {{ $ultimoMensaje[0]->texto }}</p>
+                                    @else
+                                    <p class="preview">{{ $ultimoMensaje[0]->texto }}</p>
+                                    @endif
+
+
+                                </div>
+                            </div>
+                        </li>
+
+                        @endforeach
+                        <!--
                         <li class="contact">
                             <div class="wrap">
                                 <span class="contact-status online"></span>
@@ -1723,6 +1767,7 @@
                                 </div>
                             </div>
                         </li>
+
                         <li class="contact active">
                             <div class="wrap">
                                 <span class="contact-status busy"></span>
@@ -1745,6 +1790,9 @@
                                 </div>
                             </div>
                         </li>
+                    -->
+
+
                     </ul>
                 </div>
             </div>
@@ -1753,20 +1801,28 @@
                     <img src="http://emilcarlsson.se/assets/harveyspecter.png" alt="" />
                     <p>Harvey Specter</p>
                     <div class="social-media">
-                        <i class="fa fa-facebook" aria-hidden="true"></i>
-                        <i class="fa fa-twitter" aria-hidden="true"></i>
                         <i class="fa fa-instagram" aria-hidden="true"></i>
                     </div>
                 </div>
                 <div class="messages">
                     <ul>
-                        
+
                         <li class="sent">
                             <img src="http://emilcarlsson.se/assets/mikeross.png" alt="" />
                             <p>What are you talking about? You do what they say or they shoot you.</p>
                         </li>
                         <li class="replies">
+                            @if(!auth()->user()->fotoPerfil)
+
                             <img src="http://emilcarlsson.se/assets/harveyspecter.png" alt="" />
+
+
+                            @else
+
+                            <img src="images/users/{{ auth()->user()->fotoPerfil }}" alt="" />
+
+                            @endif
+
                             <p>Wrong. You take the gun, or you pull out a bigger one. Or, you call their bluff. Or, you
                                 do any one of a hundred and forty six other things.</p>
                         </li>
