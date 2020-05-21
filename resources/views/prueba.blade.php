@@ -1907,7 +1907,7 @@ function usuarioPorId(id) {
         type: 'get',
         success: function(response) {
 
-            let usuario = JSON.parse(response);
+            let usuario = JSON.parse(response);a
             $("#nombreUsuarioArriba").text(usuario[0].name);
            
  
