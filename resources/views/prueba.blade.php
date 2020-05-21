@@ -1723,7 +1723,7 @@
                     <label for=""><i class="fa fa-search" aria-hidden="true"></i></label>
                     <input type="text" placeholder="Buscar..." />
                 </div>
-                <div id="contacts"> 
+                <div id="contacts">
                     <ul>
 
                         @foreach($usuarios as $usuario)
@@ -1733,7 +1733,9 @@
                         @endif
 
                         @php
-                        $ultimoMensaje = DB::select("select * from users, mensaje where mensaje.de = ? and mensaje.para = ? or mensaje.de = ? and mensaje.para = ? order by mensaje.fecha desc limit 1", [$usuario->id, auth()->user()->id, auth()->user()->id, $usuario->id])
+                        $ultimoMensaje = DB::select("select * from users, mensaje where mensaje.de = ? and mensaje.para
+                        = ? or mensaje.de = ? and mensaje.para = ? order by mensaje.fecha desc limit 1", [$usuario->id,
+                        auth()->user()->id, auth()->user()->id, $usuario->id])
                         @endphp
 
                         <li class="contact" id="{{ $usuario->id }}" onclick="cargarMensajes(this)">
@@ -1827,7 +1829,7 @@
                 </div>
                 <div class="messages">
                     <ul id="listaMensajes">
-
+                        <!--
                         <li class="sent">
                             <img src="http://emilcarlsson.se/assets/mikeross.png" alt="" />
                             <p>What are you talking about? You do what they say or they shoot you.</p>
@@ -1849,6 +1851,8 @@
                             <p>Wrong. You take the gun, or you pull out a bigger one. Or, you call their bluff. Or, you
                                 do any one of a hundred and forty six other things.</p>
                         </li>
+                    -->
+
                     </ul>
                 </div>
                 <div class="message-input">
@@ -1880,15 +1884,53 @@
 
 });
 
+/*function actualizarListaContactos(){
+
+    $.ajax({
+        url: 'mensajes' + "/" + idUsuarioPulsado,
+        type: 'get',
+        success: function(response) {
+
+            let mensajes = JSON.parse(response);
+
+            for (var mensaje in mensajes) {
+
+                if (mensajes[mensaje].para == {{ auth()->user()->id}}){
+                    $("#listaMensajes").append('<li class="sent"><img src="http://emilcarlsson.se/assets/mikeross.png" alt="" /><p>' + mensajes[mensaje].texto + '</p></li >');
+                }
+
+                if (mensajes[mensaje].de == {{ auth()->user()->id}}){
+                    $("#listaMensajes").append('<li class="replies"><img src="http://emilcarlsson.se/assets/harveyspecter.png" alt="" /><p>' + mensajes[mensaje].texto + '</p></li>');
+                }
+
+            }
+
+        },
+        statusCode: {
+            404: function() {
+                alert('web not found');
+            }
+        },
+        error: function(x, xs, xt) {
+
+            //window.open(JSON.stringify(x));
+            alert('error: ' + JSON.stringify(x) + "\n error string: " + xs + "\n error throwed: " + xt);
+        }
+    });
+}
+*/
 
 
  var idUsuarioPulsado;
 function cargarMensajes(usuario) {
-    //alert(usuario.id);
+
 if (isNaN(usuario)){
     idUsuarioPulsado = usuario.id;
+    $("#idPrimerUsuario").val(usuario.id); //para saber en q chat estoy para el pusher
 }else{
     idUsuarioPulsado = usuario;
+    $("#idPrimerUsuario").val(usuario);
+
 }
     usuarioPorId(idUsuarioPulsado);
 
@@ -2039,10 +2081,7 @@ function usuarioPorId(id) {
             }
         });
         
-            $('<li class="replies"><img src="http://emilcarlsson.se/assets/mikeross.png" alt="" /><p>' + message + '</p></li>').appendTo($('.messages ul'));
-            $('.message-input input').val(null);
             $('.contact.active .preview').html('<span>You: </span>' + message);
-            $(".messages").animate({ scrollTop: $(document).height() }, "fast");
         };
         
         $('.submit').click(function() {

@@ -32,19 +32,31 @@
     
         var channel = pusher.subscribe('chat-channel');
         channel.bind('chat-event', function(data) {
-          //alert(JSON.stringify(data));
+          alert(JSON.stringify(data));
 
           if(data.de == {{ auth()->user()->id }}){
-            
-            $("#zonaChat").append('<div class="media w-100 mb-3"><img src="https://res.cloudinary.com/mhmd/image/upload/v1564960395/avatar_usae7z.svg" alt="user" width="50" class="rounded-circle"><div class="media-body ml-3"><div class="bg-light rounded py-2 px-3 mb-2"><p class="text-small mb-0 text-muted">' + data.texto + '</p></div><p class="small text-muted">' + data.fecha + '</p></div></div>');
-          }
+
+        
+            $("#listaMensajes").append('<li class="replies"><img src="http://emilcarlsson.se/assets/harveyspecter.png" alt="" /><p>' + data.texto + '</p></li>');
+         
+        }
 
           if(data.para == {{ auth()->user()->id }}){
+
+            if ($("#idPrimerUsuario") == data.de ){ //si el usuario pulsado es quien me manda el mensaje...
+                
+                $("#listaMensajes").append('<li class="sent"><img src="http://emilcarlsson.se/assets/mikeross.png" alt="" /><p>' + data.texto + '</p></li >');
+
+}
             
-            $("#zonaChat").append('<div class="media w-100 ml-auto mb-3"><div class="media-body"><div class="bg-primary rounded py-2 px-3 mb-2"><p class="text-small mb-0 text-white">' + data.texto + '</p></div><p class="small text-muted">' + data.fecha + '</p></div></div>');
+            
           }
 
-          $("#zonaChat").animate({ scrollTop: $(document).height() }, 1000);
+          $(".messages").animate({ scrollTop: $(document).height() }, "fast");
+          $('.message-input input').val(null);
+
+
+          //$("#zonaChat").animate({ scrollTop: $(document).height() }, 1000);
           //$("#divv").html(JSON.stringify(data));
           //window.livewire.emit('mensajeRecibido', data);
         });
