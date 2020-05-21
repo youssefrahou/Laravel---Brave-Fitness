@@ -1723,19 +1723,30 @@
                     <label for=""><i class="fa fa-search" aria-hidden="true"></i></label>
                     <input type="text" placeholder="Buscar..." />
                 </div>
-                <div id="contacts">
+                <div id="contacts"> 
                     <ul>
 
                         @foreach($usuarios as $usuario)
 
+                        @if ( $usuario->id == auth()->user()->id)
+                        @continue
+                        @endif
+
                         @php
-                        $ultimoMensaje = DB::select("select * from users, mensaje where mensaje.de = ? or mensaje.para =
-                        ? order by mensaje.fecha desc limit 1", [$usuario->id, $usuario->id])
+                        $ultimoMensaje = DB::select("select * from users, mensaje where mensaje.de = ? and mensaje.para = ? or mensaje.de = ? and mensaje.para = ? order by mensaje.fecha desc limit 1", [$usuario->id, auth()->user()->id, auth()->user()->id, $usuario->id])
                         @endphp
 
                         <li class="contact" id="{{ $usuario->id }}" onclick="cargarMensajes(this)">
                             <div class="wrap">
                                 <span class="contact-status online"></span>
+
+                                @if($usuarios[0]->id == auth()->user()->id)
+                                <input id="idPrimerUsuario" type="hidden" value="{{ $usuarios[1]->id }}">
+
+                                @else
+                                <input id="idPrimerUsuario" type="hidden" value="{{ $usuarios[0]->id }}">
+
+                                @endif
 
                                 @if(!$usuario->fotoPerfil)
                                 <img src="https://cdn.pixabay.com/photo/2012/04/26/19/43/profile-42914_1280.png"
@@ -1747,10 +1758,17 @@
                                 <div class="meta">
                                     <p class="name">{{ $usuario->name }}</p>
 
+                                    @if($ultimoMensaje)
+
                                     @if($usuario->id == $ultimoMensaje[0]->de)
-                                    <p class="preview"><span>Tú:</span> {{ $ultimoMensaje[0]->texto }}</p>
-                                    @else
                                     <p class="preview">{{ $ultimoMensaje[0]->texto }}</p>
+                                    @else
+                                    <p class="preview"><span>Tú:</span> {{ $ultimoMensaje[0]->texto }}</p>
+                                    @endif
+
+                                    @else
+                                    <p class="preview"></p>
+
                                     @endif
 
 
@@ -1852,16 +1870,31 @@
  * 
  * CHAT
  */
+
+ $( document ).ready(function() {
+
+    let idUsuario = $("#idPrimerUsuario").val();
+    //alert(idUsuario);
+    usuarioPorId(idUsuario);
+    cargarMensajes(idUsuario);
+
+});
+
+
+
  var idUsuarioPulsado;
 function cargarMensajes(usuario) {
     //alert(usuario.id);
-
+if (isNaN(usuario)){
     idUsuarioPulsado = usuario.id;
+}else{
+    idUsuarioPulsado = usuario;
+}
     usuarioPorId(idUsuarioPulsado);
 
     $("#listaMensajes").html(""); //borro todos los anteriores mensajes
     $.ajax({
-        url: 'mensajes' + "/" + usuario.id,
+        url: 'mensajes' + "/" + idUsuarioPulsado,
         type: 'get',
         success: function(response) {
 
@@ -1901,13 +1934,18 @@ function cargarMensajes(usuario) {
 }
 
 function usuarioPorId(id) {
-    
+    if (isNaN(id)){
+    idUsuario = id.id;
+}else{
+    idUsuario = id;
+}
+
     $.ajax({
-        url: 'usuarios' + "/" + id,
+        url: 'usuarios' + "/" + idUsuario,
         type: 'get',
         success: function(response) {
 
-            let usuario = JSON.parse(response);a
+            let usuario = JSON.parse(response);
             $("#nombreUsuarioArriba").text(usuario[0].name);
            
  
