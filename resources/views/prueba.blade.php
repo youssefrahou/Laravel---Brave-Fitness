@@ -592,7 +592,8 @@
     @media screen and (max-width: 735px) {
         #frame .content {
             width: calc(100% - 58px);
-            min-width: 200px !important; /*minimo para que se vea en una pantalla de minimo eso. estaba en 300px*/
+            min-width: 200px !important;
+            /*minimo para que se vea en una pantalla de minimo eso. estaba en 300px*/
         }
     }
 
@@ -1800,8 +1801,8 @@
             </div>
             <div class="content">
                 <div class="contact-profile">
-                    <img src="http://emilcarlsson.se/assets/harveyspecter.png" alt="" />
-                    <p>Harvey Specter</p>
+                    <img src="" id="imagenUsuarioArriba" alt="" />
+                    <p id="nombreUsuarioArriba"></p>
                     <div class="social-media">
                         <i class="fa fa-instagram" aria-hidden="true"></i>
                     </div>
@@ -1854,7 +1855,10 @@
  var idUsuarioPulsado;
 function cargarMensajes(usuario) {
     //alert(usuario.id);
+
     idUsuarioPulsado = usuario.id;
+    usuarioPorId(idUsuarioPulsado);
+
     $("#listaMensajes").html(""); //borro todos los anteriores mensajes
     $.ajax({
         url: 'mensajes' + "/" + usuario.id,
@@ -1895,6 +1899,40 @@ function cargarMensajes(usuario) {
 
 
 }
+
+function usuarioPorId(id) {
+    
+    $.ajax({
+        url: 'usuarios' + "/" + id,
+        type: 'get',
+        success: function(response) {
+
+            let usuario = JSON.parse(response);
+            $("#nombreUsuarioArriba").text(usuario[0].name);
+           
+ 
+            if (usuario[0].fotoPerfil == null){
+    $("#imagenUsuarioArriba").attr("src", "https://cdn.pixabay.com/photo/2012/04/26/19/43/profile-42914_1280.png");
+
+}else{
+    $("#imagenUsuarioArriba").attr("src", "images/users/" + usuario[0].fotoPerfil);
+
+}
+            //alert(usuario);
+
+        },
+        statusCode: {
+            404: function() {
+                alert('web not found');
+            }
+        },
+        error: function(x, xs, xt) {
+            alert('error: ' + JSON.stringify(x) + "\n error string: " + xs + "\n error throwed: " + xt);
+        }
+    
+});
+}
+
 
 /**
  * 
