@@ -1878,7 +1878,6 @@
  $( document ).ready(function() {
 
     let idUsuario = $("#idPrimerUsuario").val();
-    //alert(idUsuario);
     usuarioPorId(idUsuario);
     cargarMensajes(idUsuario);
 
@@ -1924,6 +1923,7 @@
  var idUsuarioPulsado;
 function cargarMensajes(usuario) {
 
+
 if (isNaN(usuario)){
     idUsuarioPulsado = usuario.id;
     $("#idPrimerUsuario").val(usuario.id); //para saber en q chat estoy para el pusher
@@ -1957,6 +1957,7 @@ if (isNaN(usuario)){
 
 
             }
+            $(".messages").animate({ scrollTop: $(document).height() }, "fast");
 
         },
         statusCode: {
@@ -1976,7 +1977,7 @@ if (isNaN(usuario)){
 }
 
 function usuarioPorId(id) {
-    
+
     if (isNaN(id)){
     idUsuario = id.id;
 }else{
