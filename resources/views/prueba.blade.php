@@ -1784,11 +1784,12 @@
 
                         @endif
 
+
                         @if(!Auth::guest() && Auth::user()->hasRole('user'))
 
                         @foreach($usuarios as $usuario)
 
-                        @if ( $usuario->id == auth()->user()->id || $usuario->hasRole('user'))
+                        @if ($usuario->id == auth()->user()->id || $usuario->hasRole('user'))
                         @continue
                         @endif
 
@@ -1838,7 +1839,12 @@
                             </div>
                         </li>
 
+                        @endforeach
+
                         @endif
+
+                        
+                        
 
 
 
