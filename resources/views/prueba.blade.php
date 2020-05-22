@@ -1726,6 +1726,8 @@
                 <div id="contacts">
                     <ul>
 
+                        @if(!Auth::guest() && Auth::user()->hasRole('admin'))
+
                         @foreach($usuarios as $usuario)
 
                         @if ( $usuario->id == auth()->user()->id)
@@ -1779,6 +1781,67 @@
                         </li>
 
                         @endforeach
+
+                        @endif
+
+                        @if(!Auth::guest() && Auth::user()->hasRole('user'))
+
+                        @foreach($usuarios as $usuario)
+
+                        @if ( $usuario->id == auth()->user()->id || $usuario->hasRole('user'))
+                        @continue
+                        @endif
+
+                        @php
+                        $ultimoMensaje = DB::select("select * from users, mensaje where mensaje.de = ? and mensaje.para
+                        = ? or mensaje.de = ? and mensaje.para = ? order by mensaje.fecha desc limit 1", [$usuario->id,
+                        auth()->user()->id, auth()->user()->id, $usuario->id])
+                        @endphp
+
+                        <li class="contact" id="{{ $usuario->id }}" onclick="cargarMensajes(this)">
+                            <div class="wrap">
+                                <span class="contact-status online"></span>
+
+                                @if($usuarios[0]->id == auth()->user()->id)
+                                <input id="idPrimerUsuario" type="hidden" value="{{ $usuarios[1]->id }}">
+
+                                @else
+                                <input id="idPrimerUsuario" type="hidden" value="{{ $usuarios[0]->id }}">
+
+                                @endif
+
+                                @if(!$usuario->fotoPerfil)
+                                <img src="https://cdn.pixabay.com/photo/2012/04/26/19/43/profile-42914_1280.png"
+                                    alt="" />
+                                @else
+                                <img src="images/users/{{ $usuario->fotoPerfil }}" alt="" />
+                                @endif
+
+                                <div class="meta">
+                                    <p class="name">{{ $usuario->name }}</p>
+
+                                    @if($ultimoMensaje)
+
+                                    @if($usuario->id == $ultimoMensaje[0]->de)
+                                    <p class="preview">{{ $ultimoMensaje[0]->texto }}</p>
+                                    @else
+                                    <p class="preview"><span>Tú:</span> {{ $ultimoMensaje[0]->texto }}</p>
+                                    @endif
+
+                                    @else
+                                    <p class="preview"></p>
+
+                                    @endif
+
+
+                                </div>
+                            </div>
+                        </li>
+
+                        @endif
+
+
+
                         <!--
                         <li class="contact">
                             <div class="wrap">
