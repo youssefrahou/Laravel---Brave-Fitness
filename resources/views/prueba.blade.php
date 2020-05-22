@@ -1976,6 +1976,7 @@ if (isNaN(usuario)){
 }
 
 function usuarioPorId(id) {
+    
     if (isNaN(id)){
     idUsuario = id.id;
 }else{
