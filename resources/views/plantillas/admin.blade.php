@@ -43,7 +43,7 @@
 
           if(data.para == {{ auth()->user()->id }}){
 
-            if ($("#idPrimerUsuario") == data.de ){ //si el usuario pulsado es quien me manda el mensaje...
+            if ($("#idPrimerUsuario").val() == data.de ){ //si el usuario pulsado es quien me manda el mensaje...
                 
                 $("#listaMensajes").append('<li class="sent"><img src="http://emilcarlsson.se/assets/mikeross.png" alt="" /><p>' + data.texto + '</p></li >');
 
