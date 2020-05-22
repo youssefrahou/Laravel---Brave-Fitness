@@ -233,12 +233,12 @@
                         @if (auth()->user()->fotoPerfil == null)
 
                         <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="img-circle elevation-2"
-                            alt="avatar" style="width: 50px; height: 50px;">
+                            alt="avatar" style="width: 40px; height: 40px;">
 
                         @else
 
                         <img src="images/users/{{ auth()->user()->fotoPerfil }}" class="img-circle elevation-2"
-                            alt="avatar" style="width: 50px; height: 50px;">
+                            alt="avatar" style="width: 40px; height: 40px;">
 
                         @endif
                     </div>
