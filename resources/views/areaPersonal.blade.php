@@ -577,94 +577,487 @@ $(".file-upload").on('change', function(){
     <!-- fin AJUSTES DE PERFIL -->
 
 
+
     <!-- CHAT -->
 
     <div class="row col-12" id="chat" style="display: none">
 
-        <p id="divv"></p>
-        <div class="container-fluid px-4">
-            <!-- For demo purpose-->
-            <div class="row rounded-lg overflow-hidden shadow" id="cajaMensajes">
-        
-        
-                <div class="col-12 px-0">
-                    <div class="px-4 py-5 chat-box bg-white" id="zonaChat">
-        
-        
-                        <!-- Sender Message
-                        <div class="media w-100 mb-3"><img
-                                src="https://res.cloudinary.com/mhmd/image/upload/v1564960395/avatar_usae7z.svg" alt="user"
-                                width="50" class="rounded-circle">
-        
-                            <div class="media-body ml-3">
-                                <div class="bg-light rounded py-2 px-3 mb-2">
-                                    <p class="text-small mb-0 text-muted">nsaje->texto </p>
-                                </div>
-                                <p class="small text-muted">mensaje->fecha</p>
-                            </div>
-                        </div>
-        
-        
-                        <Reciever Message
-                        <div class="media w-100 ml-auto mb-3">
-                            <div class="media-body">
-                                <div class="bg-primary rounded py-2 px-3 mb-2">
-                                    <p class="text-small mb-0 text-white"> mensajetexto }}</p>
-                                </div>
-                                <p class="small text-muted">{ mensaje-echa }</p>
-                            </div>
-                        </div>
-                    -->
-        
+        <div id="frame">
+            <div id="sidepanel">
+                <div id="profile">
+                    <div class="wrap">
+
+                        @if(!auth()->user()->fotoPerfil)
+
+                        <img id="profile-img" src="http://emilcarlsson.se/assets/mikeross.png" class="online" alt="" />
+
+                        @else
+
+                        <img id="profile-img" src="images/users/{{ auth()->user()->fotoPerfil }}" class="online"
+                            alt="" />
+
+                        @endif
+
+                        <p>{{ auth()->user()->name }}</p>
+
                     </div>
-        
-                    <!-- Typing area -->
-                    <form id="formMensaje" action="#">
+                </div>
+                <div id="search">
+                    <label for=""><i class="fa fa-search" aria-hidden="true"></i></label>
+                    <input type="text" placeholder="Buscar..." />
+                </div>
+                <div id="contacts">
+                    <ul>
 
-                        <input type="hidden" name="para" value="1">
-                        <input type="hidden" name="de" value="{{ auth()->user()->id }}">
-                        <input type="hidden" name="leido" value="0">
+                        @if(!Auth::guest() && Auth::user()->hasRole('admin'))
 
-                        <div class="input-group">
+                        @foreach($usuarios as $usuario)
 
-                            <input type="text" id="textoEnviar" placeholder="Escribe un mensaje"
-                                aria-describedby="button-addon2" class="form-control rounded-0 border-0 py-4 bg-light"
-                                name="texto">
-                            <div class="input-group-append">
-                                <button id="button-addon2" type="button" class="btn btn-link botonEnviarMensaje"> <i
-                                        class="fa fa-paper-plane"></i></button>
+                        @if ( $usuario->id == auth()->user()->id)
+                        @continue
+                        @endif
+
+                        @php
+                        $ultimoMensaje = DB::select("select * from users, mensaje where mensaje.de = ? and mensaje.para
+                        = ? or mensaje.de = ? and mensaje.para = ? order by mensaje.fecha desc limit 1", [$usuario->id,
+                        auth()->user()->id, auth()->user()->id, $usuario->id])
+                        @endphp
+
+                        <li class="contact" id="{{ $usuario->id }}" onclick="cargarMensajes(this)">
+                            <div class="wrap">
+                                <span class="contact-status online"></span>
+
+                                @if($usuarios[0]->id == auth()->user()->id)
+                                <input id="idPrimerUsuario" type="hidden" value="{{ $usuarios[1]->id }}">
+
+                                @else
+                                <input id="idPrimerUsuario" type="hidden" value="{{ $usuarios[0]->id }}">
+
+                                @endif
+
+                                @if(!$usuario->fotoPerfil)
+                                <img src="https://cdn.pixabay.com/photo/2012/04/26/19/43/profile-42914_1280.png"
+                                    alt="" />
+                                @else
+                                <img src="images/users/{{ $usuario->fotoPerfil }}" alt="" />
+                                @endif
+
+                                <div class="meta">
+                                    <p class="name">{{ $usuario->name }}</p>
+
+                                    @if($ultimoMensaje)
+
+                                    @if($usuario->id == $ultimoMensaje[0]->de)
+                                    <p class="preview">{{ $ultimoMensaje[0]->texto }}</p>
+                                    @else
+                                    <p class="preview"><span>Tú:</span> {{ $ultimoMensaje[0]->texto }}</p>
+                                    @endif
+
+                                    @else
+                                    <p class="preview"></p>
+
+                                    @endif
+
+
+                                </div>
                             </div>
-                        </div>
+                        </li>
+
+                        @endforeach
+
+                        @endif
+
+
+                        @if(!Auth::guest() && Auth::user()->hasRole('user'))
+
+                        @foreach($usuarios as $usuario)
+
+                        @if ($usuario->id == auth()->user()->id || $usuario->hasRole('user'))
+                        @continue
+                        @endif
+
+                        @php
+                        $ultimoMensaje = DB::select("select * from users, mensaje where mensaje.de = ? and mensaje.para
+                        = ? or mensaje.de = ? and mensaje.para = ? order by mensaje.fecha desc limit 1", [$usuario->id,
+                        auth()->user()->id, auth()->user()->id, $usuario->id])
+                        @endphp
+
+                        <li class="contact" id="{{ $usuario->id }}" onclick="cargarMensajes(this)">
+                            <div class="wrap">
+                                <span class="contact-status online"></span>
+
+                                @if($usuarios[0]->id == auth()->user()->id)
+                                <input id="idPrimerUsuario" type="hidden" value="{{ $usuarios[1]->id }}">
+
+                                @else
+                                <input id="idPrimerUsuario" type="hidden" value="{{ $usuarios[0]->id }}">
+
+                                @endif
+
+                                @if(!$usuario->fotoPerfil)
+                                <img src="https://cdn.pixabay.com/photo/2012/04/26/19/43/profile-42914_1280.png"
+                                    alt="" />
+                                @else
+                                <img src="images/users/{{ $usuario->fotoPerfil }}" alt="" />
+                                @endif
+
+                                <div class="meta">
+                                    <p class="name">{{ $usuario->name }}</p>
+
+                                    @if($ultimoMensaje)
+
+                                    @if($usuario->id == $ultimoMensaje[0]->de)
+                                    <p class="preview">{{ $ultimoMensaje[0]->texto }}</p>
+                                    @else
+                                    <p class="preview"><span>Tú:</span> {{ $ultimoMensaje[0]->texto }}</p>
+                                    @endif
+
+                                    @else
+                                    <p class="preview"></p>
+
+                                    @endif
+
+
+                                </div>
+                            </div>
+                        </li>
+
+                        @endforeach
+
+                        @endif
+
+                        
+                        
 
 
 
+                        <!--
+                        <li class="contact">
+                            <div class="wrap">
+                                <span class="contact-status online"></span>
+                                <img src="http://emilcarlsson.se/assets/louislitt.png" alt="" />
+                                <div class="meta">
+                                    <p class="name">Louis Litt</p>
+                                    <p class="preview">You just got LITT up, Mike.</p>
+                                </div>
+                            </div>
+                        </li>
 
-                    </form>
-        
+                        <li class="contact active">
+                            <div class="wrap">
+                                <span class="contact-status busy"></span>
+                                <img src="http://emilcarlsson.se/assets/harveyspecter.png" alt="" />
+                                <div class="meta">
+                                    <p class="name">Harvey Specter</p>
+                                    <p class="preview">Wrong. You take the gun, or you pull out a bigger one. Or, you
+                                        call their bluff. Or, you do any one of a hundred and forty six other things.
+                                    </p>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="contact">
+                            <div class="wrap">
+                                <span class="contact-status"></span>
+                                <img src="http://emilcarlsson.se/assets/jonathansidwell.png" alt="" />
+                                <div class="meta">
+                                    <p class="name">Jonathan Sidwell</p>
+                                    <p class="preview"><span>You:</span> That's bullshit. This deal is solid.</p>
+                                </div>
+                            </div>
+                        </li>
+                    -->
+
+
+                    </ul>
                 </div>
             </div>
-        
-        <!--
-            <script>
-                
-                // Enable pusher logging - don't include this in production
-                Pusher.logToConsole = true;
-            
-                var pusher = new Pusher('b7fd28c714585deddbc4', {
-                  cluster: 'eu'
-                });
-            
-                var channel = pusher.subscribe('chat-channel');
-                channel.bind('chat-event', function(data) {
-                  //alert(JSON.stringify(data));
-                  //$("#divv").html(JSON.stringify(data));
-                  window.livewire.emit('mensajeRecibido', data);
-                });
-            </script>-->
-        
+            <div class="content">
+                <div class="contact-profile">
+                    <img src="" id="imagenUsuarioArriba" alt="" />
+                    <p id="nombreUsuarioArriba"></p>
+                    <div class="social-media">
+                        <i class="fa fa-instagram" aria-hidden="true"></i>
+                    </div>
+                </div>
+                <div class="messages">
+                    <ul id="listaMensajes">
+                        <!--
+                        <li class="sent">
+                            <img src="http://emilcarlsson.se/assets/mikeross.png" alt="" />
+                            <p>What are you talking about? You do what they say or they shoot you.</p>
+                        </li>
+
+
+                        <li class="replies">
+                            @if(!auth()->user()->fotoPerfil)
+
+                            <img src="http://emilcarlsson.se/assets/harveyspecter.png" alt="" />
+
+
+                            @else
+
+                            <img src="images/users/{{ auth()->user()->fotoPerfil }}" alt="" />
+
+                            @endif
+
+                            <p>Wrong. You take the gun, or you pull out a bigger one. Or, you call their bluff. Or, you
+                                do any one of a hundred and forty six other things.</p>
+                        </li>
+                    -->
+
+                    </ul>
+                </div>
+                <div class="message-input">
+                    <div class="wrap">
+
+                        <input type="text" id="textoMensaje" placeholder="Escribe tu mensaje..." />
+                        <button class="submit"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
+
+
+                    </div>
+                </div>
+            </div>
         </div>
+        <script
+            src='//production-assets.codepen.io/assets/common/stopExecutionOnTimeout-b2a7b3fe212eaa732349046d8416e00a9dec26eb7fd347590fbced3ab38af52e.js'>
+        </script>
+        <script>
+            /**
+ * 
+ * CHAT
+ */
+
+ $( document ).ready(function() {
+
+    let idUsuario = $("#idPrimerUsuario").val();
+    usuarioPorId(idUsuario);
+    cargarMensajes(idUsuario);
+   // window.setInterval('actualizarListaContactos()', 3000); 
+
+});
+
+/*function actualizarListaContactos(){
+
+    $.ajax({
+        url: 'usuarios',
+        type: 'get',
+        success: function(response) {
+
+            let usuarios = JSON.parse(response);
+
+            for (var usuario in usuarios) {
+                alert(usuarios[usuario].name);
+
+                // (mensajes[mensaje].para == {{ auth()->user()->id}}){
+                    $("#listaMensajes").append('<li class="sent"><img src="http://emilcarlsson.se/assets/mikeross.png" alt="" /><p>' + mensajes[mensaje].texto + '</p></li >');
+                }
+
+                if (mensajes[mensaje].de == {{ auth()->user()->id}}){
+                    $("#listaMensajes").append('<li class="replies"><img src="http://emilcarlsson.se/assets/harveyspecter.png" alt="" /><p>' + mensajes[mensaje].texto + '</p></li>');
+                }
+
+            }
+
+        },
+        statusCode: {
+            404: function() {
+                alert('web not found');
+            }
+        },
+        error: function(x, xs, xt) {
+
+            //window.open(JSON.stringify(x));
+            alert('error: ' + JSON.stringify(x) + "\n error string: " + xs + "\n error throwed: " + xt);
+        }
+    });
+}
+*/
+
+
+ var idUsuarioPulsado;
+function cargarMensajes(usuario) {
+    $('#textoMensaje').focus();
+
+if (isNaN(usuario)){
+    idUsuarioPulsado = usuario.id;
+    $("#idPrimerUsuario").val(usuario.id); //para saber en q chat estoy para el pusher
+}else{
+    idUsuarioPulsado = usuario;
+    $("#idPrimerUsuario").val(usuario);
+
+}
+    usuarioPorId(idUsuarioPulsado);
+
+    $("#listaMensajes").html(""); //borro todos los anteriores mensajes
+    $.ajax({
+        url: 'mensajes' + "/" + idUsuarioPulsado,
+        type: 'get',
+        success: function(response) {
+
+            let mensajes = JSON.parse(response);
+
+            for (var mensaje in mensajes) {
+
+                if (mensajes[mensaje].para == {{ auth()->user()->id}}){
+                    $("#listaMensajes").append('<li class="sent"><img src="http://emilcarlsson.se/assets/mikeross.png" alt="" /><p>' + mensajes[mensaje].texto + '</p></li >');
+                }
+
+                if (mensajes[mensaje].de == {{ auth()->user()->id}}){
+                    $("#listaMensajes").append('<li class="replies"><img src="http://emilcarlsson.se/assets/harveyspecter.png" alt="" /><p>' + mensajes[mensaje].texto + '</p></li>');
+                }
+
+                   
+                //alert(mensajes[mensaje].texto);
+
+
+            }
+            $(".messages").animate({ scrollTop: $(document).height() }, "fast");
+
+        },
+        statusCode: {
+            404: function() {
+                alert('web not found');
+            }
+        },
+        error: function(x, xs, xt) {
+
+            //window.open(JSON.stringify(x));
+            alert('error: ' + JSON.stringify(x) + "\n error string: " + xs + "\n error throwed: " + xt);
+        }
+    });
+    $(".messages").animate({ scrollTop: $(document).height() }, "fast");
+
+
+}
+
+function usuarioPorId(id) {
+
+    if (isNaN(id)){
+    idUsuario = id.id;
+}else{
+    idUsuario = id;
+}
+
+    $.ajax({
+        url: 'usuarios' + "/" + idUsuario,
+        type: 'get',
+        success: function(response) {
+
+            let usuario = JSON.parse(response);
+            $("#nombreUsuarioArriba").text(usuario[0].name);
+           
+ 
+            if (usuario[0].fotoPerfil == null){
+    $("#imagenUsuarioArriba").attr("src", "https://cdn.pixabay.com/photo/2012/04/26/19/43/profile-42914_1280.png");
+
+}else{
+    $("#imagenUsuarioArriba").attr("src", "images/users/" + usuario[0].fotoPerfil);
+
+}
+            //alert(usuario);
+
+        },
+        statusCode: {
+            404: function() {
+                alert('web not found');
+            }
+        },
+        error: function(x, xs, xt) {
+            alert('error: ' + JSON.stringify(x) + "\n error string: " + xs + "\n error throwed: " + xt);
+        }
+    
+});
+}
+
+
+/**
+ * 
+ * fin CHAT
+ */
+
+
+ 
+            $(".messages").animate({ scrollTop: $(document).height() }, "fast");
+        
+        $("#profile-img").click(function() {
+            $("#status-options").toggleClass("active");
+        });
+        
+        $(".expand-button").click(function() {
+          $("#profile").toggleClass("expanded");
+            $("#contacts").toggleClass("expanded");
+        });
+        
+        $("#status-options ul li").click(function() {
+            $("#profile-img").removeClass();
+            $("#status-online").removeClass("active");
+            $("#status-away").removeClass("active");
+            $("#status-busy").removeClass("active");
+            $("#status-offline").removeClass("active");
+            $(this).addClass("active");
+            
+            if($("#status-online").hasClass("active")) {
+                $("#profile-img").addClass("online");
+            } else if ($("#status-away").hasClass("active")) {
+                $("#profile-img").addClass("away");
+            } else if ($("#status-busy").hasClass("active")) {
+                $("#profile-img").addClass("busy");
+            } else if ($("#status-offline").hasClass("active")) {
+                $("#profile-img").addClass("offline");
+            } else {
+                $("#profile-img").removeClass();
+            };
+            
+            $("#status-options").removeClass("active");
+        });
+        
+        function newMessage() {
+            message = $(".message-input input").val();
+
+            if($.trim(message) == '') {
+                return false;
+            }
+            $.ajax({
+            url: 'mensaje',
+            method: 'post',
+            data: { de: {{ auth()->user()->id }}, para: idUsuarioPulsado, leido: 0, texto: $("#textoMensaje").val()},
+            type: 'post',
+            success: function(response) {
+
+            },
+            statusCode: {
+                404: function() {
+                    alert('web not found');
+                }
+            },
+            error: function(x, xs, xt) {
+
+                //window.open(JSON.stringify(x));
+                alert('error: ' + JSON.stringify(x) + "\n error string: " + xs + "\n error throwed: " + xt);
+            }
+        });
+        
+            $('.contact.active .preview').html('<span>You: </span>' + message);
+        };
+        
+        $('.submit').click(function() {
+          newMessage();
+        });
+        
+        $(window).on('keydown', function(e) {
+          if (e.which == 13) {
+            newMessage();
+            return false;
+          }
+        });
+        //# sourceURL=pen.js
+        </script>
 
     </div>
+    <!-- CHAT -->
+
+
+    
     <!-- CHAT -->
 
 

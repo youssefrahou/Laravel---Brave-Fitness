@@ -98,6 +98,7 @@ Route::get('prueba2', function () {
 
 Route::get('areaPersonal', function () {
 
+    $usuarios = User::all();
     $mediciones = Medicion::all();
 
     $medFechas = Medicion::select('fecha')->where('users_id', auth()->user()->id)->get();
@@ -142,7 +143,7 @@ Route::get('areaPersonal', function () {
         ->dashed([0]);
 
 
-    return view('areaPersonal', compact('chart'), compact('mediciones'));
+    return view('areaPersonal', compact('chart', 'usuarios', 'mediciones'));
 });
 
 /**
