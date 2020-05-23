@@ -54,23 +54,23 @@ $(".file-upload").on('change', function(){
 
 
     <li class="nav-item has-treeview" id="lateralMiProgreso">
-        <a href="#" class="nav-link">
+        <span href="#" class="nav-link">
             <i class="nav-icon fas fa-chart-pie"></i>
             <p>
                 Mi progreso
             </p>
-        </a>
+        </span>
     </li>
 
     <li class="nav-item has-treeview">
-        <a href="#" class="nav-link">
+        <span href="#" class="nav-link">
             <i class="nav-icon fas fa-chart-pie"></i>
             <p>
                 Videos
                 <i class="fas fa-angle-left right"></i>
                 <span class="badge badge-info right"></span>
             </p>
-        </a>
+        </span>
         <ul class="nav nav-treeview">
             <li class="nav-item" id="verArticulos">
                 <span class="nav-link">
@@ -88,12 +88,12 @@ $(".file-upload").on('change', function(){
     </li>
 
     <li class="nav-item has-treeview" id="lateralChat">
-        <a href="#" class="nav-link">
+        <span href="#" class="nav-link">
             <i class="nav-icon fas fa-chart-pie"></i>
             <p>
                 Chat
             </p>
-        </a>
+        </span>
     </li>
 
 

@@ -8,14 +8,14 @@
                with font-awesome or any other icon font library -->
 
     <li class="nav-item has-treeview">
-        <a href="#" class="nav-link">
+        <span href="#" class="nav-link">
             <i class="nav-icon fas fa-copy"></i>
             <p>
                 Usuarios
                 <i class="fas fa-angle-left right"></i>
                 <span class="badge badge-info right">{{ $totalUsuarios }}</span>
             </p>
-        </a>
+        </span>
         <ul class="nav nav-treeview">
             <li class="nav-item" id="verUsuarios">
                 <span class="nav-link">
@@ -26,14 +26,14 @@
         </ul>
     </li>
     <li class="nav-item has-treeview">
-        <a href="#" class="nav-link">
+        <span href="#" class="nav-link">
             <i class="nav-icon fas fa-chart-pie"></i>
             <p>
                 Articulos
                 <i class="fas fa-angle-left right"></i>
                 <span class="badge badge-info right">{{ $totalArticulos }}</span>
             </p>
-        </a>
+        </span>
         <ul class="nav nav-treeview">
             <li class="nav-item" id="verArticulos">
                 <span class="nav-link">
@@ -51,14 +51,14 @@
         </ul>
     </li>
     <li class="nav-item has-treeview">
-        <a href="#" class="nav-link">
+        <span href="#" class="nav-link">
             <i class="nav-icon fas fa-tree"></i>
             <p>
                 Consejos
                 <i class="fas fa-angle-left right"></i>
                 <span class="badge badge-info right">{{ $totalConsejos }}</span>
             </p>
-        </a>
+        </span>
         <ul class="nav nav-treeview">
             <li class="nav-item" id="verConsejos">
                 <span class="nav-link">
@@ -76,14 +76,14 @@
         </ul>
     </li>
     <li class="nav-item has-treeview">
-        <a href="#" class="nav-link">
+        <span href="#" class="nav-link">
             <i class="nav-icon fas fa-edit"></i>
             <p>
                 Comentarios
                 <i class="fas fa-angle-left right"></i>
                 <span class="badge badge-info right">{{ $totalComentarios }}</span>
             </p>
-        </a>
+        </span>
         <ul class="nav nav-treeview">
             <li class="nav-item" id="verComentarios">
                 <span class="nav-link">
@@ -100,31 +100,17 @@
 
         </ul>
     </li>
-    <li class="nav-item has-treeview">
-        <a href="#" class="nav-link">
+    <li class="nav-item has-treeview" id="abrirChat">
+        <span href="#" class="nav-link">
             <i class="nav-icon fas fa-table"></i>
             <p>
-                Mensajes
-                <i class="fas fa-angle-left right"></i>
-                <span class="badge badge-info right">{{ $totalMensajes }}</span>
+                Chat
+                <span class="badge badge-info right">777</span>
             </p>
-        </a>
-        <ul class="nav nav-treeview">
-            <li class="nav-item">
-                <span class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Ver todos los mensajes</p>
-                </span>
-            </li>
-            <li class="nav-item">
-                <span class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Ver mensajes sin leer</p>
-                </span>
-            </li>
-
-        </ul>
+        </span>
     </li>
+
+   
 
 </ul>
 
@@ -135,11 +121,11 @@
 
 <div class="row">
 
-    <!-- Mensaje de bienvenida 
+    <!-- Mensaje de bienvenida -->
     <div class="table-responsive justify-content-center" id="bienvenida">
         <p class="h3 text-center">Bienvenido a Brave Fitness. Elige una opción en el menú lateral. </p>
     </div>
-     Mensaje de bienvenida -->
+     <!--Mensaje de bienvenida -->
 
 
     <!-- Tabla usuarios -->
@@ -924,7 +910,7 @@
 
     <!-- CHAT -->
 
-    <div class="row col-12" id="chat">
+    <div class="row col-12" id="chat" style="display: none">
 
         <div id="frame">
             <div id="sidepanel">
