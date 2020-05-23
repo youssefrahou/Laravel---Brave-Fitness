@@ -47,6 +47,13 @@ Route::get('mensajes/{id}', function ($id) {
     return json_encode($mensajes);
 });
 
+Route::get('usuarios', function () {
+
+    $usuarios = DB::select("select * from users");
+    return json_encode($usuarios);
+});
+
+
 Route::get('usuarios/{id}', function ($id) {
 
     $usuario = DB::select("select * from users where id = ?", [$id]);

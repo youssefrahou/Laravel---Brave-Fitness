@@ -1949,21 +1949,23 @@
     let idUsuario = $("#idPrimerUsuario").val();
     usuarioPorId(idUsuario);
     cargarMensajes(idUsuario);
+   // window.setInterval('actualizarListaContactos()', 3000); 
 
 });
 
 /*function actualizarListaContactos(){
 
     $.ajax({
-        url: 'mensajes' + "/" + idUsuarioPulsado,
+        url: 'usuarios',
         type: 'get',
         success: function(response) {
 
-            let mensajes = JSON.parse(response);
+            let usuarios = JSON.parse(response);
 
-            for (var mensaje in mensajes) {
+            for (var usuario in usuarios) {
+                alert(usuarios[usuario].name);
 
-                if (mensajes[mensaje].para == {{ auth()->user()->id}}){
+                // (mensajes[mensaje].para == {{ auth()->user()->id}}){
                     $("#listaMensajes").append('<li class="sent"><img src="http://emilcarlsson.se/assets/mikeross.png" alt="" /><p>' + mensajes[mensaje].texto + '</p></li >');
                 }
 
@@ -1991,7 +1993,7 @@
 
  var idUsuarioPulsado;
 function cargarMensajes(usuario) {
-
+    $('#textoMensaje').focus();
 
 if (isNaN(usuario)){
     idUsuarioPulsado = usuario.id;
