@@ -2,41 +2,71 @@
 
 @section('head')
 <style>
+    #tablaUsuarios {
+        font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
 
-#tablaUsuarios {
-    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
-    border-collapse: collapse;
-    width: 100%;
-  }
-  
-  #tablaUsuarios td, #tablaUsuarios th {
-    border: 1px solid #ddd;
-    padding: 8px;
-  }
-  
-  #tablaUsuarios tr:nth-child(even){background-color: #f2f2f2;}
-  
-  #tablaUsuarios tr:hover {background-color: #ddd;}
-  
-  #tablaUsuarios th {
-    padding-top: 12px;
-    padding-bottom: 12px;
-    text-align: left;
-    background-color: rgb(23,162,184);
-    color: white;
-  }
-  </style>
+    #tablaUsuarios td,
+    #tablaUsuarios th {
+        border: 1px solid #ddd;
+        padding: 8px;
+    }
 
-  <script>
-      function mostrarUsuario(usuario) {
+    #tablaUsuarios tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
 
-alert("pulsado " + usuario.id)
+    #tablaUsuarios tr:hover {
+        background-color: #ddd;
+    }
+
+    #tablaUsuarios th {
+        padding-top: 12px;
+        padding-bottom: 12px;
+        text-align: left;
+        background-color: rgb(23, 162, 184);
+        color: white;
+    }
+</style>
+
+<script>
+    function mostrarUsuario(usuario) {
+
+//alert("pulsado " + usuario.id)
+    
+$.ajax({
+        url: 'usuario' + "/" + usuario.id,
+        type: 'get',
+        success: function(response) {
+
+            let usuario = JSON.parse(response);
+
+$("#tituloModal").html(usuario.name);
+            
+            //alert(usuario.name);
+
+
+$("#modalUsuarioInfo").modal('show');
+        },
+        statusCode: {
+            404: function() {
+                alert('web not found');
+            }
+        },
+        error: function(x, xs, xt) {
+            alert('error: ' + JSON.stringify(x) + "\n error string: " + xs + "\n error throwed: " + xt);
+        }
+    
+});
+
 
 
 
 }
 
-  </script>
+</script>
 
 @stop
 
@@ -149,7 +179,7 @@ alert("pulsado " + usuario.id)
         </span>
     </li>
 
-   
+
 
 </ul>
 
@@ -164,7 +194,7 @@ alert("pulsado " + usuario.id)
     <div class="table-responsive justify-content-center" id="bienvenida">
         <p class="h3 text-center">Bienvenido a Brave Fitness. Elige una opción en el menú lateral. </p>
     </div>
-     <!--Mensaje de bienvenida -->
+    <!--Mensaje de bienvenida -->
 
 
     <!-- Tabla usuarios -->
@@ -183,7 +213,8 @@ alert("pulsado " + usuario.id)
             <tr>
                 <td>{{ $usuario->name }}</td>
                 <td><img src="images/users/{{ $usuario->fotoPerfil }}" width="100px" height="100px"></td>
-            <td><button class="btn btn-primary" id="{{ $usuario->id}}"  onclick="mostrarUsuario(this)"><i class="fas fa-plus-square"></i></button></td>
+                <td><button class="btn btn-primary" id="{{ $usuario->id}}" onclick="mostrarUsuario(this)"><i
+                            class="fas fa-plus-square"></i></button></td>
             </tr>
 
             @endforeach
@@ -191,6 +222,35 @@ alert("pulsado " + usuario.id)
 
         </table>
     </div>
+
+
+    <!-- MODAL USUARIO -->
+    <div class="modal fade" id="modalUsuarioInfo">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title" id="tituloModal"></h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                    Modal body..
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- MODAL USUARIO -->
+
+
     <!-- Tabla usuarios -->
 
 
@@ -1084,8 +1144,8 @@ alert("pulsado " + usuario.id)
 
                         @endif
 
-                        
-                        
+
+
 
 
 
@@ -1414,7 +1474,7 @@ function usuarioPorId(id) {
     </div>
     <!-- CHAT -->
 
-   
+
     <!-- CHAT -->
 
 

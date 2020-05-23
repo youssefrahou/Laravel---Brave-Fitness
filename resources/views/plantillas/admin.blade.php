@@ -43,7 +43,8 @@
     
         var channel = pusher.subscribe('chat-channel');
         channel.bind('chat-event', function(data) {
-          alert(JSON.stringify(data));
+          
+          //  alert(JSON.stringify(data));
 
           if(data.de == {{ auth()->user()->id }}){
 
