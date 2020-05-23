@@ -67,7 +67,12 @@ $(document).ready(function() {
     });
 
 
+    $('#lateralChat').click(function() {
 
+        ocultarTodo();
+        $("#chat").show();
+
+    });
 
 
 
@@ -86,4 +91,5 @@ function ocultarTodo() {
     $("#ensenarConsejos").hide();
     $("#ensenarComentarios").hide();
     $("#ensenarComentariosSinLeer").hide();
+    $("#chat").hide();
 }

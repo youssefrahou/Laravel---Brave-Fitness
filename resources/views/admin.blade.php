@@ -100,7 +100,7 @@
 
         </ul>
     </li>
-    <li class="nav-item has-treeview" id="abrirChat">
+    <li class="nav-item has-treeview" id="lateralChat">
         <span href="#" class="nav-link">
             <i class="nav-icon fas fa-table"></i>
             <p>
