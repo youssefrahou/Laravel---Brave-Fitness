@@ -60,6 +60,12 @@ Route::get('usuarios/{id}', function ($id) {
     return json_encode($usuario);
 });
 
+Route::get('usuario/{id}', function ($id) {
+
+    $usuario = User::find($id);
+    return json_encode($usuario);
+});
+
 
 Route::get('articulo/{id}', function ($id) {
 

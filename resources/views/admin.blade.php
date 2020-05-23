@@ -1,5 +1,44 @@
 @extends('plantillas.admin')
 
+@section('head')
+<style>
+
+#tablaUsuarios {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  #tablaUsuarios td, #tablaUsuarios th {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  
+  #tablaUsuarios tr:nth-child(even){background-color: #f2f2f2;}
+  
+  #tablaUsuarios tr:hover {background-color: #ddd;}
+  
+  #tablaUsuarios th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: rgb(23,162,184);
+    color: white;
+  }
+  </style>
+
+  <script>
+      function mostrarUsuario(usuario) {
+
+alert("pulsado " + usuario.id)
+
+
+
+}
+
+  </script>
+
+@stop
 
 @section('lateral')
 
@@ -130,32 +169,21 @@
 
     <!-- Tabla usuarios -->
     <div class="table-responsive" style="display: none" id="ensenarUsuarios">
-        <h3>Usuarios</h3>
-        <table class="table">
+        <h3 class="text-center display-4">Usuarios</h3>
+        <table class="table" id="tablaUsuarios">
             <tr>
-                <th>ID</th>
                 <th>Nombre</th>
-                <th>Apellidos</th>
-                <th>Peso</th>
-                <th>Sexo</th>
-                <th>Objetivo</th>
-                <th>Foto perfil</th>
-                <th>Foto dieta</th>
-
+                <th>Foto</th>
+                <th>Opciones</th>
             </tr>
 
             @isset ( $usuarios )
             @foreach ($usuarios as $usuario)
 
             <tr>
-                <td>{{ $usuario->id }}</td>
                 <td>{{ $usuario->name }}</td>
-                <td>{{ $usuario->apellido1 }} {{ $usuario->apellido2 }}</td>
-                <td>{{ $usuario->peso }}</td>
-                <td>{{ $usuario->sexo }}</td>
-                <td>{{ $usuario->objetivo }}</td>
-                <td>{{ $usuario->fotoPerfil }}</td>
-                <td>{{ $usuario->fotoDieta }}</td>
+                <td><img src="images/users/{{ $usuario->fotoPerfil }}" width="100px" height="100px"></td>
+            <td><button class="btn btn-primary" id="{{ $usuario->id}}"  onclick="mostrarUsuario(this)"><i class="fas fa-plus-square"></i></button></td>
             </tr>
 
             @endforeach
