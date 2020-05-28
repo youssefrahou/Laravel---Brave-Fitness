@@ -224,7 +224,7 @@ Entrar - Blave Fitness
     <div class="row">
 
 
-        <div class="d-none d-sm-none d-md-block col-md-3 register-left">
+        <div class="d-none d-sm-none d-lg-block col-md-3 register-left">
             <img src="https://image.ibb.co/n7oTvU/logo_white.png" alt="" />
             <h3>Bienvenida a <br /><b>Brave Fitness</b></h3>
             <p>Inicia sesión o regístrate para acceder a todas las ventajas que te ofrece Brave Fitness.
@@ -244,13 +244,11 @@ Entrar - Blave Fitness
                             <div class="container">
                                 <div class="row">
 
-                                    <div class="row col-md-6 p-5 justify-content-center d-none d-sm-none d-md-block">
-
+                                    <div class="row col-md-6 p-5 justify-content-center d-none d-md-none d-lg-block">
                                         <img src="{{asset('images/iphone.png')}}">
-
                                     </div>
 
-                                    <div class="row col-md-6 p-4 pl-5 p-md-5 justify-content-center">
+                                    <div class="row col-md-12 col-lg-6 p-4 pl-5 p-md-5 justify-content-center">
 
                                         <div class="row col-12 p-3 d-block d-sm-block d-md-none">
 
@@ -260,7 +258,7 @@ Entrar - Blave Fitness
 
 
                                         <!-- PC -->
-                                        <div class="row col-12 p-3 d-none d-sm-none d-md-block"
+                                        <div class="row col-12 p-3 d-none d-sm-none d-md-block d-lg-block"
                                             style="background-color: #EDECEC">
 
                                             <form method="POST" action="{{ route('login') }}">
