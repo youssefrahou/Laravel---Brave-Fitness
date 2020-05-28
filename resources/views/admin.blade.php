@@ -1,6 +1,44 @@
 @extends('plantillas.admin')
 
 @section('head')
+<!-- JS -->
+<script src="{{ asset('js/areapersonal.js') }}"></script>
+
+<script>
+    $(document).ready(function() {
+
+    
+var readURL = function(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+            $('.avatar').attr('src', e.target.result);
+        }
+
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+
+
+$(".file-upload").on('change', function(){
+    readURL(this);
+});
+});
+</script>
+<style>
+    .custom-file-upload input[type="file"] {
+        display: none;
+    }
+
+    .custom-file-upload .custom-file-upload1 {
+        border: 1px solid #ccc;
+        display: inline-block;
+        padding: 6px 12px;
+        cursor: pointer;
+    }
+</style>
+
 <style>
     #tablaUsuarios {
         font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
@@ -195,6 +233,230 @@ $("#modalUsuarioInfo").modal('show');
         <p class="h3 text-center">Bienvenido a Brave Fitness. Elige una opción en el menú lateral. </p>
     </div>
     <!--Mensaje de bienvenida -->
+
+    <!-- Ajustes de perfil -->
+    <div class="row col-12 p-2" id="editarPerfil" style="display: none">
+
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <h1>{{ auth()->user()->name }} {{ auth()->user()->apellido1 }} {{ auth()->user()->apellido2 }} </h1>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-lg-5">
+                    <!--left col-->
+
+
+                    <div class="text-center">
+                        @if (auth()->user()->fotoPerfil == null)
+
+                        <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png"
+                            class="avatar img-circle elevation-2" alt="avatar" style="width: 300px; height: 300px">
+
+                        @else
+
+                        <img src="images/users/{{ auth()->user()->fotoPerfil }}" class="avatar img-circle elevation-2"
+                            alt="avatar" style="width: 300px; height: 300px">
+
+                        @endif
+
+                        <!-- FORMULARIO -->
+                        <form class="form" action="{{ url('user') }}/{{ auth()->user()->id }}"
+                            enctype="multipart/form-data" method="post" id="registrationForm">
+
+                            <div class="custom-file-upload mt-2">
+
+                                <label for="file-upload" class="custom-file-upload1">
+                                    <i class="fas fa-camera"></i> Subir imagen
+                                </label>
+                                <input type="file" id="file-upload" name="fotoPerfil"
+                                    class="text-center center-block file-upload" />
+
+                            </div>
+
+
+
+                    </div><br>
+
+                </div>
+                <!--/col-3-->
+                <div class="col-lg-7">
+
+
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="home">
+
+
+
+                            <div class="row col-12">
+
+                                @csrf
+                                {{ method_field('PUT') }}
+
+                                <div class="form-group col-md-4">
+                                    <label for="first_name">
+                                        <h4>Nombre</h4>
+                                    </label>
+                                    <input type="text" class="form-control" value="{{ auth()->user()->name }}"
+                                        name="name" placeholder="Nombre">
+
+                                </div>
+
+
+                                <div class="form-group col-md-4">
+
+                                    <label for="last_name">
+                                        <h4>Primer apellido</h4>
+                                    </label>
+                                    <input type="text" class="form-control" value="{{ auth()->user()->apellido1 }}"
+                                        name="apellido1" placeholder="Primer apellido">
+
+                                </div>
+
+                                <div class="form-group col-md-4">
+
+                                    <label for="last_name">
+                                        <h4>Segundo apellido</h4>
+                                    </label>
+                                    <input type="text" class="form-control" value="{{ auth()->user()->apellido2 }}"
+                                        name="apellido2" placeholder="Segundo apellido">
+
+                                </div>
+
+
+                            </div>
+
+                            <div class="row">
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="password">
+                                            <h4>Objetivo</h4>
+                                        </label>
+                                        <input type="text" class="form-control" name="objetivo" id="password"
+                                            value="adelgazar" placeholder="Edad" min="7" max="110">
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="password">
+                                            <h4>Sexo</h4>
+                                        </label>
+                                        <br />
+                                        <select class="form-control  @error('sexo') is-invalid @enderror" name="sexo">
+
+                                            <option value="hombre" @if (auth()->user()->sexo =="hombre" )
+                                                {{ 'selected' }} @endif>Hombre</option>
+                                            <option value="mujer" @if (auth()->user()->sexo =="mujer" )
+                                                {{ 'selected' }} @endif>Mujer</option>
+                                            <option value="otro" @if (auth()->user()->sexo =="otro" )
+                                                {{ 'selected' }} @endif>Otro</option>
+
+                                        </select>
+
+                                        @error('sexo')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
+                                    </div>
+                                </div>
+
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label for="password">
+                                            <h4>Peso inicial</h4>
+                                        </label>
+                                        <input type="number" class="form-control  @error('peso') is-invalid @enderror"
+                                            name="peso" id="password" placeholder="Peso"
+                                            value="{{ auth()->user()->peso }}" disabled>
+                                        @error('peso')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
+                                    </div>
+                                </div>
+
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label for="password">
+                                            <h4>Altura inicial</h4>
+
+                                        </label>
+                                        <input type="number" class="form-control  @error('altura') is-invalid @enderror"
+                                            name="altura" id="password" placeholder="Altura (en cm)"
+                                            value="{{ auth()->user()->peso }}" disabled>
+                                        @error('altura')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
+                                    </div>
+                                </div>
+
+                                <div class="row col-12">
+                                    <div class="col-6">
+                                        <div class="form-group">
+                                            <label for="password">Fecha de nacimiento:</label>
+                                            <input type="date"
+                                                class="form-control  @error('fechaNacimiento') is-invalid @enderror"
+                                                name="fechaNacimiento" value="{{ auth()->user()->fechaNacimiento }}">
+
+                                            @error('fechaNacimiento')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
+
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="first_name">Correo electrónico:</label>
+                                        <input type="text" class="form-control @error('email') is-invalid @enderror"
+                                            name="email" value="{{ auth()->user()->email }}" autocomplete="email"
+                                            placeholder="Correo electrónico" disabled>
+
+                                        @error('email')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+
+                            <div class="form-group">
+                                <div class="col-xs-12">
+                                    <br>
+                                    <button class="btn btn-lg btn-primary" type="submit">Guardar</button>
+                                    <button class="btn btn-lg" type="reset" id="cancelarAct">Cancelar</button>
+                                </div>
+                            </div>
+
+                            </form>
+
+
+                        </div>
+
+                    </div>
+                    <!--/tab-content-->
+
+                </div>
+                <!--/col-9-->
+            </div>
+            <!--/row-->
+        </div>
+    </div>
+    <!-- fin AJUSTES DE PERFIL -->
+
 
 
     <!-- Tabla usuarios -->

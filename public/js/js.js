@@ -1,5 +1,11 @@
 $(document).ready(function() {
 
+    $("#actualizarPerfil").click(function() {
+        ocultarTodo();
+        $("#editarPerfil").show();
+
+    });
+
     $(".alert-success").alert();
     window.setTimeout(function() {
         $(".alert-success").alert('close');

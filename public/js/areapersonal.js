@@ -57,11 +57,7 @@ $(document).ready(function() {
         }
         //Mostrar imagenes al cargar MEDICION IMAGENES
 
-    $("#actualizarPerfil").click(function() {
-        ocultarTodo();
-        $("#editarPerfil").show();
 
-    });
 
     $("#cancelarAct").click(function() {
         ocultarTodo();

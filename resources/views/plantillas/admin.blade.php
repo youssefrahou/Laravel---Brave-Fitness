@@ -190,10 +190,10 @@
                         <a class="dropdown-item" id="actualizarPerfil">
                             Actualizar perfil
                         </a>
-
+                        <!--
                         <a class="dropdown-item">
                             Configuración
-                        </a>
+                        </a>-->
 
 
                         <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
