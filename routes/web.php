@@ -47,11 +47,15 @@ Route::get('mensajes/{id}', function ($id) {
     return json_encode($mensajes);
 });
 
+//EJEMPLO MIDDLEWARE
 Route::get('usuarios', function () {
 
-    $usuarios = DB::select("select * from users");
-    return json_encode($usuarios);
-});
+    if (Auth::user()->hasRole('admin')) {
+        $usuarios = DB::select("select * from users");
+        return json_encode($usuarios);
+    }
+})->middleware('auth');;
+//EJEMPLO MIDDLEWARE
 
 
 Route::get('usuarios/{id}', function ($id) {
