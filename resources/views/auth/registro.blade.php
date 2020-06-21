@@ -275,22 +275,6 @@ Entrar - Blave Fitness
                                                     @enderror
 
                                                 </div>
-                                                <div class="form-group">
-                                                    <label for="password">Segundo apellido</label>
-                                                    <input type="text"
-                                                        class="form-control  @error('apellido2') is-invalid @enderror"
-                                                        name="apellido2" id="password" value="{{ old('apellido2') }}"
-                                                        placeholder="Segundo apellido">
-
-                                                    @error('apellido2')
-                                                    <span class="invalid-feedback" role="alert">
-                                                        <strong>{{ $message }}</strong>
-                                                    </span>
-                                                    @enderror
-                                                </div>
-
-                                            </div>
-                                            <div class="col-md-6">
 
                                                 <div class="form-group">
                                                     <label for="email">Primer apellido *</label>
@@ -305,6 +289,26 @@ Entrar - Blave Fitness
                                                     </span>
                                                     @enderror
                                                 </div>
+
+                                                
+
+                                            </div>
+                                            <div class="col-md-6">
+                                                
+                                                <div class="form-group">
+                                                    <label for="password">Segundo apellido</label>
+                                                    <input type="text"
+                                                        class="form-control  @error('apellido2') is-invalid @enderror"
+                                                        name="apellido2" id="password" value="{{ old('apellido2') }}"
+                                                        placeholder="Segundo apellido">
+
+                                                    @error('apellido2')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                    @enderror
+                                                </div>
+
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                         <div class="form-group">

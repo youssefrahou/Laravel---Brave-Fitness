@@ -415,20 +415,23 @@ Entrar - Blave Fitness
                                                     <input type="text" class="form-control" id="nom" name="name"
                                                         placeholder="Nombre" required>
                                                 </div>
+                                                
+                                                <div class="form-group">
+                                                    <label for="lastname">Primer apellido *</label>
+                                                    <input type="text" class="form-control" required id="ap"
+                                                        name="apellido1" placeholder="Primer apellido">
+                                                </div>
+
+
+                                            </div>
+                                            <div class="col-md-6">
+
                                                 <div class="form-group">
                                                     <label for="password">Segundo apellido</label>
                                                     <input type="text" class="form-control" name="apellido2"
                                                         id="password" placeholder="Segundo apellido">
                                                 </div>
 
-                                            </div>
-                                            <div class="col-md-6">
-
-                                                <div class="form-group">
-                                                    <label for="email">Primer apellido *</label>
-                                                    <input type="text" class="form-control" required id="ap"
-                                                        name="apellido1" placeholder="Primer apellido">
-                                                </div>
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                         <div class="form-group">
