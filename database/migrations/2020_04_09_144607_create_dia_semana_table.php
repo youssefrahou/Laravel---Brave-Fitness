@@ -17,12 +17,13 @@ class CreateDiaSemanaTable extends Migration
             $table->id();
             $table->enum('dia', ['lunes', 'martes', 'miercoles', 'jueves', 'viernes', 'sabado', 'domingo']);
             
-
+/*
             $table->bigInteger('dieta_id')->unsigned();
             $table->foreign('dieta_id')
                 ->references('id')->on('dieta')
                 ->onDelete("cascade")
                 ->onUpdate("cascade");
+                */
 
             $table->timestamps();
         });

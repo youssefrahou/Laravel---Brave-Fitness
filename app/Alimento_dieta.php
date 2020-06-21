@@ -9,7 +9,7 @@ class Alimento_dieta extends Model
     protected $table = 'alimento_dieta';
 
     
-    public function dia_semana()
+    public function dias_semana()
     {
         return $this->belongsTo('App\Dia_semana');
     }

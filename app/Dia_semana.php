@@ -15,7 +15,7 @@ class Dia_semana extends Model
         return $this->hasMany('App\Alimento_dieta');
     }
 
-    public function dieta()
+    public function dietas()
     {
         return $this->belongsTo('App\Dieta');
     }

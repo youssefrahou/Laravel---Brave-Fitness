@@ -21,13 +21,13 @@ class CreateAlimentoDietaTable extends Migration
             //$table->string(''); saber % de nutrientes, tipo un 20% de proteinas y esas cosas
 
 
-
+/*
             $table->bigInteger('dia_semana_id')->unsigned();
             $table->foreign('dia_semana_id')
                 ->references('id')->on('dia_semana')
                 ->onDelete("cascade")
                 ->onUpdate("cascade");
-
+*/
             $table->timestamps();
         });
     }
