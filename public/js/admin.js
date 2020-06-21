@@ -77,53 +77,18 @@ $(document).ready(function() {
 
 
 
+    function ocultarTodo() {
 
+        $("#bienvenida").hide();
+        $("#crearticulo").hide();
+        $("#ensenarArticulos").hide();
+        $("#ensenarConsejos").hide();
+        $("#ensenarComentarios").hide();
+        $("#ensenarComentariosSinLeer").hide();
+        $("#chat").hide();
+        $("#ensenarUsuarios").hide();
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+    }
 
 
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function ocultarTodo() {
-    $("#bienvenida").hide();
-    $("#ensenarUsuarios").hide();
-    $("#crearticulo").hide();
-    $("#ensenarArticulos").hide();
-    $("#ensenarConsejos").hide();
-    $("#ensenarComentarios").hide();
-    $("#ensenarComentariosSinLeer").hide();
-    $("#chat").hide();
-}

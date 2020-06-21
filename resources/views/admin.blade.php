@@ -460,31 +460,32 @@ $("#modalUsuarioInfo").modal('show');
 
 
     <!-- Tabla usuarios -->
-    <div class="table-responsive" style="display: none" id="ensenarUsuarios">
-        <h3 class="text-center display-4">Usuarios</h3>
-        <table class="table" id="tablaUsuarios">
-            <tr>
-                <th>Nombre</th>
-                <th>Foto</th>
-                <th>Opciones</th>
-            </tr>
+    <div class="col-12" style="display: none" id="ensenarUsuarios">
+        <div class="table-responsive">
+            <h3 class="text-center display-4">Usuarios</h3>
+            <table class="table" id="tablaUsuarios">
+                <tr>
+                    <th>Nombre</th>
+                    <th>Foto</th>
+                    <th>Opciones</th>
+                </tr>
 
-            @isset ( $usuarios )
-            @foreach ($usuarios as $usuario)
+                @isset ( $usuarios )
+                @foreach ($usuarios as $usuario)
 
-            <tr>
-                <td>{{ $usuario->name }}</td>
-                <td><img src="images/users/{{ $usuario->fotoPerfil }}" width="100px" height="100px"></td>
-                <td><button class="btn btn-primary" id="{{ $usuario->id}}" onclick="mostrarUsuario(this)"><i
-                            class="fas fa-plus-square"></i></button></td>
-            </tr>
+                <tr>
+                    <td>{{ $usuario->name }}</td>
+                    <td><img src="images/users/{{ $usuario->fotoPerfil }}" width="100px" height="100px"></td>
+                    <td><button class="btn btn-primary" id="{{ $usuario->id}}" onclick="mostrarUsuario(this)"><i
+                                class="fas fa-plus-square"></i></button></td>
+                </tr>
 
-            @endforeach
-            @endisset
+                @endforeach
+                @endisset
 
-        </table>
+            </table>
+        </div>
     </div>
-
 
     <!-- MODAL USUARIO -->
     <div class="modal fade" id="modalUsuarioInfo">

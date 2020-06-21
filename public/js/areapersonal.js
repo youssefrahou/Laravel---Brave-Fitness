@@ -3,43 +3,56 @@ $(document).ready(function() {
 
     //Mostrar imagenes al cargar MEDICION IMAGENES
 
-    document.getElementById("delante").onchange = function(e) {
-        // Creamos el objeto de la clase FileReader
-        let reader = new FileReader();
+    if (document.getElementById('delante') != null) {
 
-        // Leemos el archivo subido y se lo pasamos a nuestro fileReader
-        reader.readAsDataURL(e.target.files[0]);
-        //alert(reader.readAsDataURL(e.target.files[0]));
+        document.getElementById("delante").onchange = function(e) {
+            // Creamos el objeto de la clase FileReader
+            let reader = new FileReader();
 
-        // Le decimos que cuando este listo ejecute el código interno
-        reader.onload = function() {
-            let preview = document.getElementById('previewDelante'),
-                image = document.createElement('img');
-            image.setAttribute("width", "200x");
-            image.src = reader.result;
+            // Leemos el archivo subido y se lo pasamos a nuestro fileReader
+            reader.readAsDataURL(e.target.files[0]);
+            //alert(reader.readAsDataURL(e.target.files[0]));
 
-            preview.innerHTML = '';
-            preview.append(image);
-        };
+            // Le decimos que cuando este listo ejecute el código interno
+            reader.onload = function() {
+                let preview = document.getElementById('previewDelante'),
+                    image = document.createElement('img');
+                image.setAttribute("width", "200x");
+                image.src = reader.result;
+
+                preview.innerHTML = '';
+                preview.append(image);
+            };
+        }
+
     }
 
 
-    document.getElementById("lado").onchange = function(e) {
-        let reader = new FileReader();
-        reader.readAsDataURL(e.target.files[0]);
+    if (document.getElementById('lado') != null) {
 
-        reader.onload = function() {
-            let preview = document.getElementById('previewLado'),
-                image = document.createElement('img');
-            image.setAttribute("width", "200x");
-            image.src = reader.result;
+        document.getElementById("lado").onchange = function(e) {
+            let reader = new FileReader();
+            reader.readAsDataURL(e.target.files[0]);
 
-            preview.innerHTML = '';
-            preview.append(image);
-        };
+            reader.onload = function() {
+                let preview = document.getElementById('previewLado'),
+                    image = document.createElement('img');
+                image.setAttribute("width", "200x");
+                image.src = reader.result;
+
+                preview.innerHTML = '';
+                preview.append(image);
+            };
+        }
+
     }
 
-    document.getElementById("atras").onchange = function(e) {
+
+
+
+    if (document.getElementById('atras') != null) {
+
+        document.getElementById("atras").onchange = function(e) {
 
             let reader = new FileReader();
 
@@ -55,7 +68,11 @@ $(document).ready(function() {
                 preview.append(image);
             };
         }
-        //Mostrar imagenes al cargar MEDICION IMAGENES
+
+    }
+
+
+    //Mostrar imagenes al cargar MEDICION IMAGENES
 
 
 
