@@ -126,6 +126,9 @@ function ocultarTodo() {
     $("#progreso").hide();
     $("#compararFecha").hide();
     $("#chat").hide();
+    $("#ensenarUsuarios").hide();
+
+
 
 
 

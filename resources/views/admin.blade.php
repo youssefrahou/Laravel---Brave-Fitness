@@ -212,7 +212,7 @@ $("#modalUsuarioInfo").modal('show');
             <i class="nav-icon fas fa-table"></i>
             <p>
                 Chat
-                <span class="badge badge-info right">777</span>
+                <span class="badge badge-info right">12</span>
             </p>
         </span>
     </li>
