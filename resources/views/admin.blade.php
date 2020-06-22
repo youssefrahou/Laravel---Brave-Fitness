@@ -508,12 +508,12 @@ $("#modalUsuarioInfo").modal('show');
 
                 <!-- Modal body -->
                 <div class="modal-body">
-                    Modal body..
+                    En desarrollo.
                 </div>
 
                 <!-- Modal footer -->
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
                 </div>
 
             </div>
