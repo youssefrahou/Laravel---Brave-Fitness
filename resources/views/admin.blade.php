@@ -475,7 +475,15 @@ $("#modalUsuarioInfo").modal('show');
 
                 <tr>
                     <td>{{ $usuario->name }}</td>
+
+                    @if($usuario->fotoPerfil)
+
                     <td><img src="images/users/{{ $usuario->fotoPerfil }}" width="100px" height="100px"></td>
+                    @else
+
+                    <td><img src="images/users/noimg.gif" width="100px" height="100px"></td>
+
+                    @endif
                     <td><button class="btn btn-primary" id="{{ $usuario->id}}" onclick="mostrarUsuario(this)"><i
                                 class="fas fa-plus-square"></i></button></td>
                 </tr>
